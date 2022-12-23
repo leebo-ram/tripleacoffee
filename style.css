@@ -1,0 +1,203 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-pink: #fe918d;
+  --color-dark-pink: #ff6863;
+
+  --color-purple: #ead4fb;
+  --color-dark-purple:#DCC9FF;
+  --color-very-dark-purple:
+  #DEBFF8;
+
+  --color-dark-grey: #4d4d4d;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-blue: #73aace;
+  --color-yellow:  #fff7d1;
+  --color-orange: #feb546;
+  --color-black: #000000;
+
+  /* tripleacoffee_color */
+  --color-triple-yellow: #FFCC35;
+  --color-triple-black: #1f1f1f;
+  --color-triple-deep-gray: #333;
+  --color-triple-brown:#5A3E33;
+  --color-triple-redPink: #B48B8F;
+  /* --color-triple-red: #90251D; */
+  --color-triple-red: #D43D2D;
+  
+  
+  
+  
+  /* tripleacoffee Brand color */
+  --color-triple-deep-yellow: #ffcd34;
+  --color-triple-grey: #65666b;
+  --color-triple-green: #0da27a
+
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+   /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* line-height */
+  --line-height-regular: 1.5;
+
+  /* Size */
+  --size-border-radius: 4px;
+
+  /* Annimation */
+  --animation-duration: 300ms;
+
+}
+
+
+ /* Universal tags */
+ * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  font-size: var(--font-regular);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Typography */
+
+/* [ Home ] */
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bigconts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.touch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: var(--color-triple-deep-yellow);
+  cursor: pointer;
+}
+
+.touch p{
+  font-size: var(--font-large);
+  color: var(--color-triple-black);
+}
+
+
+
+/* [ MENU ] */
+
+/* Navbar */
+.navbar___logo i{
+  font-size: 100px;
+  color: var(--color-triple-brown);
+  margin: 10px 10px;
+}
+
+.navbar___logo img {
+  width: 200px;
+  height: 100px;
+  float: right;
+  margin: 10px 10px;
+}
+
+.menu___category {
+  margin: 40px;
+  text-align: center;
+}
+
+.category__btn {
+  display: inline-block;  
+  width: 225px;
+  height: 70px;
+  border: 1px solid var(--color-dark-white);
+  border-radius: var(--size-border-radius);
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+  padding: 8px 48px;
+  background-color: var(--color-triple-brown);
+  color: var(--color-white);
+}
+
+.category__btn.active,
+.category__btn:hover {
+  background-color: var(--color-light-white);
+  color: var(--color-triple-redPink);
+}
+
+/* arrow */
+.arrow {
+  background-color: var(--color-triple-red);
+  border-radius: 10px;
+  font-size: 55px;
+  color: var(--color-white);
+}
+
+/* Drinks */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-content: center;
+
+  width: 280px;
+  height: 250px;
+  margin: 2px;
+  text-align: center;
+  background-color: yellow;
+  border: 1px solid var(--color-light-white);
+}
+
+.menu___list {
+  text-align: center;
+}
+.menu___list li {
+  display: inline-block;
+}
+
+.menu__img {
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 10px;
+}
