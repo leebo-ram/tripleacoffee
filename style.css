@@ -28,6 +28,7 @@
   --color-triple-redPink: #B48B8F;
   /* --color-triple-red: #90251D; */
   --color-triple-red: #D43D2D;
+  --color-triple-light-red: #C52B21;
   
   
   
@@ -35,15 +36,17 @@
   /* tripleacoffee Brand color */
   --color-triple-deep-yellow: #ffcd34;
   --color-triple-grey: #65666b;
-  --color-triple-green: #0da27a
+  --color-triple-green: #0da27a;
 
 
   /* Font size */
+  --font-big-large: 57px;
   --font-large: 48px;
   --font-medium: 28px;
   --font-regular: 18px;
   --font-small: 16px;
   --font-micro: 14px;
+
 
    /* Font weight */
   --weight-bold: 700;
@@ -58,6 +61,9 @@
 
   /* Annimation */
   --animation-duration: 300ms;
+
+  /* margin */
+  --margin-3vh: 3vh;
 
 }
 
@@ -114,7 +120,7 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%;
+  width: 72vh;
   background-color: var(--color-triple-deep-yellow);
   cursor: pointer;
 }
@@ -158,21 +164,16 @@ button {
   padding: 8px 48px;
   background-color: var(--color-triple-brown);
   color: var(--color-white);
+  margin: 1px;
 }
 
 .category__btn.active,
 .category__btn:hover {
-  background-color: var(--color-light-white);
+  background-color: var(--color-white);
   color: var(--color-triple-redPink);
 }
 
-/* arrow */
-.arrow {
-  background-color: var(--color-triple-red);
-  border-radius: 10px;
-  font-size: 55px;
-  color: var(--color-white);
-}
+
 
 /* Drinks */
 .menu {
@@ -200,4 +201,141 @@ button {
   max-width: 100%;
   max-height: 100%;
   margin-top: 10px;
+}
+
+.menu___description p{
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+
+/* top arrow */
+.arrow___top {
+  background-color: var(--color-triple-red);
+  border-radius: var(--size-border-radius);
+  font-size: var(--font-big-large);
+  color: var(--color-white);
+  position: relative;
+  top: 15px;
+}
+
+/* bottom arrow */
+.arrow___bottoms {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  margin-left: var(--margin-3vh);
+  margin-right: var(--margin-3vh);
+  background-color: var(--color-light-white);
+  border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  color: var(--color-white);
+}
+
+.arrow___bottom {
+  background-color: var(--color-light-white);
+  border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  font-size: var(--font-big-large);
+  color: var(--color-triple-grey);
+}
+
+.arrow___right.arrow___bottom{
+  float: right;
+} 
+
+/* minimize */
+.minimize {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.select___bar {
+  font-size: var(--font-regular);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-left: 4px;
+  cursor: default;
+}
+
+/* shopping basket */
+.shopping__basket {
+  height: 250px;
+  font-size: var(--font-big-large);
+  margin-left: var(--margin-3vh);
+  margin-right: var(--margin-3vh);
+  background-color: var(--color-light-white);
+  border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  color: var(--color-triple-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+
+/* count, total order amount */
+.count {
+  margin-left: var(--margin-3vh);
+  margin-right: var(--margin-3vh);
+  background-color: var(--color-light-white);
+  border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  font-size: var(--font-medium);
+}
+
+.count___oders {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantity {
+  margin-left: 4px;
+}
+
+.quantity > .count {
+  font-weight: var(--weight-bold);
+}
+
+.total___order___amount{
+  margin-left: 50%;
+}
+
+.total___order___won{
+  font-weight: var(--weight-bold);
+  margin-right: 4px;
+}
+
+/* payment */
+.pay {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  
+  margin-left: var(--margin-3vh);
+  margin-right: var(--margin-3vh);
+  background-color: var(--color-light-white);
+  border: 1px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+}
+
+.cancel___btn {
+  font-size: var(--font-medium);
+}
+
+.cancel___btn i{
+  font-size: var(--font-medium);
+  color: var(--color-triple-red);
+}
+
+.payment {
+  font-size: var(--font-medium);
+  border: 1px solid var(--color-triple-light-red);
+  border-radius: var(--size-border-radius);
+  background-color: var(--color-triple-light-red);
+  color: var(--color-white);
+  margin: 5px;
 }
