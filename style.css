@@ -63,7 +63,7 @@
   --animation-duration: 300ms;
 
   /* margin */
-  --margin-3vh: 3vh;
+  --margin-3vh: 9vh;
 
 }
 
@@ -139,6 +139,7 @@ button {
   font-size: 100px;
   color: var(--color-triple-brown);
   margin: 10px 10px;
+  margin-left: var(--margin-3vh);
 }
 
 .navbar___logo img {
@@ -146,16 +147,17 @@ button {
   height: 100px;
   float: right;
   margin: 10px 10px;
+  margin-right: 10vh;
 }
 
 .menu___category {
-  margin: 40px;
+  margin: 20px;
   text-align: center;
 }
 
 .category__btn {
   display: inline-block;  
-  width: 225px;
+  width: 18.6%;
   height: 70px;
   border: 1px solid var(--color-dark-white);
   border-radius: var(--size-border-radius);
