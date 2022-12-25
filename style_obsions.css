@@ -1,0 +1,229 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-pink: #fe918d;
+  --color-dark-pink: #ff6863;
+
+  --color-purple: #ead4fb;
+  --color-dark-purple:#DCC9FF;
+  --color-very-dark-purple:
+  #DEBFF8;
+
+  --color-dark-grey: #4d4d4d;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-blue: #73aace;
+  --color-yellow:  #fff7d1;
+  --color-orange: #feb546;
+  --color-black: #000000;
+
+  /* tripleacoffee_color */
+  --color-triple-yellow: #FFCC35;
+  --color-triple-black: #1f1f1f;
+  --color-triple-deep-gray: #333;
+  --color-triple-brown:#5A3E33;
+  --color-triple-redPink: #B48B8F;
+  /* --color-triple-red: #90251D; */
+  --color-triple-red: #D43D2D;
+  --color-triple-light-red: #C52B21;
+  
+  /* tripleacoffee Brand color */
+  --color-triple-deep-yellow: #ffcd34;
+  --color-triple-grey: #65666b;
+  --color-triple-green: #0da27a;
+
+
+  /* Font size */
+  --font-big-large: 57px;
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-min-medium:: 25px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+
+   /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* line-height */
+  --line-height-regular: 1.5;
+
+  /* Size */
+  --size-border-radius: 4px;
+
+  /* Annimation */
+  --animation-duration: 300ms;
+
+  /* margin */
+  --margin-3vh: 2.5vh;
+
+  /* width */
+  --width: 19.4%;
+
+
+}
+
+
+ /* Universal tags */
+ * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  font-size: var(--font-regular);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Typography */
+
+/* 메뉴 보이기 */
+#showMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  background-color: yellow;
+}
+
+/* 선택한 메뉴 보이기 */
+.show__menu {
+  width: 100px;
+  text-align: center;
+  margin: 8px 100px;
+  /* background-color: #0da27a; */
+}
+
+.showMenu__img {
+  max-width: 50%;
+  max-height: 100%;
+  /* background-color: pink; */
+}
+
+.showMenu__description {
+  position: absolute;
+  left: 250px;
+  line-height: 50%;
+  width: 250px;
+  height: 100px;
+  font-size: 15px;
+  /* background-color: #73aace; */
+}
+
+.showMenu__description_price {
+  color: var(--color-triple-red);
+  font-size: var(--font-medium);
+}
+
+.select__obsion {
+  font-size: var(--font-micro);
+}
+
+
+/* 선택한 메뉴 수량 증감Btn */
+.plusMinus {
+  margin-right: 100px;
+  border-radius: var(--size-border-radius);
+}
+
+.prod-quantity__input{
+  width: 70px;
+  height: 40px;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: var(--weight-bold);
+  font-size: var(--font-min-medium);
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+}
+
+.showMenu__btn {
+  width: 50px;
+  height: 40px;
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+}
+
+.showMenu__minus__btn{
+  font-size: var(--font-min-medium);
+  color: var(--color-triple-grey);
+}
+
+.showMenu__plus__btn {
+  font-size: var(--font-min-medium);
+  background-color: var(--color-triple-red);
+  color: var(--color-white);
+}
+
+
+/* 옵션사항 - 샷추가 */
+#obsions {
+  background-color: var(--color-light-white);
+  margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* 취소, 메뉴담기 btn */
+#carts {
+  text-align: center;
+  margin: 10px;
+  display: flex;
+}
+
+.cart{
+  width: 50%;
+  justify-content: center;
+}
+
+.cart_btn {
+  width: 100%;
+  height: 50px;
+  display :inline-block;
+  border-radius: var(--size-border-radius);
+  text-align: center;
+  font-size: var(--font-min-medium);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+}
+
+.cart__cansle__Btn {
+  background-color: var(--color-triple-grey);
+}
+
+.cart__ok__Btn {
+  background-color: var(--color-triple-light-red);
+}

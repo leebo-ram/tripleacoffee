@@ -16,35 +16,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- css(font-글씨체) : font-family: 'Open Sans', sans-serif;-->
 
-  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="style_obsions.css">
   <script src="main.js" defer></script>
 
 </head>
 <body>
       <!-- 메뉴 보이기  -->
-      <section class="showMenu">
+      <section id="showMenu">
         <!-- 선택한 메뉴 보이기 -->
-        <div class="select__menu">
+        <div class="show__menu">
           <img class="showMenu__img" src="./img/1_COFFEE/1_아메리카노.png" alt="아메리카노" />
-          <div class="showMenu__description">
-            <p>ICE)아메리카노(오리지널)</p>
-            <p>1,800원</p>
-            <p class="obsion__text select__obsion nonselect__hiden">hiden ex)바닐라시럽추가, 연하게</p>
-          </div>
+        </div>
+        
+        <div class="showMenu__description">
+          <p>ICE)아메리카노(오리지널)</p>
+          <p class="showMenu__description_price">1,800원</p>
+          <p class="obsion__text select__obsion nonselect__hiden">hiden ex)바닐라시럽추가, 연하게</p>
         </div>
 
         <!-- 선택한 메뉴 수량 증감Btn -->
         <div class="plusMinus">
           <input type="text" value="1" class="prod-quantity__input" maxlength="2" autocomplete="off">
-          <button class="showMenu__btn showMenu__plus__btn">
-            <i class="fas fa-plus"></i>
-          </button>
-  
+
           <button class="showMenu__btn showMenu__minus__btn">
             <i class="fas fa-minus"></i>
           </button>
+
+          <button class="showMenu__btn showMenu__plus__btn">
+            <i class="fas fa-plus"></i>
+          </button>
         </div>
       </section>
+
 
       <!-- 옵션사항 - 샷추가 -->
       <section id="obsions">
@@ -71,6 +74,7 @@
                 </div>
           </div>
 
+
           <div class="prod-quantity__form">
               <p class="quantity__biscriptipn">샷추가2222</p>
               <p class="quantity__price">+500원</p>
@@ -89,14 +93,19 @@
         </div>
       </section>
 
+
       <!-- 옵션사항_시럽추가 -->
       <!-- 옵션사항_기호(단일선택) -->
 
 
       <!-- 취소, 메뉴담기 btn -->
       <section id="carts">
-        <button class="cart_btn cart__cansle__Btn">취소</button>
-        <button class="cart_btn cart__ok__Btn">메뉴담기</button>
+        <div class="cart">
+          <button class="cart_btn cart__cansle__Btn">취소</button>
+        </div>
+        <div class="cart">
+          <button class="cart_btn cart__ok__Btn">메뉴담기</button>
+        </div>
       </section>
    
 </body>
