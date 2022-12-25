@@ -105,9 +105,8 @@ button {
   outline: none;
 }
 
-/* Typography */
+/* Typography - Home*/
 
-/* [ Home ] */
 #home {
   display: flex;
   flex-direction: column;
@@ -135,7 +134,7 @@ button {
   color: var(--color-triple-black);
 }
 
-/* [ MENU ] */
+/* Typography - MENU*/
 
 /* Navbar */
 .navbar___logo i{
@@ -332,3 +331,203 @@ button {
   margin: 5px;
 }
 
+
+/* Typography - OPTIONS */
+
+/* 메뉴 보이기 */
+#showMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+/* 선택한 메뉴 보이기 */
+.show__menu {
+  width: 100px;
+  text-align: center;
+  margin: 8px 100px;
+}
+
+.showMenu__img {
+  max-width: 50%;
+  max-height: 100%;
+}
+
+.showMenu__description {
+  position: absolute;
+  left: 250px;
+  line-height: 50%;
+  width: 250px;
+  height: 100px;
+  font-size: 15px;
+}
+
+.showMenu__description_price {
+  color: var(--color-triple-red);
+  font-size: var(--font-medium);
+}
+
+.select__option {
+  font-size: var(--font-micro);
+}
+
+
+/* 선택한 메뉴 수량 증감Btn */
+.plusMinus {
+  margin-right: 100px;
+  border-radius: var(--size-border-radius);
+}
+
+.prod-quantity__input__menu {
+  width: 60px;
+  height: 40px;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: var(--weight-bold);
+  font-size: var(--font-min-medium);
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+}
+
+.showMenu__btn {
+  width: 50px;
+  height: 40px;
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+}
+
+.showMenu__minus__btn{
+  font-size: var(--font-min-medium);
+  color: var(--color-triple-grey);
+}
+
+.showMenu__plus__btn {
+  font-size: var(--font-min-medium);
+  background-color: var(--color-triple-red);
+  color: var(--color-white);
+}
+
+
+/* 옵션사항 - 샷추가 */
+#options {
+  margin: 10px;
+}
+
+.option__discription {
+  padding: 5px;
+  line-height: 50%;
+}
+
+.option__text__hiden{
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-micro);
+}
+
+.prod-buy__quantity{
+  display: flex;
+  /* background-color: var(--color-light-white); */
+}
+
+.prod-quantity__form{
+  width: 25%;
+  height: 100px;
+  line-height: 50%;
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+  background-color: var(--color-white);
+}
+
+.quantity__biscriptipn{
+  margin-left: 10px;
+  font-size: var(--font-min-medium);
+}
+
+.quantity__price {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  font-size: var(--font-micro);
+}
+
+/* 옵션 수량 증감Btn */
+.option__plusMinus{
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  border: 1px solid var(--color-triple-light-red);
+  height: 30px;
+}
+
+.prod-quantity__input_option{
+  color: var(--color-triple-light-red);
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  border: none;
+}
+.prod-quantity__minus {
+  order: -1;
+  color: var(--color-triple-light-red);
+  margin-left: 10px;
+}
+.prod-quantity__plus {
+  color: var(--color-triple-light-red);
+  margin-right: 10px;
+}
+
+
+/* arrow Btn */
+.options__arrow__left{
+  width: 5%;
+  font-size: var(--font-medium);
+  color: var(--color-light-grey);
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+  background-color: var(--color-white);
+}
+
+.options__arrow__right{
+  order: 4;
+  width: 5%;
+  font-size: var(--font-medium);
+  color: var(--color-light-grey);
+  border: 1px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+  background-color: var(--color-white);
+}
+
+
+
+
+/* 취소, 메뉴담기 btn */
+#carts {
+  text-align: center;
+  margin: 10px;
+  display: flex;
+}
+
+.cart{
+  width: 50%;
+  justify-content: center;
+}
+
+.cart_btn {
+  width: 100%;
+  height: 50px;
+  display :inline-block;
+  border-radius: var(--size-border-radius);
+  text-align: center;
+  font-size: var(--font-min-medium);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+}
+
+.cart__cansle__Btn {
+  background-color: var(--color-triple-grey);
+}
+
+.cart__ok__Btn {
+  background-color: var(--color-triple-light-red);
+}
