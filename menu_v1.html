@@ -27,7 +27,7 @@
         <img src="./img/0_logo/logo_h.jpg" alt="tripleacoffee_logo" class="logo___img">
       </div>
 
-      <!-- menu -->
+      <!-- menu category -->
       <section id="menu">
         <div class="menu___category">
 
@@ -36,20 +36,20 @@
             <!-- <i class="fas fa-chevron-left"></i>
           </button> -->
 
-          <button class="category__btn active">ALL</button>
-          <button class="category__btn ">COFFEE</button>
-          <button class="category__btn">논커피</button>
-          <button class="category__btn">BOTTLE</button>
-          <button class="category__btn">ADE/FRAPPE</button>
+          <button class="category__btn active" data-filter="*">ALL</button>
+          <button class="category__btn " data-filter="coffee">COFFEE</button>
+          <button class="category__btn" data-filter="nonCoffee">논커피</button>
+          <button class="category__btn" data-filter="bottle">BOTTLE</button>
+          <button class="category__btn" data-filter="adeFrappe">ADE/FRAPPE</button>
 
           <br/>
           
-          <button class="category__btn">스무디/쉐이크</button>
-          <button class="category__btn">JUICE/TEA</button>
-          <button class="category__btn">시그니처라떼
+          <button class="category__btn" data-filter="smoothieShake">스무디/쉐이크</button>
+          <button class="category__btn" data-filter="juiceTea">JUICE/TEA</button>
+          <button class="category__btn" data-filter="signatureLatte">시그니처라떼
           </button>
-          <button class="category__btn">디저트/와플</button>
-          <button class="category__btn">BAKERY</button>
+          <button class="category__btn" data-filter="dessertWaffle">디저트/와플</button>
+          <button class="category__btn" data-filter="bakery">BAKERY</button>
          
           <!-- <button class="arrow arrow___right arrow___top">
             <i class="fas fa-chevron-right"></i>
@@ -64,7 +64,7 @@
           <!-- coffe -->
           <ul class="menu___list">
             <li class="menu">
-              <a href="" class="menu___link">
+              <a href="" class="menu___link" target="blank" data-type="coffee">
               <img src="./img/1_COFFEE/1_아메리카노.png" alt="img_아메리카노" class="menu__img">
               </a>
               <div class="menu___description">
@@ -74,8 +74,7 @@
             </li>
 
             <li class="menu">
-              <a href="" class="menu___link">
-              <img src="./img/1_COFFEE/1_아메리카노.png" alt="img_아메리카노" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">              <img src="./img/1_COFFEE/1_아메리카노.png" alt="img_아메리카노" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)아메리카노(스페셜)
@@ -84,8 +83,7 @@
             </li>        
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/1_아메리카노.png" alt="img_아메리카노" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/1_아메리카노.png" alt="img_아메리카노" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)아메리카노(디카페인)
@@ -94,8 +92,7 @@
             </li>
             
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/2_헤이즐넛아메리카노.png" alt="img_헤이즐넛아메리카노" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/2_헤이즐넛아메리카노.png" alt="img_헤이즐넛아메리카노" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)헤이즐넛아메리카노
@@ -104,8 +101,7 @@
             </li>
             
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/3_카페라떼.png" alt="img_카페라떼" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/3_카페라떼.png" alt="img_카페라떼" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)카페라떼
@@ -114,8 +110,7 @@
             </li>
             
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/4_바닐라라떼.png" alt="img_바닐라라떼" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/4_바닐라라떼.png" alt="img_바닐라라떼" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)바닐라라떼
@@ -125,8 +120,7 @@
             
             
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/5_헤이즐넛라떼.png" alt="img_헤이즐넛라떼" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/5_헤이즐넛라떼.png" alt="img_헤이즐넛라떼" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)헤이즐넛라떼
@@ -135,8 +129,7 @@
             </li>  
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/6_카페모카.png" alt="img_카페모카" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/6_카페모카.png" alt="img_카페모카" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)카페모카
@@ -145,8 +138,7 @@
             </li>  
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/7_카라멜마끼아또.png" alt="img_카라멜마끼아또" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/7_카라멜마끼아또.png" alt="img_카라멜마끼아또" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)카라멜마끼아또
@@ -155,8 +147,7 @@
             </li>  
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/8_연유커피.png" alt="img_연유커피" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/8_연유커피.png" alt="img_연유커피" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)연유커피
@@ -165,8 +156,7 @@
             </li>  
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/9_아인슈페너.png" alt="img_민트모카" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/9_아인슈페너.png" alt="img_민트모카" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)아인슈페너
@@ -175,8 +165,7 @@
             </li>
 
             <li class="menu">
-              <a href="" class="menu___link">
-                <img src="./img/1_COFFEE/10_민트모카.png" alt="img_민트모카" class="menu__img">
+              <a href="" class="menu___link" target="blank" data-type="coffee">                <img src="./img/1_COFFEE/10_민트모카.png" alt="img_민트모카" class="menu__img">
               </a>
               <div class="menu___description">
                 <p>ICE)민트모카
@@ -460,7 +449,7 @@
             <i class="fas fa-times-circle"></i>
             <span class="cancel__all">전체취소</span>
           </button>
-          <button class="payment">
+          <button class="payment___btn">
             결제하기
           </button>
         </div>
