@@ -111,6 +111,10 @@ button {
   outline: none;
 }
 
+.lines {
+  border-bottom: var(--border-bottom-3px);
+}
+
 /* Typography - Home*/
 
 #home {
@@ -420,7 +424,6 @@ button {
 #options {
   margin: 10px;
   padding-bottom: 20px;
-  border-bottom: var(--border-bottom-3px);
 }
 
 .option__discription {
