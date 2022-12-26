@@ -540,7 +540,7 @@ button {
 
 /* Typography - 주문방법 선택, 스탬프 적립/사용 공통사항 */
 
-#titles {
+#popTitles {
   text-align: center;
   border-bottom: var(--border-bottom-5px);
 }
