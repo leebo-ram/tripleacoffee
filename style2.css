@@ -547,30 +547,37 @@ button {
 
 #popBox {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 20%;
+}
+
+.pop__middle__box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .pop__boxing {
   margin: 10px;
   width: 100%;
-  padding: 10px;
   text-align: center;
   border: var(--border-line-1px-grey);
 }
 
 .pop__boxing i{
-  margin-top: 20%;
+  margin-top: 15%;
   font-size: var(--font-big-large);
 }
 
 .pop__boxing p{
+  margin-top: 15%;
+  margin-bottom: 15%;
   font-size: var(--font-medium);
 }
 
 #pop__bottom {
-  width: 100%;
   height: 80px;
   display: flex;
   padding: 4px;
@@ -592,47 +599,31 @@ button {
 
 /* Typography - stamp use and Earn */
 
-#memberStamp{
-  width: 60%;
-  margin: auto;
-  position: absolute;
-  top: 20%;
-  left: 20%;
+.memberStamp{
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+
+  position: relative;
+  bottom: 10vh;
 }
 
 .member__stamps {
   display: flex;
   justify-content: space-around;
-  height: 100px;
   font-size: var(--font-medium);
   padding: 5px;
   border-top: var(--border-line-1px);
   border-bottom: var(--border-line-1px);
 }
 
-.member__stamp {
+.have__stamp {
   color: var(--color-triple-light-red);
   font-weight: var(--weight-bold);
 }
 
-.member__stamp__description {
+.member__stamp__comment {
   margin-right: 10%;
 }
 
-.stamp__description {
-  display: flex;
-  justify-content: center;
-  height: 100px;
-  padding-top: 10px ;
-  color: var(--color-triple-grey);
-}
-
-.stamp__use__info {
-  width: 60%;
-  position: absolute;
-  bottom: 4%;
-  left: 20%;
-  text-align: center;
-  color: var(--color-triple-grey);
-}
 
