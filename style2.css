@@ -555,7 +555,6 @@ button {
   justify-content: center;
   align-items: center;
   margin: 20%;
-
 }
 
 .pop__boxing {
@@ -596,4 +595,49 @@ button {
 }
 
 
+/* Typography - stamp use and Earn */
+
+#memberStamp{
+  width: 60%;
+  margin: auto;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+.member__stamps {
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+  font-size: var(--font-medium);
+  padding: 5px;
+  border-top: var(--border-line-1px);
+  border-bottom: var(--border-line-1px);
+}
+
+.member__stamp {
+  color: var(--color-triple-light-red);
+  font-weight: var(--weight-bold);
+}
+
+.member__stamp__description {
+  margin-right: 10%;
+}
+
+.stamp__description {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  padding-top: 10px ;
+  color: var(--color-triple-grey);
+}
+
+.stamp__use__info {
+  width: 60%;
+  position: absolute;
+  bottom: 4%;
+  left: 20%;
+  text-align: center;
+  color: var(--color-triple-grey);
+}
 
