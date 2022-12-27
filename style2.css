@@ -23,6 +23,8 @@
   /* tripleacoffee_color */
   --color-triple-yellow: #FFCC35;
   --color-triple-black: #1f1f1f;
+  --color-triple-light-gray: #AFBBB9;
+  --color-triple-line-gray: #AFBBB9;
   --color-triple-deep-gray: #333;
   --color-triple-brown:#5A3E33;
   --color-triple-redPink: #B48B8F;
@@ -62,16 +64,13 @@
   /* Annimation */
   --animation-duration: 300ms;
 
-  /* margin */
-  --margin-3vh: 2.5vh;
-
   /* width */
   --width: 19.4%;
 
-  /*   border-bottom: */
+  /*   border line */
   --border-bottom-5px : 5px solid var(--color-light-white);
   --border-bottom-3px : 3px solid var(--color-light-white);
-  --border-line-1px : 1px solid var(--color-light-white);
+  --border-line-1px : 1px solid var(--color-triple-line-gray);
   --border-line-1px-grey : 1px solid var(--color-grey);
 }
 
@@ -121,10 +120,10 @@ button {
   flex-direction: column;
 }
 
-.bigconts {
+/* .bigconts {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .bigconts img, .touch___btn {
   max-width: 100%;
@@ -136,15 +135,25 @@ button {
   color: var(--color-triple-black);
 }
 
+.touch___btn {
+  position: relative;
+  bottom: 53px;
+}
+
+
 
 /* Typography - MENU*/
 
 /* Navbar */
+.navbar___logo {
+  margin: 10px;
+}
+
 .navbar___logo i{
   font-size: 100px;
   color: var(--color-triple-brown);
   margin: 10px 10px;
-  margin-left: var(--margin-3vh);
+  margin-left: 2.5vh
 }
 
 .navbar___logo img {
@@ -156,22 +165,9 @@ button {
 }
 
 /* menu__category_Btn */
-#work {
-  width: 100%;
-
-  background-color: #B48B8F;
-}
-
-#section__container {
-
-  background-color: #feb546;
-}
-
-.menu__categories {
+.menu__categories1, .menu__categories2 {
   width: 100%;
   text-align: center;
-
-  background-color: #0da27a;
 }
 
 .category__btn {
@@ -199,6 +195,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .wrap {
@@ -228,17 +225,20 @@ button {
 }
 
 /* bottom arrow */
+#arrow {
+  width: 100%;
+  margin: 4px 3%;
+}
+
+
 .arrow___bottoms {
   display: flex;
   justify-content: space-between;
   align-items: center;
   
-  margin-left: var(--margin-3vh);
-  margin-right: var(--margin-3vh);
   background-color: var(--color-light-white);
-  border: 1px solid var(--color-white);
+  border: var(--border-line-1px);
   border-radius: var(--size-border-radius);
-  color: var(--color-white);
 }
 
 .arrow___bottom {
@@ -246,12 +246,16 @@ button {
   border: 1px solid var(--color-white);
   border-radius: var(--size-border-radius);
   font-size: var(--font-big-large);
-  color: var(--color-triple-grey);
+  color: var(--color-triple-line-gray);
 }
 
 .arrow___right.arrow___bottom{
   float: right;
-} 
+}
+
+.arrow___right {
+  order: 1;
+}
 
 /* minimize */
 .minimize {
@@ -273,10 +277,8 @@ button {
 .shopping__basket {
   height: 250px;
   font-size: var(--font-big-large);
-  margin-left: var(--margin-3vh);
-  margin-right: var(--margin-3vh);
   background-color: var(--color-light-white);
-  border: 1px solid var(--color-white);
+  border: 10px solid var(--color-triple-light-gray);
   border-radius: var(--size-border-radius);
   color: var(--color-triple-grey);
   display: flex;
@@ -287,12 +289,11 @@ button {
 
 /* count, total order amount */
 .count {
-  margin-left: var(--margin-3vh);
-  margin-right: var(--margin-3vh);
-  background-color: var(--color-light-white);
-  border: 1px solid var(--color-white);
+  background-color: var(--color-triple-black);
+  border: var(--border-line-1px);
   border-radius: var(--size-border-radius);
   font-size: var(--font-medium);
+  color: var(--color-white);
 }
 
 .count___oders {
@@ -323,15 +324,14 @@ button {
   justify-content: space-between;
   height: 80px;
   
-  margin-left: var(--margin-3vh);
-  margin-right: var(--margin-3vh);
-  background-color: var(--color-light-white);
-  border: 1px solid var(--color-white);
+  background-color: var(--color-triple-deep-gray);
+  border: var(--border-line-1px);
   border-radius: var(--size-border-radius);
 }
 
 .cancel___btn {
   font-size: var(--font-medium);
+  color: var(--color-white);
 }
 
 .cancel___btn i{
@@ -518,8 +518,6 @@ button {
 }
 
 
-
-
 /* 취소, 메뉴담기 btn */
 #carts {
   text-align: center;
@@ -639,5 +637,3 @@ button {
 .member__stamp__comment {
   margin-right: 10%;
 }
-
-
