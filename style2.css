@@ -156,10 +156,22 @@ button {
 }
 
 /* menu__category_Btn */
+#work {
+  width: 100%;
+
+  background-color: #B48B8F;
+}
+
+#section__container {
+
+  background-color: #feb546;
+}
+
 .menu__categories {
-  margin: 40px;
-  
+  width: 100%;
   text-align: center;
+
+  background-color: #0da27a;
 }
 
 .category__btn {
@@ -168,6 +180,8 @@ button {
   font-size: var(--font-regular);
   padding: 8px 48px;
   
+  width: 17.6%;
+  height: 6vh;
   margin: 1px;
   background-color: var(--color-triple-brown);
   color: var(--color-white);
