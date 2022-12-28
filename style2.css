@@ -739,3 +739,84 @@ button {
 .pop__former__Btn {
   margin-right: 4px;
 }
+
+
+/* Typography - stamp use (스탬프 사용) */
+.pop__title p {
+  position: relative;
+  bottom: 20px;
+  margin: 0;
+}
+
+#Certification {
+  width: 100%;
+}
+
+#Certification p{
+  font-size: var(--font-min-medium);
+  padding-left: 4px;
+}
+
+.certification__Num {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+#certification__input {
+  width: 100%;
+  margin-right: 4px;
+  padding-left: 4px;
+  font-size: var(--font-medium);
+  border: var(--border-line-1px);
+}
+
+.certification__Num button {
+  width: 25%;
+  border-radius: var(--size-border-radius);
+  color: var(--color-white);
+  font-size: var(--font-medium);
+  background-color: var(--color-triple-light-red) ;
+}
+
+#certification__numbers {
+  padding: 2%;
+  background-color: var(--color-light-white);
+}
+
+.certification__number123,
+.certification__number456,
+.certification__number789,
+.certification__number0 {
+  display: flex;
+  justify-content: center;
+}
+
+.certification__number123 {
+  margin-top: 4px;
+}
+
+.certification__number123 button,
+.certification__number456 button,
+.certification__number789 button,
+.certification__number0 button,
+.number__del__ALL,
+.certification__number0 i{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  width: 30%;
+  height: 100px;
+  font-size: var(--font-medium);
+}
+
+.certification__number0 i {
+  font-size: var(--font-large);
+}
+
+#pop__bottom > .pop__order__Btn {
+  margin-left: 4px;
+  background-color: var(--color-triple-light-red) ;
+}
