@@ -305,7 +305,7 @@ button {
   margin-left: 4px;
 }
 
-.quantity > .count {
+.quantity span {
   font-weight: var(--weight-bold);
 }
 
