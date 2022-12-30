@@ -1,38 +1,18 @@
-//import express from 'express';
-//import path from 'path';
-// import db from './db.mjs';
-//import mysql from 'mysql';
-//import multer from 'multer';
-
 const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000; // 포트번호
-// const db = mysql.createConnection({
-//     host:'localhost',
-//     user:'root',
-//     password:'1234',
-//     port:3306,
-//     database:'tripleacoffee'
-// });
-
 const db = require('./db.js');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+
 app.use(express.static('../public'));
+app.use(bodyParser.json());
 
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     console.log(path.resolve())
     res.sendFile(path.join(path.resolve(), '../public/index.html'));
-    // db.query("select * from tb_member",
-    // function(err, rows, fields) {
-    //     if(err) {
-    //         console.log(err);
-    //         console.log('불러오기 실패');
-    //     }else{
-    //         console.log("불러오기 성공");
-    //         console.log(rows);
-    //     }
-    // })
 })
 
 // 파일 업로드 multer라이브러리
@@ -55,13 +35,14 @@ const upload =  multer({
 // 메뉴추가
 app.post('/addmenu', upload.single('m_img'), (req, res) => {
     console.log(req.body)
-    console.log(req.header)
     const m_name = req.body.m_name;
     const m_price = req.body.m_price;
     const m_recipe = req.body.m_recipe;
     const m_img = realfilename;
+    const m_options = req.body.m_options;
+    const m_category = req.body.m_category;
 
-    db.query("insert into tb_menu(m_name, m_price, m_recipe, m_img) values(?, ?, ?, ?)",[m_name, m_price, m_recipe, m_img],
+    db.query("insert into tb_menu(m_name, m_price, m_recipe, m_img, m_options, m_category) values(?, ?, ?, ?, ?, ?)",[m_name, m_price, m_recipe, m_img, m_options, m_category],
     function(err, rows, fields) {
         if(err){
             console.log("메뉴등록 실패");
@@ -74,7 +55,9 @@ app.post('/addmenu', upload.single('m_img'), (req, res) => {
 
 // 메뉴 삭제
 app.post('/delmenu', function(req, res) {
+    console.log(req.body.m_idx);
     db.query("delete from tb_menu where m_idx=?", [req.body.m_idx], function(err, rows, fields) {
+        
         if(err) {
             console.log('메뉴삭제 실패');
             console.log(err);
@@ -88,6 +71,7 @@ app.post('/delmenu', function(req, res) {
 
 // 메뉴 호출
 app.get('/callmenu', function(req, res) {
+    console.log('11')
     db.query("select * from tb_menu",
     function(err, rows, fields) {
         if(err){
@@ -95,6 +79,28 @@ app.get('/callmenu', function(req, res) {
             console.log(err);
         }else{
             console.log("메뉴호출 성공");
+            console.log(rows);
+            res.send(rows);
+        }
+    })
+})
+
+// 메뉴 옵션 출력(음료별)
+app.post('/calloptions', function(req, res) {
+    const mo_name = req.body.m_options.split(';');
+    let sql = `select * from tb_menuoptions where mo_idx=${mo_name[0]}`;
+    if(mo_name.length > 0) {
+        for(let i=1; i<mo_name.length; i++) {
+            sql += ` or mo_idx=${mo_name[i]}`;
+        }
+    }
+
+    db.query(sql, function(err, rows, fields) {
+        if(err) {
+            console.log('메뉴 출력 실패');
+            console.log(err);
+        }else {
+            console.log('메뉴출력 성공');
             res.send(rows);
         }
     })
@@ -103,7 +109,6 @@ app.get('/callmenu', function(req, res) {
 // 회원정보 확인(가입여부, 도장갯수 등)
 app.post('/checkmobile', function(req, res) {
     console.log(req.body);
-    console.log(req);
     const mem_mobile = req.body.mem_mobile;
     
     db.query("select * from tb_member where mem_mobile=?",[mem_mobile],
@@ -141,17 +146,18 @@ app.post('/newsaleslog', function(req, res) {
 
     let sqls = "";
 
-    for(let i=0; i<sl_name.length(); i++) {
-        sqls += `insert into tb_saleslog set sl_orderidx=${sl_orderidx}, sl_name=${sl_name[i]}, sl_amount=${sl_amount[i]}, sl_totalprice=${sl_totalprice[i]};`
+    for(let i=0; i<sl_name.length; i++) {
+        sqls += mysql.format('insert into tb_saleslog set sl_orderidx=?, sl_name=?, sl_amount=?, sl_totalprice=?;',[sl_orderidx, sl_name[i],sl_amount[i],sl_totalprice[i]]);
     }
+    console.log(sqls)
     
-    db.query(sqls, function(req, res) {
+    db.query(sqls, function(err, rows) {
         if(err) {
             console.log("매출로그 입력 실패");
             console.log(err);
         }else {
             console.log("매출로그 입력 성공");
-            res.send("1")
+            res.send(rows)
         }
     })
 })

@@ -6,7 +6,8 @@ const db = mysql.createConnection({
     user:'root',
     password:'1234',
     port:3306,
-    database:'tripleacoffee'
+    database:'tripleacoffee',
+    multipleStatements: true
 });
 // export default function mysql () {
 
