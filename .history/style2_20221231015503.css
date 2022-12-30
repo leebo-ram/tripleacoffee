@@ -990,7 +990,10 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 8px;
+
+  /* position: relative;
+  top: 10px;
+  margin-right: 8px; */
 }
 
 .pay__load__description {
