@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+  
+<style>
+  #audio {
+    /* display: none; */
+  }
+</style>
+</head>
+<body>
+    <!-- 안내음성 : "IC카드를 넣어주세요" -->
+    
+    <!-- <button>
+    <iframe src="../audio/ment_inputIcCard.mp3" frameborder="0" allow="autoplay" id="audio">
+    </iframe>
+    <p>다음버튼</p>
+  </button> -->
+
+<script>
+const playMain = document.getElementById("bgMain"); 
+const playVoice = document.getElementById("voice"); // AUDIO파일
+
+playMain.play(); 
+playMain.onended = function(){ 
+    playVoice.play(); 
+} 
+</script>
+
+  <iframe src="ment_inputIcCard.mp3" allow="autoplay" id="audio" style="display:none"></iframe>  
+<audio autoplay loop id="bgmAudio">
+	<source src="ment_inputIcCard.mp3" type="audio/mp3" />
+	<source src="./images/voice.ogg" type="audio/ogg" />
+</audio>
+</body>
+</html>

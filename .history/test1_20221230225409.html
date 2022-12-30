@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <iframe src="./audio/ment_inputIcCard.mp3" allow="autoplay; fullscreen"></iframe>
+
+  <script>
+    var promise = document.querySelector('video').play();
+
+if (promise !== undefined) {
+  promise.then(_ => {
+    // Autoplay started!
+    audio
+    
+  }).catch(error => {
+    console.log("play");
+    // Autoplay was prevented.
+    // Show a "Play" button so that user can start playback.
+  });
+}
+  </script>
+</body>
+</html>
