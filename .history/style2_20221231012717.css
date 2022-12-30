@@ -873,7 +873,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1% 0;
+  margin: 3% 0;
 }
 
 .pop__info__choice button {
@@ -1024,7 +1024,7 @@ button {
 }
 
 .payStamp {
-  width: 40%;
+  width: 50%;
   min-height: 800px;
 }
 

@@ -873,7 +873,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1% 0;
+  margin: 3% 0;
 }
 
 .pop__info__choice button {
@@ -1011,6 +1011,7 @@ button {
 
 .pay_Complete_ment p {
   line-height: 18px;
+  font-size: var(--font-min-medium);
 }
 
 .pint__receipt__img {
@@ -1024,12 +1025,15 @@ button {
 }
 
 .payStamp {
-  width: 40%;
+  width: 50%;
   min-height: 800px;
+  background-color: #0da27a;
 }
 
 .pay__Stamp__info {
   margin-top: 45%;
+
+  background-color: #DCC9FF;
 }
 
 .pay__Stamp__info div {

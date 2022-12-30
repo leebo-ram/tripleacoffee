@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>payment Loading1(empty) - 결제로딩(효과음 있음)</title>
+  <title>payment Complete(결제완료)</title>
   <meta name="description" content="tripleacoffee Portfolio for world-renowned software engineer Lee Bo-ram and Byeon Sang-woo">
 
   <link rel="icon" type="image/png" href="../img/0_logo/logo_h.jpg" />
@@ -22,12 +22,36 @@
 
 </head>
 <body>
-  <!-- 카드결제완료 효과음(크롬정책에 따라 브라우저 설정을 따로 풀어주지 않으면 autoplay 안됨)-->
-  <iframe src="../audio/soundEffect.mp3" frameborder="0" allow="autoplay muted" id="payAudio"></iframe>
-
+  <section id="popTitles">
+    <div class="pop__title">
+      <h2>결제완료</h2>
+    </div>
+  </section>
 
   <!-- 카드결제 -->
   <section id="pop__First__box">
+    <div class="paying">
+      <div class="pay_empty">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="pay__info">
+        <p>결제금액</p>
+        <p class="total__won">4,300원</p>
+      </div>
+
+      <div class="pay__img">
+        <img src="../img/print_receipt.png" alt="">
+      </div>
+    </div>
+    
+    <div class="pop__middle__box">
+      <!-- <div class="pay__img">
+        <img src="../img/cardReader.png" alt="">
+      </div> -->
+    </div>
     
     <div class="loadingPay">
       <div class="pay__load">
@@ -37,10 +61,16 @@
         <span>Wait Loading</span>
       </div>
       <div class="pay__load__description">
-        <!-- <p>결제진행 중입니다.</p>
-        <p>완료되기전까지 카드를 빼지 말아주세요.</p> -->
+        <p>결제진행 중입니다.</p>
+        <p>완료되기전까지 카드를 빼지 말아주세요.</p>
       </div>
     </div>
+  </section>
+
+
+  <!-- 취소Btn -->
+  <section id="pop__bottom">
+    <button class="pop__cancel__Btn">취소</button>
   </section>
 
 </body>
