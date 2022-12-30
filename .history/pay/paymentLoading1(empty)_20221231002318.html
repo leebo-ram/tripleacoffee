@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    Consent to collection of personal information(개인정보수집동의)</title>
+  <title>paying Credit Card(카드결제)</title>
   <meta name="description" content="tripleacoffee Portfolio for world-renowned software engineer Lee Bo-ram and Byeon Sang-woo">
+
   <link rel="icon" type="image/png" href="../img/0_logo/logo_h.jpg" />
 
   <!-- 무료icon 적용하기 -->
@@ -22,17 +22,26 @@
 
 </head>
 <body>
+  <!-- 카드결제완료 효과음(크롬정책에 따라 브라우저 설정을 따로 풀어주지 않으면 autoplay 안됨)-->
+  <iframe src="../audio/soundEffect.mp3" frameborder="0" allow="autoplay muted" id="payAudio"></iframe>
+
+
+  <!-- 카드결제 -->
   <section id="pop__First__box">
-    <div id="pop_info">
-      <div class="pop_info__description">
-        <p class="consent__message">개인정보 수집 및 이용에 동의하시겠습니까 ?</p>
+    
+    <div class="loadingPay">
+      <div class="pay__load">
+        <div>
+          <i class="fas fa-spinner"></i>
+        </div>
+        <span>Wait Loading</span>
       </div>
-  
-      <div class="pop__info__choice">
-        <button class="yes__btn">예</button>
-        <button>아니오</button>
+      <div class="pay__load__description">
+        <!-- <p>결제진행 중입니다.</p>
+        <p>완료되기전까지 카드를 빼지 말아주세요.</p> -->
       </div>
     </div>
   </section>
+
 </body>
 </html>

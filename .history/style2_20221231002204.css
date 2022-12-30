@@ -921,7 +921,7 @@ button {
 
 /* Typography - paying Credit Card(카드결제)*/
 #payAudio {
-  display: none;
+  /* display: none; */
 }
 
 #pop__First__box {

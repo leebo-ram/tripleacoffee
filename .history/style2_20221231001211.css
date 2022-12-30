@@ -844,7 +844,7 @@ button {
 /* Typography -print receipt(영수증 출력여부) */
 
 #pop_info {
-  min-width: 120%;
+  min-width: 90%;
   border: 1px solid var(--color-dark-grey);
 }
 
@@ -920,7 +920,7 @@ button {
 
 
 /* Typography - paying Credit Card(카드결제)*/
-#payAudio {
+#audio {
   display: none;
 }
 
