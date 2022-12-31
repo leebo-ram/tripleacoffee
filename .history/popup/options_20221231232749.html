@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select options(옵션선택)</title>
+  <meta name="description" content="tripleacoffee Portfolio for world-renowned software engineer Lee Bo-ram and Byeon Sang-woo">
+
+  <link rel="icon" type="image/png" href="../img/0_logo/logo_h.jpg" />
+
+  <!-- 무료icon 적용하기 -->
+  <script src="https://kit.fontawesome.com/24a94e1bce.js" crossorigin="anonymous"></script>
+
+
+  <!-- 글씨체 적용하기 -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- css(font-글씨체) : font-family: 'Open Sans', sans-serif;-->
+
+  <link rel="stylesheet" href="../style2.css">
+  <script src="../main.js" defer></script>
+
+</head>
+
+<body>
+  <!-- 메뉴 보이기  -->
+  <section id="showMenu">
+    <!-- 선택한 메뉴 보이기 -->
+    <div class="show__menu">
+      <img class="showMenu__img" src="../img/1_COFFEE/1_아메리카노.png" alt="아메리카노" />
+    </div>
+
+    <div class="showMenu__description">
+      <p>아메리카노(오리지널)</p>
+      <p class="showMenu__description_price">1,800원</p>
+      <p class="option__text select__option nonselect__hiden">hiden ex)바닐라시럽추가, 연하게</p>
+    </div>
+
+    <!-- 선택한 메뉴 수량 증감Btn -->
+    <div class="plusMinus">
+      <input type="text" value="1" class="prod-quantity__input__menu" maxlength="2" autocomplete="off">
+
+      <button class="showMenu__btn showMenu__minus__btn">
+        <i class="fas fa-minus"></i>
+      </button>
+
+      <button class="showMenu__btn showMenu__plus__btn">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </section>
+<!-- option__discription!! -->
+  <!-- 옵션사항 - 샷추가 -->
+  <section id="options">
+    <div class="option__discription">
+      <h3>샷추가(다수선택가능)</h3>
+      <ul class="option__text__hiden">
+        <li>hiden option name - ex)바닐라시럽추가</li>
+        <li> ~원</li>
+      </ul>
+    </div>
+
+    <div class="prod-buy__quantity selected">
+      <!-- arrow Btn -->
+      <button class="options__arrow__left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="options__arrow__right">
+        <i class="fas fa-caret-right"></i>
+      </button>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn">샷추가1</p>
+        <p class="quantity__price">+500원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가2</p>
+                  <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                    <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                      <i class="fas fa-plus"></i> 
+                    </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가3</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus ">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn">샷추가4</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 옵션사항_시럽추가 -->
+  <section id="options">
+    <div class="option__discription">
+      <h3>시럽추가(다수선택가능)</h3>
+      <ul class="option__text__hiden">
+        <li>hiden option name - ex)바닐라시럽추가</li>
+        <li> ~원</li>
+      </ul>
+    </div>
+
+    <div class="prod-buy__quantity">
+      <!-- arrow Btn -->
+      <button class="options__arrow__left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="options__arrow__right">
+        <i class="fas fa-caret-right"></i>
+      </button>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn">바닐라시럽추가</p>
+        <p class="quantity__price">+500원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn ">헤이즐넛시럽추가</p>
+                  <p class="quantity__price">+500원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+                    <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+        <!-- plus botton -->
+        <button class="prod-quantity__plus" type="button">
+                      <i class="fas fa-plus"></i> 
+                    </button>
+
+        <!-- minus botton -->
+        <button class="prod-quantity__minus" type="button">          
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가3</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus ">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn">샷추가4</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 옵션사항_기호(단일선택) -->
+  <section id="options">
+    <div class="option__discription">
+      <h3>기호(단일선택가능)</h3>
+      <ul class="option__text__hiden">
+        <li>hiden option name - ex)바닐라시럽추가</li>
+        <li> ~원</li>
+      </ul>
+    </div>
+
+    <div class="prod-buy__quantity">
+      <!-- arrow Btn -->
+      <button class="options__arrow__left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="options__arrow__right">
+        <i class="fas fa-caret-right"></i>
+      </button>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn">연하게</p>
+        <p class="quantity__price">+0원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn ">덜달게</p>
+                  <p class="quantity__price">+0원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+                    <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+        <!-- plus botton -->
+        <button class="prod-quantity__plus" type="button">
+                      <i class="fas fa-plus"></i> 
+                    </button>
+
+        <!-- minus botton -->
+        <button class="prod-quantity__minus" type="button">          
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가3</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus ">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn">샷추가4</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section id="options">
+    <div class="option__discription">
+      <h3 class="option__text">기호(단일선택가능)</h3>
+      <ul class="option__text__hiden">
+        <li class="nonSelect__hiden">hiden option name - ex)바닐라시럽추가</li>
+        <li class="nonSelect__hiden"> ~원</li>
+      </ul>
+    </div>
+
+    <div class="prod-buy__quantity">
+      <!-- arrow Btn -->
+      <button class="options__arrow__left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="options__arrow__right">
+        <i class="fas fa-caret-right"></i>
+      </button>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn">연하게</p>
+        <p class="quantity__price">+0원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn ">덜달게</p>
+        <p class="quantity__price">+0원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가3</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus ">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn">샷추가4</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 옵션사항_기호(단일선택):와플생크림 적게 -->
+  <section id="options">
+    <div class="option__discription">
+      <h3 class="option__text">와플생크림(와플주문시 선택가능)</h3>
+      <ul class="option__text__hiden">
+        <li class="nonSelect__hiden">hiden option name - ex)바닐라시럽추가</li>
+        <li class="nonSelect__hiden"> ~원</li>
+      </ul>
+    </div>
+
+    <div class="prod-buy__quantity">
+      <!-- arrow Btn -->
+      <button class="options__arrow__left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="options__arrow__right">
+        <i class="fas fa-caret-right"></i>
+      </button>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn">생크림 적게</p>
+        <p class="quantity__price">+0원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <p class="quantity__biscriptipn ">생크림 추가</p>
+        <p class="quantity__price">+500원</p>
+
+        <!-- 옵션 수량 증감Btn -->
+        <div class="option__plusMinus">
+          <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off">
+
+          <!-- plus botton -->
+          <button class="prod-quantity__plus" type="button">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <!-- minus botton -->
+          <button class="prod-quantity__minus" type="button">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn ">샷추가3</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus ">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+
+      <div class="prod-quantity__form">
+        <!-- <p class="quantity__biscriptipn">샷추가4</p>
+              <p class="quantity__price">+500원</p> -->
+
+        <!-- 옵션 수량 증감Btn -->
+        <!-- <div class="option__plusMinus">
+                <input type="text" value="1" class="prod-quantity__input_option" maxlength="2" autocomplete="off"> -->
+
+        <!-- plus botton -->
+        <!-- <button class="prod-quantity__plus" type="button">
+                  <i class="fas fa-plus"></i> 
+                </button> -->
+
+        <!-- minus botton -->
+        <!-- <button class="prod-quantity__minus" type="button">          
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div> -->
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 취소, 메뉴담기 btn -->
+  <section id="carts">
+    <div class="cart">
+      <a href="../menu/menu_v2.html">
+        <button class="cart_btn cart__cansle__Btn">취소</button>
+      </a>
+    </div>
+    <div class="cart">
+      <button class="cart_btn cart__ok__Btn">메뉴담기</button>
+    </div>
+  </section>
+
+</body>
+
+</html>
