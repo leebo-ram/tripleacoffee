@@ -118,11 +118,24 @@ button {
 }
 
 .bigconts img {
-  display: flex;
-  justify-content: center;
+  max-width: 100%;
+}
+
+.bigconts img, .touch___btn {
   max-width: 100%;
   cursor: pointer;
+  text-align: center;
+  background-color: var(--color-triple-deep-yellow);
+  /* font-size: var(--font-large); */
+  color: var(--color-triple-black);
 }
+
+.touch___btn {
+  position: relative;
+  bottom: 5px;
+  padding: 1% 0;
+}
+
 
 
 /* Typography - MENU*/

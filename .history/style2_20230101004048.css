@@ -117,12 +117,21 @@ button {
   flex-direction: column;
 }
 
-.bigconts img {
-  display: flex;
-  justify-content: center;
+.bigconts img, .touch___btn {
   max-width: 100%;
   cursor: pointer;
+  text-align: center;
+  background-color: var(--color-triple-deep-yellow);
+  font-size: var(--font-large);
+  color: var(--color-triple-black);
 }
+
+.touch___btn {
+  /* position: relative;
+  bottom: 53px; */
+  mix-height: 500px;
+}
+
 
 
 /* Typography - MENU*/

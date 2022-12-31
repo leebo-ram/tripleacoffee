@@ -122,7 +122,20 @@ button {
   justify-content: center;
   max-width: 100%;
   cursor: pointer;
+  color: var(--color-triple-black);
 }
+
+.bigconts img {
+  max-width: 100%;
+  
+}
+
+.touch___btn {
+  position: relative;
+  bottom: 5px;
+  padding: 1% 0;
+}
+
 
 
 /* Typography - MENU*/
