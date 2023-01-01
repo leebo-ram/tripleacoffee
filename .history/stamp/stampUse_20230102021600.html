@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stamp Use(스탬프 사용)</title>
+  <meta name="description"
+    content="tripleacoffee Portfolio for world-renowned software engineer Lee Bo-ram and Byeon Sang-woo">
+
+  <link rel="icon" type="image/png" href="../img/0_logo/logo_h.jpg" />
+
+  <!-- 무료icon 적용하기 -->
+  <script src="https://kit.fontawesome.com/24a94e1bce.js" crossorigin="anonymous"></script>
+
+
+  <!-- 글씨체 적용하기 -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- css(font-글씨체) : font-family: 'Open Sans', sans-serif;-->
+
+  <link rel="stylesheet" href="../style2.css">
+  <script src="../main.js" defer></script>
+
+</head>
+
+<body>
+  <!-- test -->
+  <h3>체크박스꾸미기</h3>
+  <input type="checkbox" id="cb1">
+  <label for="cb1"></label>
+
+  <style>
+    input[id="cb1"] + label {
+      display: inline-block;
+	    width: 20px;
+	    height: 20px;
+	    border: 2px solid #bcbcbc;
+    }
+
+  </style>
+
+  <!-- test끝 -->
+
+
+  <section id="popTitles">
+    <div class="pop__title">
+      <h2>스탬프 사용</h2>
+      <p>선택한 메뉴 중 스탬프를 사용할 메뉴를 선택하여 주세요.</p>
+    </div>
+  </section>
+
+  <!-- 스탬프 적립하기 / 사용하기 -->
+  <section id="popBox">
+    <div class="memberStamp">
+      <div class="member__stamps">
+        <p>010-****-1234</p>
+        <p class="member__stamp__comment">회원님 총 보유 스탬프</p>
+        <p class="have__stamp">10개</p>
+      </div>
+      <div>
+        <p>10스탬프 이상부터 10스탬프 단위로 사용 가능</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="useStamp">
+    <div class="scheduled__stamp">
+      <p>사용 예정 스탬프</p>
+      <p class="use_count">10개</p>
+    </div>
+
+
+    <div class="check_menu_box">
+      <!-- 상하 arrow btn -->
+      <div class="scroll__arrow">
+        <div class="arrow_top">
+          <i class="fas fa-chevron-up"></i>
+        </div>
+        <div class="arrow__down">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <!-- 스탬프 사용할 메뉴 선택 -->
+      <div class="select__menu">
+        <img src="../img/1_COFFEE/1_HOT아메리카노.png" alt="스탬프 사용할 메뉴">
+        <div class="select__menu__description">
+          <p>HOT)아메리카노[오리지널]</p>
+          <p class="select__price">1500</p>
+          <p class="select__menu__option">연하게</p>
+        </div>
+        <div class="select__menu__checkBox">
+          <input type="checkbox" name="checkbox" id="useStampCheckbox">
+        </div>
+      </div>
+
+
+      <!-- 공란 -->
+      <div class="select__menu">
+        <!-- <img src="../img/1_COFFEE/1_HOT아메리카노.png" alt="스탬프 사용할 메뉴">
+        <div class="select__menu__description">
+          <p>HOT)아메리카노[오리지널]</p>
+          <p class="select__price">1500</p>
+          <p class="select__menu__option">연하게</p>
+        </div>
+        <div class="select__menu__checkBox">
+          <input type="checkbox" name="checkbox" id="useStampCheckbox">
+        </div> -->
+      </div>
+
+      <div class="select__menu">
+        <!-- <img src="../img/1_COFFEE/1_HOT아메리카노.png" alt="스탬프 사용할 메뉴">
+        <div class="select__menu__description">
+          <p>HOT)아메리카노[오리지널]</p>
+          <p class="select__price">1500</p>
+          <p class="select__menu__option">연하게</p>
+        </div>
+        <div class="select__menu__checkBox">
+          <input type="checkbox" name="checkbox" id="useStampCheckbox">
+        </div> -->
+      </div>
+
+      <div class="select__menu">
+        <!-- <img src="../img/1_COFFEE/1_HOT아메리카노.png" alt="스탬프 사용할 메뉴">
+        <div class="select__menu__description">
+          <p>HOT)아메리카노[오리지널]</p>
+          <p class="select__price">1500</p>
+          <p class="select__menu__option">연하게</p>
+        </div>
+        <div class="select__menu__checkBox">
+          <input type="checkbox" name="checkbox" id="useStampCheckbox">
+        </div> -->
+      </div>
+
+      
+    </div>
+
+
+    <div class="Amount__pay">
+      <p>결제 금액</p>
+      <p class="Amount__price">1,500원</p>
+    </div>
+    <div class="discount">
+      <p>할인 금액</p>
+      <p class="discount__price">-1,500원</p>
+    </div>
+
+
+
+  </section>
+
+
+  <!-- 취소 / 주문Btn -->
+  <section id="pop__bottom">
+    <button>취소</button>
+    <button class="pop__use__Btn">사용</button>
+  </section>
+
+</body>
+
+</html>

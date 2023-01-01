@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input Certification (스탬프 사용_인증번호 입력)</title>
+  <meta name="description" content="tripleacoffee Portfolio for world-renowned software engineer Lee Bo-ram and Byeon Sang-woo">
+
+  <link rel="icon" type="image/png" href="../img/0_logo/logo_h.jpg" />
+
+  <!-- 무료icon 적용하기 -->
+  <script src="https://kit.fontawesome.com/24a94e1bce.js" crossorigin="anonymous"></script>
+
+
+  <!-- 글씨체 적용하기 -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- css(font-글씨체) : font-family: 'Open Sans', sans-serif;-->
+
+  <link rel="stylesheet" href="../style2.css">
+  <script src="../main.js" defer></script>
+
+</head>
+<body>
+  <section id="popTitles">
+    <div class="pop__title">
+      <h2>스탬프 사용</h2>
+      <p>핸드폰으로 발송된 인증번호를 입력하시고 인증하여 주세요.</p>
+    </div>
+  </section>
+
+  <!-- 스탬프 적립하기 / 사용하기 -->
+  <section id="popBox">
+    <div class="memberStamp">
+      <div class="member__stamps">
+        <p>010-****-1234</p>
+        <p class="member__stamp__comment">회원님 총 보유 스탬프</p>
+        <p class="have__stamp">10개</p>
+      </div>
+      <div>
+        <p>10스탬프 이상부터 10스탬프 단위로 사용 가능</p>
+      </div>
+    </div>
+    
+    <div class="pop__middle__box">
+      <!-- 전화번호 입력 -->
+      <div id="Certification">
+        <p>인증 번호 입력</p>
+        <div class="certification__Num">
+          <input type="text" id="certification__input" name="name" required      minlength="4" maxlength="8" size="10">
+          <button class="certification__btn ">인증</button>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section id="certification__numbers">
+      <div class="number123 certification__number123">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+      </div>
+      <div class="number456 certification__number456">
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+      </div>
+      <div class="number789 certification__number789">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+      </div>
+      <div class="number0 certification__number0">
+        <button class="number__del__ALL">전체삭제</button>
+        <button class="number__zero">0</button>
+        <button>
+          <i class="fas fa-backspace"></i>
+        </button>
+      </div>
+  </section>
+
+  <!-- 취소 / 주문Btn -->
+  <section id="pop__bottom">
+    <button class="pop__cancel__Btn">취소</button>
+    <button class="pop__order__Btn">주문</button>
+  </section>
+
+</body>
+</html>
