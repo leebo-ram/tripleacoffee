@@ -37,12 +37,12 @@ app.post('/addmenu', upload.single('m_img'), (req, res) => {
     console.log(req.body)
     const m_name = req.body.m_name;
     const m_price = req.body.m_price;
-    const m_recipe = req.body.m_recipe;
     const m_img = realfilename;
     const m_options = req.body.m_options;
     const m_category = req.body.m_category;
+    const m_type = req.body.m_type;
 
-    db.query("insert into tb_menu(m_name, m_price, m_recipe, m_img, m_options, m_category) values(?, ?, ?, ?, ?, ?)",[m_name, m_price, m_recipe, m_img, m_options, m_category],
+    db.query("insert into tb_menu(m_name, m_price, m_img, m_options, m_category, m_type) values(?, ?, ?, ?, ?, ?)",[m_name, m_price, m_img, m_options, m_category, m_type],
     function(err, rows, fields) {
         if(err){
             console.log("메뉴등록 실패");
