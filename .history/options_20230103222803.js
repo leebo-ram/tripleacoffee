@@ -19,8 +19,9 @@ window.addEventListener('click', (e) => {
 });
 
 
+  
 
-// 옵션선택 부분
+
 window.addEventListener('click', (e) => {
   // 옵션 선택시 border color 지정해주기
   if(e.target.className == 'prod-quantity__form') {
@@ -44,6 +45,7 @@ window.addEventListener('click', (e) => {
       console.log(target);
       target.value --;
   }
+
 })
 
 

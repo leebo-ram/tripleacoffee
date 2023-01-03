@@ -44,6 +44,7 @@ window.addEventListener('click', (e) => {
       console.log(target);
       target.value --;
   }
+
 })
 
 

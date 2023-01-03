@@ -1,5 +1,24 @@
 'use strict';
 
+// -------------------------------------------------
+
+
+// 아래 코드는 options.html의 옵션을 선택시에 강조표시하는 코드인데 첫째줄에만 선택이 되고 선택취소는 되지 않는다. , main.js에 취합시 에러때문에 아래코드가 실행되지 않는다.
+// const secletOpstions = document.querySelector('.prod-buy__quantity');
+// console.log(secletOpstions);
+// secletOpstions.addEventListener('click', (e) => {
+//   const active = document.querySelector('.prod-quantity__form.selected');
+//   console.log(e.target);
+//     if (active != null) {
+//       console.log('출력해줘');
+//       active.classList.remove('selected');
+//     } else {
+//       e.target.classList.add('selected');
+//       console.log('출');
+//     }
+//   });
+
+
 // 옵션 최상단 부분 수량증감 btn
 window.addEventListener('click', (e) => {
   // 수량 증감
@@ -19,8 +38,9 @@ window.addEventListener('click', (e) => {
 });
 
 
+  
 
-// 옵션선택 부분
+
 window.addEventListener('click', (e) => {
   // 옵션 선택시 border color 지정해주기
   if(e.target.className == 'prod-quantity__form') {
@@ -44,6 +64,7 @@ window.addEventListener('click', (e) => {
       console.log(target);
       target.value --;
   }
+
 })
 
 

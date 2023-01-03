@@ -480,10 +480,9 @@ button {
   border-top: 1px solid var(--color-triple-light-red);
 }
 
-/* .option__text__hiden.hidden,
-.option__plusMinus.hidden {
-  visibility: hidden;
-} */
+.option__plusMinus.block {
+  visibility: hidden
+}
 
 
 
