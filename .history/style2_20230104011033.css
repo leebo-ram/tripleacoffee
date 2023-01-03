@@ -1217,14 +1217,20 @@ input[id="seclet_checkbox"]:checked + label::after{
   width: 100%;
 }
 
-.orderNum_box, .orderList_box {
-  margin-right: 1%;
-  width: 15%;
+#recipe ol > li {
+  list-style-type: decimal;
 }
+
+.orderNum_box, .orderList_box, 
+.recipe1_box, .recipe2_box {
+  margin-right: 1%;
+  width: 10%;
+}
+
 
 .recipe1_box, .recipe2_box {
   margin-right: 1%;
-  width: 30%;
+  width: 25%;
 }
 
 .orderNum, .orderList, .recipe1, .recipe2 {
@@ -1266,13 +1272,9 @@ input[id="seclet_checkbox"]:checked + label::after{
 
 .recipe1 li, .recipe2 li {
   line-height: 50px;
-  list-style-type: decimal;
 }
 
 .cooked {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 1% 0;
 }
 
@@ -1280,9 +1282,7 @@ input[id="seclet_checkbox"]:checked + label::after{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 93%;
-  height: 60px;
-  font-size: var(--font-medium);
+  height: 50px;
   color: var(--color-white);
   border-radius: var(--size-border-radius);
   background-color: var(--color-triple-red);

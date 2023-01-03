@@ -1207,9 +1207,6 @@ input[id="seclet_checkbox"]:checked + label::after{
 
 
 /* Typography - recipe(레시피)*/
-#recipe_title {
-  text-align: center;
-}
 
 #recipe {
   display: flex;
@@ -1217,14 +1214,13 @@ input[id="seclet_checkbox"]:checked + label::after{
   width: 100%;
 }
 
-.orderNum_box, .orderList_box {
-  margin-right: 1%;
-  width: 15%;
+#recipe ol > li {
+  list-style-type: decimal;
 }
 
-.recipe1_box, .recipe2_box {
+.orderNum_box, .orderList_box, .recipe1_box, .recipe2_box {
   margin-right: 1%;
-  width: 30%;
+  width: 20%;
 }
 
 .orderNum, .orderList, .recipe1, .recipe2 {
@@ -1233,13 +1229,12 @@ input[id="seclet_checkbox"]:checked + label::after{
   border-radius: var(--size-border-radius);
 }
 
-.orderNum ul, .orderList ul, 
-.recipe1 ul, .recipe2 ul {
+.orderNum ul, .orderList ul, .recipe1 ul, .recipe2 ul {
   margin: 0;
 }
 
 .orderNum li, .orderList li {
-  min-height: 80px;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1258,21 +1253,34 @@ input[id="seclet_checkbox"]:checked + label::after{
 }
 
 .recipe1 span, .recipe2 span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
+  padding-left: 4px;
+  height: 50px;
+  font-weight: var(--weight-semi-bold);
+  background-color: var(--color-triple-deep-yellow);
 }
 
 .recipe1 li, .recipe2 li {
   line-height: 50px;
-  list-style-type: decimal;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .cooked {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 1% 0;
 }
 
@@ -1280,14 +1288,11 @@ input[id="seclet_checkbox"]:checked + label::after{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 93%;
-  height: 60px;
-  font-size: var(--font-medium);
+
+  height: 50px;
+
   color: var(--color-white);
+
   border-radius: var(--size-border-radius);
   background-color: var(--color-triple-red);
-}
-
-.cooked button:hover {
-  background-color: var(--color-triple-green);
 }

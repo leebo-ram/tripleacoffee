@@ -567,8 +567,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 800px;
-  padding-top: 20%;
+  min-height: 400px;
+  /* padding: 20%; */
 }
 
 .pop__middle__box {
@@ -626,7 +626,6 @@ button {
 .memberStamp{
   width: 80%;
   margin-top: 10%;
-  min-height: 400px;
   text-align: center;
 }
 
@@ -979,7 +978,7 @@ input[id="seclet_checkbox"]:checked + label::after{
 /* Typography -print receipt(영수증 출력여부) */
 
 #pop_info {
-  min-width: 80%;
+  min-width: 120%;
   border: 1px solid var(--color-dark-grey);
 }
 
@@ -1071,14 +1070,13 @@ input[id="seclet_checkbox"]:checked + label::after{
 }
 
 .paying {
-  width: 40%;
+  width: 100%;
   min-height: 800px;
 }
 
 .pay_empty div {
   border-bottom: var(--border-line-1px);
   height: 65px;
-  /* width: 80%; */
 }
 
 .pay__info {
@@ -1103,9 +1101,8 @@ input[id="seclet_checkbox"]:checked + label::after{
 }
 
 .loadingPay {
-  width: 80%;
+  width: 130%;
   min-height: 200px;
-  margin-bottom: 6%;
   text-align: center;
   border: 5px solid var(--color-triple-brown);
 }
@@ -1140,13 +1137,6 @@ input[id="seclet_checkbox"]:checked + label::after{
 
 
 /* Typography - payment Complete(결제완료) */
-#pop__Complete__box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 10%;
-  min-height: 400px;
-}
 
 .pay_Complete_ment {
   text-align: center;
@@ -1176,7 +1166,7 @@ input[id="seclet_checkbox"]:checked + label::after{
 }
 
 .pay__Stamp__info {
-  margin-bottom: 10%;
+  margin: 20% 0;
 }
 
 .pay__Stamp__info div {
@@ -1207,87 +1197,28 @@ input[id="seclet_checkbox"]:checked + label::after{
 
 
 /* Typography - recipe(레시피)*/
-#recipe_title {
-  text-align: center;
-}
 
 #recipe {
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
-.orderNum_box, .orderList_box {
-  margin-right: 1%;
-  width: 15%;
-}
-
-.recipe1_box, .recipe2_box {
-  margin-right: 1%;
-  width: 30%;
-}
-
-.orderNum, .orderList, .recipe1, .recipe2 {
-  min-height: 600px;
-  border: var(--border-line-1px);
-  border-radius: var(--size-border-radius);
-}
-
-.orderNum ul, .orderList ul, 
-.recipe1 ul, .recipe2 ul {
-  margin: 0;
-}
-
-.orderNum li, .orderList li {
-  min-height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: var(--border-line-1px);
-  border-radius: var(--size-border-radius);
-}
-
-.recipe1 div, .recipe2 div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 4px;
-  height: 50px;
-  font-weight: var(--weight-semi-bold);
-  background-color: var(--color-triple-deep-yellow);
-}
-
-.recipe1 span, .recipe2 span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
-}
-
-.recipe1 li, .recipe2 li {
-  line-height: 50px;
+#recipe ol > li {
   list-style-type: decimal;
 }
+
+
+
 
 .cooked {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 1% 0;
 }
-
 .cooked button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 93%;
-  height: 60px;
-  font-size: var(--font-medium);
+  height: 20%;
+
   color: var(--color-white);
+
   border-radius: var(--size-border-radius);
   background-color: var(--color-triple-red);
-}
-
-.cooked button:hover {
-  background-color: var(--color-triple-green);
 }

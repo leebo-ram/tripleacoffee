@@ -1277,9 +1277,9 @@ input[id="seclet_checkbox"]:checked + label::after{
 }
 
 .cooked button {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   width: 93%;
   height: 60px;
   font-size: var(--font-medium);

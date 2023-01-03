@@ -1217,14 +1217,15 @@ input[id="seclet_checkbox"]:checked + label::after{
   width: 100%;
 }
 
-.orderNum_box, .orderList_box {
+.orderNum_box, .orderList_box, 
+{
   margin-right: 1%;
-  width: 15%;
+  width: 10%;
 }
 
 .recipe1_box, .recipe2_box {
   margin-right: 1%;
-  width: 30%;
+  width: 25%;
 }
 
 .orderNum, .orderList, .recipe1, .recipe2 {
@@ -1280,7 +1281,7 @@ input[id="seclet_checkbox"]:checked + label::after{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 93%;
+  width: 75%;
   height: 60px;
   font-size: var(--font-medium);
   color: var(--color-white);

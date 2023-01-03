@@ -1280,7 +1280,7 @@ input[id="seclet_checkbox"]:checked + label::after{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 93%;
+  width: 100%;
   height: 60px;
   font-size: var(--font-medium);
   color: var(--color-white);
