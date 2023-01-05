@@ -30,12 +30,12 @@ export default function HomePage({ $target, initialState, appSetState }) {
     this.render = () => {
         $target.innerHTML = `
         <section id="home">
+        <a>
         <div class="bigconts">
-            <img src="./img/bigconts.jpg" alt="bigconts_EggTart">
+          <img src="../img/bigconts.jpg" alt="bigconts_EggTart">
+          <img src="../img/img_screen touch.png" alt="화면터치">
         </div>
-        <div class="touch___btn">
-            <p><b>주문</b>하시려면<br/><b>화면을 터치</b>해 주세요</p>
-        </div>
+      </a>
         </section>
         `
     }

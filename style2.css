@@ -154,7 +154,7 @@ button {
 }
 
 /* menu__category_Btn */
-.menu__categories {
+div.menu__categories {
   margin: 40px;
   
   text-align: center;

@@ -16,15 +16,12 @@ export default function MenuList({ $target, initialState }) {
     // 최상단 요소
     this.$element = document.createElement('div');
     this.$element.className = 'wrap___list';
-    console.log($target)
     
     if($target) $target.appendChild(this.$element);
 
     // 렌더 함수
     this.render = () => {
         const menuData = this.state.menuData;
-        console.log(menuData)
-        console.log($target)
         if(this.state.initialized) {
             if(menuData && $target) {
                 this.$element.innerHTML = `

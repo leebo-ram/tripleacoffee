@@ -14,7 +14,7 @@ export default function Navbar({ $target, initialState }) {
     }
 
     // 최상단 요소
-    this.$element = document.createElement('div');
+    this.$element = document.createElement('section');
     this.$element.className = 'navbar___logo';
     
     $target.prepend(this.$element)

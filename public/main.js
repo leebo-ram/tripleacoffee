@@ -3,6 +3,7 @@ const wrapBtncontainer = document.querySelector('.menu__categories');
 const menucontainer = document.querySelector('.wrap___list');
 const menus = document.querySelectorAll('.wrap');
 wrapBtncontainer.addEventListener('click', (e) => {
+  console.log(e.target)
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
   if (filter == null) {
     return;

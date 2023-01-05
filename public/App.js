@@ -1,9 +1,8 @@
 import {request} from "./api.js";
 
-import ImportRecipe from "./component/ImportRecipe.js";
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
-import MenuList from "./component/MenuList.js";
+
 
 export default function App({ $target }) {
 
@@ -29,14 +28,6 @@ export default function App({ $target }) {
         }
     })
         
-    // const menuList = new MenuList({
-    //     $target: $target,
-    //     initialState: {
-    //         menuData: this.state.menuData,
-    //         initialized: this.state.initialized
-    //     }
-    // });
-
 
 
     this.setState = (nextState) => {
@@ -89,13 +80,37 @@ export default function App({ $target }) {
     init();
 
     $target.addEventListener('click',(e) => {
-        console.log()
-        if(e.target.closest('div').className === "touch___btn") {
+        // 초기 페이지에서 메뉴리스트로 넘어감
+        if(e.target.closest('div').className === "bigconts") {
             this.setState({
                 initialized: true,
                 presentPage: 'menuPage'
             })
         }
+
+        // 카테고리 필터링
+        console.log(e.target)
+        const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+        if (filter == null) {
+          return;
+        }
+
+        const active = document.querySelector('.category__btn.selected');
+        if (active != null) {
+          active.classList.remove('selected');
+        }
+        if(!e.target.classList.contains('selected')) e.target.classList.add('selected');
+        
+
+        const menus = document.querySelectorAll('.wrap');
+        menus.forEach((wrap) => {
+          // console.log(wrap.dataset.type);
+          if(filter ==='*' || filter === wrap.dataset.type) {
+            wrap.classList.remove('invisible');
+          } else {
+            wrap.classList.add('invisible');
+          }
+        });
     })
 
 
