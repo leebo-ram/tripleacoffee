@@ -53,3 +53,23 @@ window.addEventListener('click', (e) => {
     target.value --;
   }
 });
+
+
+// 스탬프 사용 - 인증번호 입력
+window.addEventListener('click', (e) => {
+  console.log(e.target.closest('button'))
+  if(e.target.closest('button').className == 'number123') {
+
+    if (e.target.closest('button'). className == 'number1') {
+      
+    }
+    console.log("+")
+    console.log(e.target.closest('button').firstElementChild.value);
+    // const target = document.getElementById(`${e.target.closest('button').firstElementChild.value}`);
+
+
+  }
+});
+
+
+

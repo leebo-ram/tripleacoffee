@@ -21,7 +21,7 @@ window.addEventListener('click', (e) => {
     const target = document.getElementById(`${e.target.closest('button').firstElementChild.value}`);
     console.log(target);
     target.value ++;
-}else if (e.target.closest('button').className == 'prod-quantity__minus') {
+}else if (e.target.closest('button').className == 'showMenu__minus__btn') {
     console.log('-')
     const target = document.getElementById(`${e.target.closest('button').firstElementChild.value}`);
     console.log(target);
