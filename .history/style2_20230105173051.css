@@ -1131,6 +1131,9 @@ input[id="seclet_checkbox"]:checked + label::after{
   color: blue;
 }
 
+.consent__message. .pop_info__description a {
+
+}
 
 
 /* Typography - paying Credit Card(카드결제)*/

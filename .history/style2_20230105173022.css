@@ -1122,15 +1122,14 @@ input[id="seclet_checkbox"]:checked + label::after{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 99px;
 }
 .pop_info__description a {
-  display: flex;
+    display: flex;
   justify-content: center;
   align-items: center;
   color: blue;
 }
-
 
 
 /* Typography - paying Credit Card(카드결제)*/
