@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>배열 2</title>
+        <link rel="icon" href="img/favicon.ico">
+        <style>
+            /*css 주석*/
+        </style>
+        <!--스크립트를 여기에 넣어도 되지만 페이지가 느려지는 등 원인으로 바디 아래에 넣음-->
+    </head>
+    <body>
+        <!--버튼 역할만 수행-->
+        <input type="button" value="PUSH" onclick="arrPush()"/>
+        <!--버튼+submit 역할 수행 : form 안에서 사용시 주의, form에선 누르기만 해도 서버에 전송될 수 있음-->
+        <button onclick="arrPop()">POP</button>
+        <br/>
+        <input type="button" value="unshift" onclick="arrUnshift()"/>
+        <input type="button" value="shift" onclick="arrShift()"/>
+    </body>
+    <script>
+ 
+        var arrNum = [];
+        var i = 0;
+ 
+        function arrPush(){
+            i++;
+            arrNum.push(i);
+            console.log(arrNum);
+        }
+ 
+        function arrPop(){
+            console.log(arrNum.pop()); // 뺀 값을 반환
+            console.log(arrNum); // 배열에서 하나씩 빠진다.
+        }
+ 
+        // [] [] [] [] <- push() (값을 넣음)
+        // [] [] [] pop() -> [] (값을 뺌)
+        // unshift() -> [][][][] (앞에서부터 집어 넣음)
+        // [] <- shift() [][][] (앞에 값을 뺌)
+ 
+        /*버튼 추가 후 shift와 unshift 사용 하기*/
+         
+        function arrUnshift(){
+            i++;
+            arrNum.unshift(i);
+            console.log(arrNum);
+        }
+ 
+        function arrShift(){
+            console.log(arrNum.shift()); // 뺀 값을 반환
+            console.log(arrNum); // 배열에서 하나씩 빠진다.
+        }
+    </script>
+</html>

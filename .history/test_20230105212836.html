@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+	$('#commentbtn').on('click', function(){
+    	//값들의 갯수 -> 배열 길이를 지정
+		var grpl = $("input[name=groupod]").length;
+		//배열 생성
+		var grparr = new Array(grpl);
+		//배열에 값 주입
+		for(var i=0; i<grpl; i++){                          
+			grparr[i] = $("input[name=groupod]").eq(i).val();
+	        alert(grparr[i]);
+	    }
+	});
+});
+</script>
+
+</head>
+<body>
+  <input type="hidden" name="groupod" value="1">
+<input type="hidden" name="groupod" value="2">
+<input type="hidden" name="groupod" value="3">
+
+<input type="button" id="commentbtn" value="배열만들기"/></td>
+</body>
+</html>
