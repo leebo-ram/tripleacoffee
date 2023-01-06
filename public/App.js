@@ -2,6 +2,7 @@ import {request} from "./api.js";
 
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
+import OptionPage from "./page/OptionPage.js";
 
 
 export default function App({ $target }) {
@@ -9,7 +10,16 @@ export default function App({ $target }) {
     this.state = {
         menuData: '',
         initialized: false,
-        presentPage: 'home'
+        presentPage: 'home',
+        selectedMenu: { 
+            m_idx: '',
+            m_name: '',
+            m_price: '',
+            m_img: '',
+            m_options: '',
+        },
+        isPopup: false,
+        basket: []
     }
 
     // 전체 페이지 객체생성
@@ -27,11 +37,17 @@ export default function App({ $target }) {
             menuData: this.state.menuData
         }
     })
+
+    const optionPage = new OptionPage({
+        $target,
+        initialState: {
+            selectedMenu: this.state.selectedMenu
+        }
+    });
         
 
 
     this.setState = (nextState) => {
-
         if(this.state.presentPage != nextState.presentPage) $target.innerHTML = ``;
 
         this.state = {
@@ -51,6 +67,13 @@ export default function App({ $target }) {
                 })
                 
                 //menuPage.render();
+                break;
+            
+            case 'option':
+                optionPage.setState({
+                    selectedMenu: this.state.selectedMenu,
+                    loaded: false
+                })
                 break;
         
             default:
@@ -80,37 +103,75 @@ export default function App({ $target }) {
     init();
 
     $target.addEventListener('click',(e) => {
-        // 초기 페이지에서 메뉴리스트로 넘어감
-        if(e.target.closest('div').className === "bigconts") {
-            this.setState({
-                initialized: true,
-                presentPage: 'menuPage'
-            })
-        }
-
-        // 카테고리 필터링
         console.log(e.target)
-        const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-        if (filter == null) {
-          return;
+        // 초기 페이지에서 메뉴리스트로 넘어감
+        if(this.state.presentPage == 'home') {
+            if(e.target.closest('div').className === "bigconts") {
+                this.setState({
+                    initialized: true,
+                    presentPage: 'menuPage'
+                })
+                return;
+            }
         }
-
-        const active = document.querySelector('.category__btn.selected');
-        if (active != null) {
-          active.classList.remove('selected');
-        }
-        if(!e.target.classList.contains('selected')) e.target.classList.add('selected');
         
 
-        const menus = document.querySelectorAll('.wrap');
-        menus.forEach((wrap) => {
-          // console.log(wrap.dataset.type);
-          if(filter ==='*' || filter === wrap.dataset.type) {
-            wrap.classList.remove('invisible');
-          } else {
-            wrap.classList.add('invisible');
-          }
-        });
+
+        // 카테고리 필터링
+        if(this.state.presentPage == 'menuPage') {
+            if(e.target.classList.contains('category__btn')) {
+                const active = document.querySelector('.category__btn.selected');
+                if (active != null) {
+                  active.classList.remove('selected');
+                }
+                if(!e.target.classList.contains('selected')) e.target.classList.add('selected');
+                const filter = e.target.closest('button').dataset.filter
+                const menus = document.querySelectorAll('.wrap');
+                menus.forEach((wrap) => {
+                  // console.log(wrap.dataset.type);
+                  if(filter ==='*' || filter === wrap.dataset.type) {
+                    wrap.classList.remove('invisible');
+                  } else {
+                    wrap.classList.add('invisible');
+                  }
+                });
+                return;
+            }
+    
+    
+            // 메뉴 선택시 옵션화면으로 넘어감
+            
+            if(e.target.closest('a').classList) {
+                console.log(33)
+                const dataset = e.target.closest('a').dataset;
+                this.setState({ 
+                    presentPage: 'option',
+                    isPopup: true,
+                    selectedMenu: {
+                        m_idx: dataset.idx,
+                        m_name: dataset.name,
+                        m_price: dataset.price,
+                        m_img: dataset.img,
+                        m_options: dataset.options
+                    }
+                })
+                return;
+            }
+        }
+
+        if(this.state.presentPage == 'option') {
+            console.log(e.target.closest('button'))
+            if(e.target.closest('button').classList.contains('cart__cancel__Btn')) {
+                console.log(3)
+                this.setState({
+                    presentPage: 'menuPage',
+                    isPopup: false
+                })
+            }else {
+    
+            }
+        }
+
     })
 
 

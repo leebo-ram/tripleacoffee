@@ -420,7 +420,7 @@ button {
 
 
 /* 옵션사항 ALL*/
-#options {
+.options {
   margin: 10px;
   padding-bottom: 20px;
 }
@@ -548,7 +548,7 @@ button {
   color: var(--color-white);
 }
 
-.cart__cansle__Btn {
+.cart__cancel__Btn {
   background-color: var(--color-triple-grey);
 }
 

@@ -27,7 +27,7 @@ export default function MenuList({ $target, initialState }) {
                 this.$element.innerHTML = `
                 ${menuData.map(item =>
                     `
-                    <a href="" class="wrap" target="blank" data-type="${item.m_category}">
+                    <a class="wrap" target="blank" data-type="${item.m_category}" data-idx="${item.m_idx}" data-img="${item.m_img}" data-options="${item.m_options}" data-name="${item.m_name}" data-price="${item.m_price}">
                     <img class="menu__img" src="../uploads/${item.m_img}" alt="${item.m_name}" />
                     <div class="menu__description">
                       <p>${item.m_name}</p>

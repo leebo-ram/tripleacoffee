@@ -21,19 +21,10 @@ export default function MenuPage({ $target, initialState }) {
     }
 
 
-
-
-
-
-
     // 렌더 함수
     this.render = () => {
 
         // 최상단 요소
-        // this.$element2 = document.createElement('section');
-        // this.$element2.className = "section";
-        // this.$element2.id = "work";
-        // $target.appendChild(this.$element2);
         this.$element = document.createElement('div');
         this.$element.className = 'section__container';
         document.getElementById('work').appendChild(this.$element);

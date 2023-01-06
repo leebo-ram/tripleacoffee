@@ -71,7 +71,7 @@ app.post('/delmenu', function(req, res) {
 
 // 메뉴 호출
 app.get('/callmenu', function(req, res) {
-    console.log('11')
+
     db.query("select * from tb_menu",
     function(err, rows, fields) {
         if(err){
@@ -79,7 +79,6 @@ app.get('/callmenu', function(req, res) {
             console.log(err);
         }else{
             console.log("메뉴호출 성공");
-            console.log(rows);
             res.send(rows);
         }
     })
@@ -87,23 +86,29 @@ app.get('/callmenu', function(req, res) {
 
 // 메뉴 옵션 출력(음료별)
 app.post('/calloptions', function(req, res) {
-    const mo_name = req.body.m_options.split(';');
-    let sql = `select * from tb_menuoptions where mo_idx=${mo_name[0]}`;
-    if(mo_name.length > 0) {
-        for(let i=1; i<mo_name.length; i++) {
-            sql += ` or mo_idx=${mo_name[i]}`;
+    console.log(req.body)
+    if(req.body.m_options != '') {
+        const mo_name = req.body.m_options.split(';');
+        let sql = `select * from tb_menuoptions where mo_idx=${mo_name[0]}`;
+        if(mo_name.length > 0) {
+            for(let i=1; i<mo_name.length; i++) {
+                sql += ` or mo_idx=${mo_name[i]}`;
+            }
         }
+    
+        db.query(sql, function(err, rows, fields) {
+            if(err) {
+                console.log('옵션 호출 실패');
+                console.log(err);
+            }else {
+                console.log('옵션 호출 성공');
+                res.send(rows);
+            }
+        })
+    }else {
+        res.send('')
     }
 
-    db.query(sql, function(err, rows, fields) {
-        if(err) {
-            console.log('메뉴 출력 실패');
-            console.log(err);
-        }else {
-            console.log('메뉴출력 성공');
-            res.send(rows);
-        }
-    })
 })
 
 // 회원정보 확인(가입여부, 도장갯수 등)
