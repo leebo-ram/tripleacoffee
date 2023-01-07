@@ -34,7 +34,8 @@ export default function App({ $target }) {
         $target: $target,
         initialState: {
             intiialized: this.state.initialized,
-            menuData: this.state.menuData
+            menuData: this.state.menuData,
+            basket: this.state.basket
         }
     })
 
@@ -144,23 +145,56 @@ export default function App({ $target }) {
     
     
             // 메뉴 선택시 옵션화면으로 넘어감
-            
-            if(e.target.closest('a').classList) {
+            if(e.target.closest('a')) {
+                if(e.target.closest('a').classList) {
 
-                const dataset = e.target.closest('a').dataset;
-                this.setState({ 
-                    presentPage: 'option',
-                    selectedMenu: {
-                        m_idx: dataset.idx,
-                        m_name: dataset.name,
-                        m_price: dataset.price,
-                        m_img: dataset.img,
-                        m_options: dataset.options
-                    },
-                    isPopup: true,
-                })
-                return;
+                    const dataset = e.target.closest('a').dataset;
+                    this.setState({ 
+                        presentPage: 'option',
+                        selectedMenu: {
+                            m_idx: dataset.idx,
+                            m_name: dataset.name,
+                            m_price: dataset.price,
+                            m_img: dataset.img,
+                            m_options: dataset.options
+                        },
+                        isPopup: true,
+                    })
+                    return;
+                }
             }
+
+            // 장바구니 수량증감
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'showMenu__plus__btn') {
+                    const target = e.target.closest('button').parentNode.firstElementChild
+                    target.value++;
+                    for(let i=0; i<this.state.basket.length; i++) {
+                        if(this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
+                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity))*target.value
+                            this.state.basket[i].m_quantity = target.value;
+                        }
+                    }
+                    console.log(this.state.basket)
+                    this.setState({
+                        basket: this.state.basket
+                    })
+
+                }else if(e.target.closest('button').className == 'showMenu__minus__btn') {
+                    const target = e.target.closest('button').parentNode.firstElementChild
+                    if(target.value > 1) target.value--;
+                    for(let i=0; i<this.state.basket.length; i++) {
+                        if(this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
+                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity))*target.value
+                            this.state.basket[i].m_quantity = target.value;
+                        }
+                    }
+                    this.setState({
+                        basket: this.state.basket
+                    })
+                }
+            }
+            
         }
 
         if(this.state.presentPage == 'option') {
@@ -170,7 +204,7 @@ export default function App({ $target }) {
                         presentPage: 'menuPage',
                         isPopup: false
                     })
-                }else {
+                }else if(e.target.closest('button').classList.contains('cart__ok__Btn')) {
                     console.log('메뉴담기 버튼 클릭');
                     let optionstr = '';
                     let price = 0;
@@ -186,7 +220,7 @@ export default function App({ $target }) {
                         m_idx: this.state.selectedMenu.m_idx,
                         m_name: this.state.selectedMenu.m_name,
                         m_quantity: quantity,
-                        m_price: (price + parseInt(this.state.selectedMenu.m_price)),
+                        m_price: (price + parseInt(this.state.selectedMenu.m_price))*parseInt(quantity),
                         m_options: optionstr
                     })
                     this.setState({

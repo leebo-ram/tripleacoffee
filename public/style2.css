@@ -278,9 +278,86 @@ button {
   border-radius: var(--size-border-radius);
   color: var(--color-triple-grey);
   display: flex;
-  justify-content: center;
-  align-items: center;  
+  justify-content: center; 
 }
+.BK__icon {
+  position:relative;
+  left: 48%;
+  top: 33%;
+}
+
+
+#Bk__list {
+  width: 100%;
+  font-size: var(--font-regular);
+  text-align: center;
+}
+
+.Bk__select__list {
+  display: flex;
+  max-height: 70px;
+  max-width: 100%;
+}
+
+
+.Bk__list__menuName {
+  width: 70%;
+  margin-right: 100px;
+  color: var(--color-triple-black);
+}
+
+.Bk__list__menuName p {
+  text-align: left;
+  margin: 1%;
+  line-height: 15px;
+}
+
+.Bk__list__menuName__option {
+  font-size: var(--font-micro);
+}
+
+.Bk__list__price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  font-size: var(--font-medium);
+  color: var(--color-triple-black);
+}
+
+
+.Bk__select__list > .plusMinus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* shoppigBk (shopping basket) 상하 arrow */
+.shoppigBk__scroll__arrow {
+  float: right;
+  width: 4%;
+  min-height: 230px;
+  border-left: 3px solid var(--color-triple-line-gray);
+  padding: 1% 0;
+}
+
+.shoppigBk__arrow_top, 
+.shoppigBk__arrow__down{
+  text-align: center;
+  font-size: var(--font-medium);
+  color: var(--color-triple-line-gray);
+}
+
+.shoppigBk__arrow__down  {
+  /* position: relative;
+  top: 130px; */
+
+  margin-top: 130px;
+}
+
+
 
 
 /* count, total order amount */
@@ -343,7 +420,6 @@ button {
   color: var(--color-white);
   margin: 5px;
 }
-
 
 /* Typography - OPTIONS */
 

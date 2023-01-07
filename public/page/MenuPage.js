@@ -48,7 +48,9 @@ export default function MenuPage({ $target, initialState }) {
 
         new ShoppingBk({
             $target: $target,
-            initialState: this.state.basket
+            initialState: { 
+                basket: this.state.basket 
+            }
         })
     }
     

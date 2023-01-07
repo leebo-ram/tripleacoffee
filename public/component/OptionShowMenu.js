@@ -61,6 +61,7 @@ export default function OptionShowMenu({ initialState }) {
     // 이벤트리스너
     window.addEventListener('click', (e) => {
       const target = document.getElementById('option_show_input');
+      console.log(target)
       if(e.target.closest('button')) {
         if(e.target.closest('button').className == 'showMenu__plus__btn') {
           target.value++;
