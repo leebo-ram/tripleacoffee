@@ -2,8 +2,7 @@ export default function ShoppingBk({ $target, initialState }) {
 
     //상태관리
     this.state = {
-        $target,
-        initialState
+        ...initialState
     }
     this.setState = (nextState) => {
         this.state = {
@@ -21,6 +20,7 @@ export default function ShoppingBk({ $target, initialState }) {
 
     // 렌더 함수
     this.render = () => {
+      console.log(this.state)
         this.$element.innerHTML = `
         <div class="shopping__basket">
         <i class="fas fa-file-invoice"></i>

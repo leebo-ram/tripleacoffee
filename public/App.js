@@ -48,13 +48,13 @@ export default function App({ $target }) {
 
 
     this.setState = (nextState) => {
-        if(this.state.presentPage != nextState.presentPage) $target.innerHTML = ``;
+        if(this.state.presentPage != nextState.presentPage && !nextState.isPopup) $target.innerHTML = ``;
 
         this.state = {
             ...this.state,
             ...nextState
         }
-        
+
         switch(this.state.presentPage) {
             case 'home':
                 homePage.render();
@@ -63,13 +63,17 @@ export default function App({ $target }) {
             case 'menuPage':
                 menuPage.setState({ 
                     menuData: this.state.menuData,
-                    initialized: this.state.initialized
+                    initialized: this.state.initialized,
+                    basket: this.state.basket
                 })
                 
                 //menuPage.render();
                 break;
             
             case 'option':
+                const optionPopup = document.createElement('div');
+                optionPopup.className = 'optionPopup';
+                $target.appendChild(optionPopup);
                 optionPage.setState({
                     selectedMenu: this.state.selectedMenu,
                     loaded: false
@@ -103,7 +107,7 @@ export default function App({ $target }) {
     init();
 
     $target.addEventListener('click',(e) => {
-        console.log(e.target)
+
         // 초기 페이지에서 메뉴리스트로 넘어감
         if(this.state.presentPage == 'home') {
             if(e.target.closest('div').className === "bigconts") {
@@ -142,34 +146,58 @@ export default function App({ $target }) {
             // 메뉴 선택시 옵션화면으로 넘어감
             
             if(e.target.closest('a').classList) {
-                console.log(33)
+
                 const dataset = e.target.closest('a').dataset;
                 this.setState({ 
                     presentPage: 'option',
-                    isPopup: true,
                     selectedMenu: {
                         m_idx: dataset.idx,
                         m_name: dataset.name,
                         m_price: dataset.price,
                         m_img: dataset.img,
                         m_options: dataset.options
-                    }
+                    },
+                    isPopup: true,
                 })
                 return;
             }
         }
 
         if(this.state.presentPage == 'option') {
-            console.log(e.target.closest('button'))
-            if(e.target.closest('button').classList.contains('cart__cancel__Btn')) {
-                console.log(3)
-                this.setState({
-                    presentPage: 'menuPage',
-                    isPopup: false
-                })
-            }else {
-    
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').classList.contains('cart__cancel__Btn')) {
+                    this.setState({
+                        presentPage: 'menuPage',
+                        isPopup: false
+                    })
+                }else {
+                    console.log('메뉴담기 버튼 클릭');
+                    let optionstr = '';
+                    let price = 0;
+                    const options = document.getElementsByClassName('option__text__hiden');
+                    const quantity = document.getElementById('option_show_input').value;
+                    for(let i=0; i<options.length; i++) {
+                        if(options[i].firstElementChild.textContent) {
+                            optionstr += options[i].firstElementChild.textContent + ";";
+                            price += parseInt(options[i].lastElementChild.textContent.replace('원','').replace(',',''));
+                        }
+                    }
+                    this.state.basket.push({
+                        m_idx: this.state.selectedMenu.m_idx,
+                        m_name: this.state.selectedMenu.m_name,
+                        m_quantity: quantity,
+                        m_price: (price + parseInt(this.state.selectedMenu.m_price)),
+                        m_options: optionstr
+                    })
+                    this.setState({
+                        presentPage: 'menuPage',
+                        isPopup: false,
+                        basket: this.state.basket
+                    })
+                    
+                }
             }
+
         }
 
     })

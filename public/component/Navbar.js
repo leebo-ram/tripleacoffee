@@ -21,7 +21,6 @@ export default function Navbar({ $target, initialState }) {
 
     // 렌더 함수
     this.render = () => {
-        console.log(3)
         this.$element.innerHTML = `    
         <a href=""><i class="fas fa-home"></i></a>  
         <img src="../img/0_logo/logo_h.jpg" alt="tripleacoffee_logo" class="logo___img">

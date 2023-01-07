@@ -11,7 +11,6 @@ export default function MenuList({ $target, initialState }) {
         }
         this.render()
     }
-    console.log($target)
 
     // 최상단 요소
     this.$element = document.createElement('div');
@@ -31,7 +30,7 @@ export default function MenuList({ $target, initialState }) {
                     <img class="menu__img" src="../uploads/${item.m_img}" alt="${item.m_name}" />
                     <div class="menu__description">
                       <p>${item.m_name}</p>
-                      <p>${item.m_price}</p>
+                      <p>${parseInt(item.m_price).toLocaleString()}원</p>
                     </div>
                   </a>
                     `).join('')}

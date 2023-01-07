@@ -5,12 +5,9 @@ import BottomArrow from "../component/BottomArrow.js";
 import ShoppingBk from "../component/ShoppingBk.js";
 
 export default function MenuPage({ $target, initialState }) {
-    console.log(1)
     //상태관리
     this.state = {
-        $target,
-        menuData: initialState.menuData,
-        initialized: initialState.initialized
+        ...initialState
     }
     this.setState = (nextState) => {
         this.state = {
@@ -46,12 +43,12 @@ export default function MenuPage({ $target, initialState }) {
 
         new BottomArrow({
             $target: section__container,
-            initialState: this.state
+            initialState: {}
         }).render()
 
         new ShoppingBk({
             $target: $target,
-            initialState: this.state
+            initialState: this.state.basket
         })
     }
     
