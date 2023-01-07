@@ -1317,7 +1317,7 @@ input[id="select_checkbox"]:checked + label::after{
   border-radius: var(--size-border-radius);
 }
 
-.orderNum ul, .orderList ul, 
+.orderNum button, .orderList button, 
 .recipe1 ul, .recipe2 ul {
   margin: 0;
 }
@@ -1400,7 +1400,10 @@ input[id="select_checkbox"]:checked + label::after{
 
 /* -------------------------- */
 
-.orderNum__list.selected,
-.order__menu.selected {
-  border: 3px solid var(--color-triple-light-red);
+.option__plusMinus.active {
+  border: 1px solid var(--color-white);
+}
+
+.orderNum.selected{
+  border: 1px solid var(--color-triple-light-red);
 }

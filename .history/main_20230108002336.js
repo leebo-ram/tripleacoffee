@@ -75,7 +75,7 @@ window.addEventListener('click', (e) => {
 // inputCertification.html - 인증번호 입력
 window.addEventListener('click', (e) => {
     if (e.target != null || e.target != undefined) return;
-    // if (!e.target.closest('button')) return;
+    if (!e.target.closest('button')) return;
 
     console.log(e.target);
     const certificationBtn = document.getElementById('certification__Num');
@@ -102,7 +102,7 @@ window.addEventListener('click', (e) => {
     if (!e.target.closest('button')) return;
 
     console.log(e.target);
-    const mobileNumberBtn = document.getElementById('mobileNumber').value;
+    const mobileNumberBtn = document.getElementById('mobileNumber');
 
     // Button 클릭시 target에 입력
     if (e.target.closest('button').dataset.val) {

@@ -1400,7 +1400,10 @@ input[id="select_checkbox"]:checked + label::after{
 
 /* -------------------------- */
 
-.orderNum__list.selected,
-.order__menu.selected {
-  border: 3px solid var(--color-triple-light-red);
+.option__plusMinus.active {
+  border: 1px solid var(--color-white);
+}
+
+.prod-quantity__form.selected{
+  border: 1px solid var(--color-triple-light-red);
 }

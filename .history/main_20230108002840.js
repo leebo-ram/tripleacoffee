@@ -98,8 +98,8 @@ window.addEventListener('click', (e) => {
 
 // stampMemberCheck.html - 핸드폰 번호 입력
 window.addEventListener('click', (e) => {
-    if (e.target != null || e.target != undefined) return;
-    if (!e.target.closest('button')) return;
+    // if (e.target != null || e.target != undefined) return;
+    // if (!e.target.closest('button')) return;
 
     console.log(e.target);
     const mobileNumberBtn = document.getElementById('mobileNumber').value;

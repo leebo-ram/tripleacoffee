@@ -102,7 +102,7 @@ window.addEventListener('click', (e) => {
     if (!e.target.closest('button')) return;
 
     console.log(e.target);
-    const mobileNumberBtn = document.getElementById('mobileNumber').value;
+    const mobileNumberBtn = document.getElementById('mobileNumber');
 
     // Button 클릭시 target에 입력
     if (e.target.closest('button').dataset.val) {

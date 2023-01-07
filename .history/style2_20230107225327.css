@@ -1401,6 +1401,6 @@ input[id="select_checkbox"]:checked + label::after{
 /* -------------------------- */
 
 .orderNum__list.selected,
-.order__menu.selected {
+.orderList.selected {
   border: 3px solid var(--color-triple-light-red);
 }
