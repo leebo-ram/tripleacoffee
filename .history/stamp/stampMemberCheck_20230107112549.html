@@ -18,7 +18,7 @@
   <!-- css(font-글씨체) : font-family: 'Open Sans', sans-serif;-->
 
   <link rel="stylesheet" href="../style2.css">
-  <script src="../JS/hp_num.js" defer></script>
+  <script src="../hp_num.js" defer></script>
 
 </head>
 <body>
@@ -43,7 +43,8 @@
       <div id="hp">
         <div class="phoneNum">
           <p>핸드폰 번호 입력</p>
-          <input type="text" name="mobileNumber" required minlength="4" maxlength="13" size="10" id="mobileNumber" value="010-">
+          <input type="text" name="mobileNumber" required minlength="4" maxlength="13" size="10" id="mobileNumber" oninput="autoHyphen2(this)" value="010-">
+          
 
           <div>
             <img src="../img/stampEarn_mobile.png" alt="">
@@ -52,10 +53,10 @@
 
         <div class="hp__numbers">
           <div class="number123">
-            <button class="number1" data-val="1">
+            <!-- <button class="number1" data-val="1"> -->
               <input type="hidden" value="mobileNumber">
               <p>1</p>
-            </button>
+            <!-- </button> -->
             <button class="number1" data-val="2">
               <input type="hidden" value="mobileNumber">
               <p>2</p>

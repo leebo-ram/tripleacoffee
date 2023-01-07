@@ -794,19 +794,19 @@ button {
   height: 20%;
 }
 
-.number123 button, 
-.number456 button, 
-.number789 button, 
+.number123 li, 
+.number456 li, 
+.number789 li, 
 .number__zero,
 .number0 i {
   font-size: var(--font-medium);
 }
 
 
-.number123 button, 
-.number456 button, 
-.number789 button, 
-.number0 button {
+.number123 li, 
+.number456 li, 
+.number789 li, 
+.number0 li {
   width: 100%; 
   height: 70px;
   margin: 1%;
@@ -822,6 +822,9 @@ button {
 .number789 p, 
 .number0 p {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .number__del__ALL {
@@ -831,7 +834,7 @@ button {
 }
 
 
-.input__mobileNumber__btn button {
+.input__mobileNumber__btn div {
   width: 100%;
   height: 100%;
   padding: 3%;
