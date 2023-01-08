@@ -1376,7 +1376,7 @@ input[id="select_checkbox"]:checked + label::after{
 }
 
 .recipe1 p, .recipe2 p {
-  margin-left: 20px;
+  margin-left: 4px;
   line-height: 30px;
   list-style-type: decimal;
 }
