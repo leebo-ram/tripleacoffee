@@ -61,7 +61,7 @@ export default function OptionPage({ $target, initialState }) {
 
     // 렌더 함수
     this.render = () => {   
-        
+        if(document.querySelector('.optionPopup')) document.querySelector('.optionPopup').innerHTML = ``;
         let optionCount = 4;
         if(this.state.loaded) {
             optionsShowMenu.setState({

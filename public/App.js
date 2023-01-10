@@ -3,6 +3,7 @@ import {request} from "./api.js";
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
 import OptionPage from "./page/OptionPage.js";
+import PaymentPage from "./page/PaymentPage.js";
 
 
 export default function App({ $target }) {
@@ -37,7 +38,7 @@ export default function App({ $target }) {
             menuData: this.state.menuData,
             basket: this.state.basket
         }
-    })
+    });
 
     const optionPage = new OptionPage({
         $target,
@@ -45,7 +46,15 @@ export default function App({ $target }) {
             selectedMenu: this.state.selectedMenu
         }
     });
-        
+
+    const paymentPage = new PaymentPage({
+        $target,
+        initialState: {
+
+        }
+    })
+    const optionPopup = document.createElement('div');
+    optionPopup.className = 'optionPopup';
 
 
     this.setState = (nextState) => {
@@ -72,16 +81,29 @@ export default function App({ $target }) {
                 break;
             
             case 'option':
-                const optionPopup = document.createElement('div');
-                optionPopup.className = 'optionPopup';
-                $target.appendChild(optionPopup);
+                if(!document.querySelector('.optionPopup')) {
+                    $target.appendChild(optionPopup);
+                }
                 optionPage.setState({
                     selectedMenu: this.state.selectedMenu,
                     loaded: false
                 })
                 break;
+
+            case 'payment':
+                if(!document.querySelector('.optionPopup')) {
+                    $target.appendChild(optionPopup);
+                }
+                paymentPage.setState({
+                    $target: $target,
+                    initialState: {
+                        basket: this.state.basket,
+                    }
+                })
+                break;
         
             default:
+                homePage.render();
                 break;
         }
     }
@@ -122,6 +144,7 @@ export default function App({ $target }) {
         
 
 
+        // menuPage 클릭이벤트 
         // 카테고리 필터링
         if(this.state.presentPage == 'menuPage') {
             if(e.target.classList.contains('category__btn')) {
@@ -194,9 +217,37 @@ export default function App({ $target }) {
                     })
                 }
             }
-            
+
+            // 전체취소 버튼 클릭
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'cancel___btn') {
+                    this.setState({
+                        basket: []
+                    });
+                }
+            }
+
+
+            // 결제버튼 클릭
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'payment___btn') {
+                    if(this.state.basket.length > 0) {
+                        console.log('payment클릭')
+                        this.setState({ 
+                            presentPage: 'payment',
+                            isPopup: true,
+                        })
+                        return;
+                        
+                    }
+
+                }
+            }
+
         }
 
+        // optionPage 클릭이벤트
+        // 취소, 메뉴담기 버튼 클릭
         if(this.state.presentPage == 'option') {
             if(e.target.closest('button')) {
                 if(e.target.closest('button').classList.contains('cart__cancel__Btn')) {
