@@ -951,7 +951,7 @@ input[type="checkbox"] + label{
   border: var(--border-line-1px);
   position: relative;
 }
-input[id="seclet_checkbox"]:checked + label::after{
+input[type="checkbox"]:checked + label::after{
   content:'✔';
   font-size: 25px;
   color: var(--color-triple-red);
@@ -963,6 +963,11 @@ input[id="seclet_checkbox"]:checked + label::after{
   top:2;
 }
 
+.select_menu_checkBox {
+  width: 30px;
+  height: 30px;
+  border: var(--border-line-1px)
+}
 
 
 .Amount__pay, .discount {
@@ -1386,5 +1391,6 @@ input[id="seclet_checkbox"]:checked + label::after{
   height: 200%;
   padding-top: 250px;
   top: 0;
-  background-color: rgba(44, 44, 44, 0.486);
+  /*background-color: rgba(44, 44, 44, 0.486);*/
+  background-color: #ffffff;
 }

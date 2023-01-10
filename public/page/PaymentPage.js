@@ -1,6 +1,7 @@
 import ChooseOrderPage from "./paymentPages/ChooseOrderPage.js";
 import StampMemberCheck from "./paymentPages/StampMemberCheck.js";
-import StampUseAndEarn from "./paymentPages/StampUseAndEarnPage.js";
+import StampUseAndEarnPage from "./paymentPages/StampUseAndEarnPage.js";
+import StampUsePage from "./paymentPages/StampUsePage.js";
 
 
 export default function PaymentPage({ $target, initialState }) {
@@ -10,7 +11,8 @@ export default function PaymentPage({ $target, initialState }) {
         ...initialState,
         presentPage: 'chooseOrder',
         choosedOrder: 'for_here',
-
+        mem_stamp: 0,
+        mem_mobile: ''
     }
 
     const chooseOrderPage = new ChooseOrderPage({
@@ -22,17 +24,26 @@ export default function PaymentPage({ $target, initialState }) {
         presentPage: this.state.presentPage,
     });
 
-    const stampUseAndEarn = new StampUseAndEarn({
+    const stampUseAndEarnPage = new StampUseAndEarnPage({
         $target,
         presentPage: this.state.presentPage,
         mem_mobile: ''
     });
+
+    const stampUsePage = new StampUsePage({
+        $target,
+        presentPage: this.state.presentPage,
+        basket: this.state.basket,
+        mem_stamp: this.state.mem_stamp,
+        mem_mobile: this.state.mem_mobile
+    })
 
     this.setState = (nextState) => {
         this.state = {
             ...this.state,
             ...nextState
         }
+        console.log(this.state)
         
         switch(this.state.presentPage) {
             case 'chooseOrder':
@@ -45,11 +56,20 @@ export default function PaymentPage({ $target, initialState }) {
                 });
                 break;
             case 'stampUseAndEarn':
-                stampUseAndEarn.setState({
+                stampUseAndEarnPage.setState({
                     presentPage: this.state.presentPage,
                     mem_mobile: this.state.mem_mobile
                 });
                 
+                break;
+
+            case 'stampUse':
+                stampUsePage.setState({
+                    presentPage: this.state.presentPage,
+                    mem_mobile: this.state.mem_mobile,
+                    mem_stamp: this.state.mem_stamp,
+                    basket: this.state.basket
+                });
                 break;
             default:
 
@@ -91,6 +111,18 @@ export default function PaymentPage({ $target, initialState }) {
                             presentPage: 'stampUseAndEarn'
                         })
                     }
+                }
+            }
+        }else if(this.state.presentPage == 'stampUseAndEarn') {
+            if(e.target.closest('div')) {
+                if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_use") {
+                    this.setState({
+                        mem_stamp: e.target.closest('div').dataset.stamp,
+                        presentPage: 'stampUse'
+                    })
+
+                }else if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_save") {
+
                 }
             }
         }

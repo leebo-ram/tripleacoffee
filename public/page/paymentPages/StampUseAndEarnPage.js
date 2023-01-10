@@ -1,6 +1,6 @@
 import { request } from '../../api.js';
 
-export default function StampUseAndEarn({ $target, initialState }) {
+export default function StampUseAndEarnPage({ $target, initialState }) {
 
     //상태관리
     this.state = {
@@ -48,12 +48,12 @@ export default function StampUseAndEarn({ $target, initialState }) {
     
     <div class="pop__middle__box">
 
-      <div class="pop__boxing">
+      <div class="pop__boxing" id="stamp_save" data-stamp="${this.state.mem_stamp}">
         <img src="../img/stamp_round.png" alt="">
         <p class="stamp__description">스탬프 적립하기</p>
       </div>
   
-      <div class="pop__boxing">
+      <div class="pop__boxing" id="stamp_use" data-stamp="${this.state.mem_stamp}">
         <img src="../img/stamp_square.png" alt="">
         <p class="stamp__description">스탬프 사용하기</p>
       </div>

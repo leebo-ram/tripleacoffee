@@ -50,7 +50,7 @@ export default function App({ $target }) {
     const paymentPage = new PaymentPage({
         $target,
         initialState: {
-
+            basket: this.state.basket
         }
     })
     const optionPopup = document.createElement('div');
@@ -95,10 +95,6 @@ export default function App({ $target }) {
                     $target.appendChild(optionPopup);
                 }
                 paymentPage.setState({
-                    $target: $target,
-                    initialState: {
-                        basket: this.state.basket,
-                    }
                 })
                 break;
         
@@ -272,7 +268,8 @@ export default function App({ $target }) {
                         m_name: this.state.selectedMenu.m_name,
                         m_quantity: quantity,
                         m_price: (price + parseInt(this.state.selectedMenu.m_price))*parseInt(quantity),
-                        m_options: optionstr
+                        m_options: optionstr,
+                        m_img: this.state.selectedMenu.m_img
                     })
                     this.setState({
                         presentPage: 'menuPage',
