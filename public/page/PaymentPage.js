@@ -153,6 +153,14 @@ export default function PaymentPage({ $target, initialState }) {
                     }
                 }
             }
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'pop__former__Btn') {
+                    console.log('2')
+                    this.setState({
+                        presentPage: 'chooseOrder'
+                    })
+                }
+            }
         }else if(this.state.presentPage == 'stampUseAndEarn') {
             if(e.target.closest('div')) {
                 if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_use") {
@@ -175,9 +183,11 @@ export default function PaymentPage({ $target, initialState }) {
                 }
             }
         }else if(this.state.presentPage == 'inputcertification') {
-            if(e.target.closest('button').className == 'pop__order__Btn') {
-                const verifyCode = document.getElementById('certification__Num').value;
-                smsCertification(verifyCode);
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'pop__order__Btn') {
+                    const verifyCode = document.getElementById('certification__Num').value;
+                    smsCertification(verifyCode);
+                }
             }
         }
 
