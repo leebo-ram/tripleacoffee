@@ -2,6 +2,9 @@ import ChooseOrderPage from "./paymentPages/ChooseOrderPage.js";
 import StampMemberCheck from "./paymentPages/StampMemberCheck.js";
 import StampUseAndEarnPage from "./paymentPages/StampUseAndEarnPage.js";
 import StampUsePage from "./paymentPages/StampUsePage.js";
+import InputCertificatioinPage from "./paymentPages/InputCertificationPage.js";
+
+import { request } from "../api.js";
 
 
 export default function PaymentPage({ $target, initialState }) {
@@ -38,6 +41,12 @@ export default function PaymentPage({ $target, initialState }) {
         mem_mobile: this.state.mem_mobile
     })
 
+    const inputcertificationPage = new InputCertificatioinPage({
+        $target,
+        presentPage: this.state.presentPage,
+        mem_mobile: this.state.mem_mobile
+    })
+
     this.setState = (nextState) => {
         this.state = {
             ...this.state,
@@ -71,10 +80,41 @@ export default function PaymentPage({ $target, initialState }) {
                     basket: this.state.basket
                 });
                 break;
+
+            case 'inputcertification':
+                inputcertificationPage.setState({
+                    presentPage: this.state.presentPage,
+                    mem_mobile: this.state.mem_mobile,
+                    mem_stamp: this.state.mem_stamp,
+                })
+                break;
+
             default:
 
                 break;
         }
+    }
+
+    const smsCertification = async (req) => {
+        if(req) {
+            try {
+                const smsResponse = await request('verifysms', { 
+                    phoneNumber: this.state.mem_mobile,
+                    verifyCode: req 
+                });
+                console.log(smsResponse)
+            } catch(e) {
+                console.log(e);
+            }
+        }else {
+            try {
+                const smsResponse = await request('smsCertification', { phoneNumber: this.state.mem_mobile });
+                console.log(smsResponse)
+            } catch(e) {
+                console.log(e);
+            }
+        }
+
     }
 
     // 최상단 요소
@@ -124,6 +164,20 @@ export default function PaymentPage({ $target, initialState }) {
                 }else if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_save") {
 
                 }
+            }
+        }else if(this.state.presentPage == 'stampUse') {
+            if(e.target.closest('button')) {
+                if(e.target.closest('button').className == 'pop__use__Btn') {
+                    smsCertification();
+                    this.setState({
+                        presentPage: 'inputcertification',
+                    })
+                }
+            }
+        }else if(this.state.presentPage == 'inputcertification') {
+            if(e.target.closest('button').className == 'pop__order__Btn') {
+                const verifyCode = document.getElementById('certification__Num').value;
+                smsCertification(verifyCode);
             }
         }
 

@@ -5,6 +5,8 @@ const PORT = 3000; // 포트번호
 const db = require('./db.js');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const sens = require("./sensController.js");
+const Cache = require('memory-cache');
 
 app.use(express.static('../public'));
 app.use(bodyParser.json());
@@ -166,5 +168,32 @@ app.post('/newsaleslog', function(req, res) {
         }
     })
 })
+
+// SMS인증
+app.post('/smsCertification', sens.send);
+
+app.post('/verifysms', function(req, res) {
+        console.log(req.body)
+        const phoneNumber = req.body.phoneNumber;
+        const verifyCode = req.body.verifyCode;
+    
+        const CacheData = Cache.get(phoneNumber);
+    
+        if (!CacheData) {
+            console.log('tlfvo')
+            res.send(false);
+        } else if (CacheData !== verifyCode) {
+            console.log('tlfvo')
+
+            res.send(false);
+        } else {
+            Cache.del(phoneNumber);
+            console.log('성공')
+
+            res.send(true);
+        }
+
+})
+
 
 app.listen(PORT, () => console.log(`${PORT}번 포트 대기`));
