@@ -1,4 +1,4 @@
-import {request} from "./api.js";
+import { request } from "./api.js";
 
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
@@ -12,7 +12,7 @@ export default function App({ $target }) {
         menuData: '',
         initialized: false,
         presentPage: 'home',
-        selectedMenu: { 
+        selectedMenu: {
             m_idx: '',
             m_name: '',
             m_price: '',
@@ -21,7 +21,8 @@ export default function App({ $target }) {
             m_category: '',
         },
         isPopup: false,
-        basket: []
+        basket: [],
+        nth_content: 0
     }
 
     // 전체 페이지 객체생성
@@ -37,7 +38,8 @@ export default function App({ $target }) {
         initialState: {
             intiialized: this.state.initialized,
             menuData: this.state.menuData,
-            basket: this.state.basket
+            basket: this.state.basket,
+            nth_content: this.state.nth_content
         }
     });
 
@@ -59,30 +61,31 @@ export default function App({ $target }) {
 
 
     this.setState = (nextState) => {
-        if(this.state.presentPage != nextState.presentPage && !nextState.isPopup) $target.innerHTML = ``;
+        if (this.state.presentPage != nextState.presentPage && !nextState.isPopup) $target.innerHTML = ``;
 
         this.state = {
             ...this.state,
             ...nextState
         }
 
-        switch(this.state.presentPage) {
+        switch (this.state.presentPage) {
             case 'home':
                 homePage.render();
                 break;
-            
+
             case 'menuPage':
-                menuPage.setState({ 
+                menuPage.setState({
                     menuData: this.state.menuData,
                     initialized: this.state.initialized,
-                    basket: this.state.basket
+                    basket: this.state.basket,
+                    nth_content: this.state.nth_content
                 })
-                
+
                 //menuPage.render();
                 break;
-            
+
             case 'option':
-                if(!document.querySelector('.optionPopup')) {
+                if (!document.querySelector('.optionPopup')) {
                     $target.appendChild(optionPopup);
                 }
                 optionPage.setState({
@@ -92,7 +95,7 @@ export default function App({ $target }) {
                 break;
 
             case 'payment':
-                if(!document.querySelector('.optionPopup')) {
+                if (!document.querySelector('.optionPopup')) {
                     $target.appendChild(optionPopup);
                 }
                 paymentPage.setState({
@@ -104,7 +107,7 @@ export default function App({ $target }) {
                     used_stamp: 0,
                 })
                 break;
-        
+
             default:
                 homePage.render();
                 break;
@@ -120,7 +123,7 @@ export default function App({ $target }) {
                 ...this.state,
                 menuData: menuData
             })
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
@@ -132,11 +135,11 @@ export default function App({ $target }) {
     // 초기 1회 메뉴데이터 호출
     init();
 
-    $target.addEventListener('click',(e) => {
+    $target.addEventListener('click', (e) => {
 
         // 초기 페이지에서 메뉴리스트로 넘어감
-        if(this.state.presentPage == 'home') {
-            if(e.target.closest('div').className === "bigconts") {
+        if (this.state.presentPage == 'home') {
+            if (e.target.closest('div').className === "bigconts") {
                 this.setState({
                     initialized: true,
                     presentPage: 'menuPage'
@@ -144,37 +147,37 @@ export default function App({ $target }) {
                 return;
             }
         }
-        
+
 
 
         // menuPage 클릭이벤트 
         // 카테고리 필터링
-        if(this.state.presentPage == 'menuPage') {
-            if(e.target.classList.contains('category__btn')) {
+        if (this.state.presentPage == 'menuPage') {
+            if (e.target.classList.contains('category__btn')) {
                 const active = document.querySelector('.category__btn.selected');
                 if (active != null) {
-                  active.classList.remove('selected');
+                    active.classList.remove('selected');
                 }
-                if(!e.target.classList.contains('selected')) e.target.classList.add('selected');
+                if (!e.target.classList.contains('selected')) e.target.classList.add('selected');
                 const filter = e.target.closest('button').dataset.filter
                 const menus = document.querySelectorAll('.wrap');
                 menus.forEach((wrap) => {
-                  // console.log(wrap.dataset.type);
-                  if(filter ==='*' || filter === wrap.dataset.type) {
-                    wrap.classList.remove('invisible');
-                  } else {
-                    wrap.classList.add('invisible');
-                  }
+                    // console.log(wrap.dataset.type);
+                    if (filter === '*' || filter === wrap.dataset.type) {
+                        wrap.classList.remove('invisible');
+                    } else {
+                        wrap.classList.add('invisible');
+                    }
                 });
                 return;
             }
-    
-    
+
+
             // 메뉴 선택시 옵션화면으로 넘어감, 홈 로고 클릭시 홈화면 이동
-            if(e.target.closest('a')) {
-                if(e.target.closest('a').className == 'wrap') {
+            if (e.target.closest('a')) {
+                if (e.target.closest('a').className == 'wrap') {
                     const dataset = e.target.closest('a').dataset;
-                    this.setState({ 
+                    this.setState({
                         presentPage: 'option',
                         selectedMenu: {
                             m_idx: dataset.idx,
@@ -187,7 +190,7 @@ export default function App({ $target }) {
                         isPopup: true,
                     })
                     return;
-                }else if(e.target.closest('a').id == 'logo_home') {
+                } else if (e.target.closest('a').id == 'logo_home') {
                     this.setState({
                         presentPage: 'home',
                         isPopup: false,
@@ -198,13 +201,13 @@ export default function App({ $target }) {
             }
 
             // 장바구니 수량증감
-            if(e.target.closest('button')) {
-                if(e.target.closest('button').className == 'showMenu__plus__btn') {
+            if (e.target.closest('button')) {
+                if (e.target.closest('button').className == 'showMenu__plus__btn') {
                     const target = e.target.closest('button').parentNode.firstElementChild
                     target.value++;
-                    for(let i=0; i<this.state.basket.length; i++) {
-                        if(this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
-                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity))*target.value
+                    for (let i = 0; i < this.state.basket.length; i++) {
+                        if (this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
+                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity)) * target.value
                             this.state.basket[i].m_quantity = target.value;
                         }
                     }
@@ -213,12 +216,12 @@ export default function App({ $target }) {
                         basket: this.state.basket
                     })
 
-                }else if(e.target.closest('button').className == 'showMenu__minus__btn') {
+                } else if (e.target.closest('button').className == 'showMenu__minus__btn') {
                     const target = e.target.closest('button').parentNode.firstElementChild
-                    if(target.value > 1) target.value--;
-                    for(let i=0; i<this.state.basket.length; i++) {
-                        if(this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
-                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity))*target.value
+                    if (target.value > 1) target.value--;
+                    for (let i = 0; i < this.state.basket.length; i++) {
+                        if (this.state.basket[i].m_idx == e.target.closest('button').dataset.idx) {
+                            this.state.basket[i].m_price = parseInt(parseInt(this.state.basket[i].m_price) / parseInt(this.state.basket[i].m_quantity)) * target.value
                             this.state.basket[i].m_quantity = target.value;
                         }
                     }
@@ -229,26 +232,67 @@ export default function App({ $target }) {
             }
 
             // 전체취소 버튼 클릭
-            if(e.target.closest('button')) {
-                if(e.target.closest('button').className == 'cancel___btn') {
+            if (e.target.closest('button')) {
+                if (e.target.closest('button').className == 'cancel___btn cancel_all') {
                     this.setState({
                         basket: []
-                    });
+                    }); // 물건 개별삭제
+                } else if (e.target.closest('button').className == 'cancel___btn') {
+                    const basket_idx = e.target.closest('button').dataset.idx;
+                    const temp_arr = [];
+                    console.log(basket_idx)
+                    for (let i = 0; i < this.state.basket.length; i++) {
+                        if (basket_idx != i) {
+                            temp_arr.push(this.state.basket[i])
+                        }
+                    }
+                    if(this.state.nth_content > temp_arr.length -3) {
+                        this.setState({
+                            basket: temp_arr,
+                            nth_content: this.state.nth_content-1
+                        })
+                    }else {
+                        this.setState({
+                            basket: temp_arr
+                        })
+                    }
+
+                }
+            }
+            // 장바구니 위아래 버튼
+            if (e.target.closest('div')) {
+                if (e.target.closest('div').className == 'shoppigBk__arrow_top') {
+                    if (this.state.nth_content > 0) {
+                        this.setState({
+                            nth_content: this.state.nth_content - 1,
+                            total_price: '0',
+                            total_quantity: '0'
+                        })
+                    }
+                } else if (e.target.closest('div').className == 'shoppigBk__arrow__down') {
+                    if (this.state.nth_content < this.state.basket.length - 3) {
+                        this.setState({
+                            nth_content: this.state.nth_content + 1,
+                            total_price: '0',
+                            total_quantity: '0'
+                        });
+                    }
+
                 }
             }
 
 
             // 결제버튼 클릭
-            if(e.target.closest('button')) {
-                if(e.target.closest('button').className == 'payment___btn') {
-                    if(this.state.basket.length > 0) {
+            if (e.target.closest('button')) {
+                if (e.target.closest('button').className == 'payment___btn') {
+                    if (this.state.basket.length > 0) {
                         console.log('payment클릭')
-                        this.setState({ 
+                        this.setState({
                             presentPage: 'payment',
                             isPopup: true,
                         })
                         return;
-                        
+
                     }
 
                 }
@@ -258,30 +302,30 @@ export default function App({ $target }) {
 
         // optionPage 클릭이벤트
         // 취소, 메뉴담기 버튼 클릭
-        if(this.state.presentPage == 'option') {
-            if(e.target.closest('button')) {
-                if(e.target.closest('button').classList.contains('cart__cancel__Btn')) {
+        if (this.state.presentPage == 'option') {
+            if (e.target.closest('button')) {
+                if (e.target.closest('button').classList.contains('cart__cancel__Btn')) {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false
                     })
-                }else if(e.target.closest('button').classList.contains('cart__ok__Btn')) {
+                } else if (e.target.closest('button').classList.contains('cart__ok__Btn')) {
                     console.log('메뉴담기 버튼 클릭');
                     let optionstr = '';
                     let price = 0;
                     const options = document.getElementsByClassName('option__text__hiden');
                     const quantity = document.getElementById('option_show_input').value;
-                    for(let i=0; i<options.length; i++) {
-                        if(options[i].firstElementChild.textContent) {
+                    for (let i = 0; i < options.length; i++) {
+                        if (options[i].firstElementChild.textContent) {
                             optionstr += options[i].firstElementChild.textContent + ";";
-                            price += parseInt(options[i].lastElementChild.textContent.replace('원','').replace(',',''));
+                            price += parseInt(options[i].lastElementChild.textContent.replace('원', '').replace(',', ''));
                         }
                     }
                     this.state.basket.push({
                         m_idx: this.state.selectedMenu.m_idx,
                         m_name: this.state.selectedMenu.m_name,
                         m_quantity: quantity,
-                        m_price: (price + parseInt(this.state.selectedMenu.m_price))*parseInt(quantity),
+                        m_price: (price + parseInt(this.state.selectedMenu.m_price)) * parseInt(quantity),
                         m_options: optionstr,
                         m_img: this.state.selectedMenu.m_img,
                         m_category: this.state.selectedMenu.m_category,
@@ -291,21 +335,21 @@ export default function App({ $target }) {
                         isPopup: false,
                         basket: this.state.basket
                     })
-                    
+
                 }
             }
 
         }
 
-        if(this.state.presentPage == 'payment') {
-            if(e.target.closest('button')) {
-                if(e.target.closest('button').className == 'pop__cancel__Btn') {
+        if (this.state.presentPage == 'payment') {
+            if (e.target.closest('button')) {
+                if (e.target.closest('button').className == 'pop__cancel__Btn') {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false,
-                        
+
                     })
-                }else if(e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {
+                } else if (e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {
                     this.setState({
                         presentPage: 'home',
                         isPopup: false,

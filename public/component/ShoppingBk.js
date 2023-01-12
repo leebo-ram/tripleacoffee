@@ -4,7 +4,8 @@ export default function ShoppingBk({ $target, initialState }) {
     this.state = {
         ...initialState,
         total_price: '0',
-        total_quantity: '0'
+        total_quantity: '0',
+
     }
     this.setState = (nextState) => {
         this.state = {
@@ -22,8 +23,7 @@ export default function ShoppingBk({ $target, initialState }) {
 
     // 렌더 함수
     this.render = () => {
-      console.log(this.state.basket)
-      this.state.basket.map(item => console.log(item))
+      
       if(this.state.basket.length == 0) {
         this.$element.innerHTML = `
         <div class="shopping__basket">
@@ -74,18 +74,25 @@ export default function ShoppingBk({ $target, initialState }) {
   </div>
         `
       }else {
-        this.state.basket.map(item => {
-          this.state.total_price = parseInt(this.state.total_price) + parseInt(item.m_price);
-          this.state.total_quantity = parseInt(this.state.total_quantity) + parseInt(item.m_quantity);
-        })
+        const basket_arr = [];
+        for(let i=0; i<this.state.basket.length; i++) {
+          this.state.total_price = parseInt(this.state.total_price) + parseInt(this.state.basket[i].m_price);
+          this.state.total_quantity = parseInt(this.state.total_quantity) + parseInt(this.state.basket[i].m_quantity);
+          if(i > this.state.nth_content -1 && i < this.state.nth_content +3) {
+            basket_arr.push(this.state.basket[i])
+          }
+        }
+        console.log(this.state.nth_content)
+
+
         this.$element.innerHTML = `
         <div class="shopping__basket">
         <!-- 장바구니 list -->
         <div class="BK__icon"></div>
         <div id="Bk__list">
-        ${this.state.basket.map(item => `
+        ${basket_arr.map((item, idx) => `
         <div class="Bk__select__list">
-            <button class="cancel___btn">
+            <button class="cancel___btn" data-idx="${this.state.nth_content + idx}">
               <i class="fas fa-times-circle"></i>
             </button>
             <div class="Bk__list__menuName">
@@ -138,7 +145,7 @@ export default function ShoppingBk({ $target, initialState }) {
 
   <!-- payment -->
   <div class="pay">
-    <button class="cancel___btn">
+    <button class="cancel___btn cancel_all">
       <i class="fas fa-times-circle"></i>
       <span class="cancel__all">전체취소</span>
     </button>
@@ -154,5 +161,9 @@ export default function ShoppingBk({ $target, initialState }) {
     this.render()
 
     // 이벤트리스너
+
+    this.$element.addEventListener('click', (e) => {
+      
+    })
 
 }

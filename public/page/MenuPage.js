@@ -1,7 +1,6 @@
 import Navbar from "../component/Navbar.js";
 import MenuCategory from "../component/MenuCategory.js";
 import MenuList from '../component/MenuList.js';
-import BottomArrow from "../component/BottomArrow.js";
 import ShoppingBk from "../component/ShoppingBk.js";
 
 export default function MenuPage({ $target, initialState }) {
@@ -16,7 +15,6 @@ export default function MenuPage({ $target, initialState }) {
         }
         this.render()
     }
-
 
     // 렌더 함수
     this.render = () => {
@@ -41,15 +39,11 @@ export default function MenuPage({ $target, initialState }) {
             initialState: this.state
         }).render()
 
-        // new BottomArrow({
-        //     $target: section__container,
-        //     initialState: {}
-        // }).render()
-
         new ShoppingBk({
             $target: $target,
             initialState: { 
-                basket: this.state.basket 
+                basket: this.state.basket,
+                nth_content: this.state.nth_content
             }
         })
     }
