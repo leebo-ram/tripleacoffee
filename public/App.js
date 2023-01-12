@@ -18,6 +18,7 @@ export default function App({ $target }) {
             m_price: '',
             m_img: '',
             m_options: '',
+            m_category: '',
         },
         isPopup: false,
         basket: []
@@ -95,6 +96,12 @@ export default function App({ $target }) {
                     $target.appendChild(optionPopup);
                 }
                 paymentPage.setState({
+                    presentPage: 'chooseOrder',
+                    choosedOrder: 'for_here',
+                    mem_stamp: 0,
+                    mem_mobile: '',
+                    saving_stamp: 0,
+                    used_stamp: 0,
                 })
                 break;
         
@@ -163,10 +170,9 @@ export default function App({ $target }) {
             }
     
     
-            // 메뉴 선택시 옵션화면으로 넘어감
+            // 메뉴 선택시 옵션화면으로 넘어감, 홈 로고 클릭시 홈화면 이동
             if(e.target.closest('a')) {
-                if(e.target.closest('a').classList) {
-
+                if(e.target.closest('a').className == 'wrap') {
                     const dataset = e.target.closest('a').dataset;
                     this.setState({ 
                         presentPage: 'option',
@@ -175,11 +181,19 @@ export default function App({ $target }) {
                             m_name: dataset.name,
                             m_price: dataset.price,
                             m_img: dataset.img,
-                            m_options: dataset.options
+                            m_options: dataset.options,
+                            m_category: dataset.type,
                         },
                         isPopup: true,
                     })
                     return;
+                }else if(e.target.closest('a').id == 'logo_home') {
+                    this.setState({
+                        presentPage: 'home',
+                        isPopup: false,
+                        selectedMenu: '',
+                        basket: [],
+                    })
                 }
             }
 
@@ -269,7 +283,8 @@ export default function App({ $target }) {
                         m_quantity: quantity,
                         m_price: (price + parseInt(this.state.selectedMenu.m_price))*parseInt(quantity),
                         m_options: optionstr,
-                        m_img: this.state.selectedMenu.m_img
+                        m_img: this.state.selectedMenu.m_img,
+                        m_category: this.state.selectedMenu.m_category,
                     })
                     this.setState({
                         presentPage: 'menuPage',
@@ -289,6 +304,13 @@ export default function App({ $target }) {
                         presentPage: 'menuPage',
                         isPopup: false,
                         
+                    })
+                }else if(e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {
+                    this.setState({
+                        presentPage: 'home',
+                        isPopup: false,
+                        selectedMenu: '',
+                        basket: [],
                     })
                 }
             }

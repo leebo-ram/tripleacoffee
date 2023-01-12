@@ -130,6 +130,25 @@ app.post('/checkmobile', function(req, res) {
     })
 })
 
+// 스탬프 사용 및 적립
+app.post('/savestamp', function(req, res) {
+    const mem_mobile = req.body.mem_mobile;
+    const mem_stamp = req.body.mem_stamp;
+
+    db.query("update tb_member set mem_stamp=? where mem_mobile=?",[mem_stamp, mem_mobile],
+    function(err, rows, fields) {
+        if(err) {
+            console.log("스탬프 적립, 사용 실패");
+            console.log(err)
+            res.send(rows);
+        }else {
+            console.log('스탬스 적립, 사용 성공');
+            res.send(rows);
+        }
+    })
+
+})
+
 // 매출로그 출력
 app.get('/saleslog', function(req, res) {
     db.query("select * from tb_saleslog",
@@ -169,9 +188,10 @@ app.post('/newsaleslog', function(req, res) {
     })
 })
 
-// SMS인증
+// SMS 발송
 app.post('/smsCertification', sens.send);
 
+// SMS 검증
 app.post('/verifysms', function(req, res) {
         console.log(req.body)
         const phoneNumber = req.body.phoneNumber;

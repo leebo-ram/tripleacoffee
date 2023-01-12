@@ -153,8 +153,6 @@ export default function StampUsePage({ $target, initialState }) {
                     e.target.closest('div').firstElementChild.checked = false;
                     count--;
                 }else if(!e.target.closest('div').firstElementChild.checked && count < parseInt(this.state.mem_stamp / 10)){
-                    console.log(parseInt(this.state.mem_stamp) / 10)
-                    console.log(this.state.mem_stamp / 10)
                     e.target.closest('div').firstElementChild.checked = true;
                     count++;
                 }

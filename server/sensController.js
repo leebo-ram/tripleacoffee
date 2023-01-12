@@ -45,6 +45,7 @@ exports.send = async function (req, response) {
 
     axios({
         method: method,
+        withCredentials: true,
         json: true,
         url: url,
         headers: {
@@ -76,16 +77,17 @@ exports.send = async function (req, response) {
         .catch((err) => {
             if (err.response == undefined) {
                 console.log(err)
-                response.send(err);
+                response.send(false);
                 //return res.data;
                 //res.send("실패")
             }
             else {
                 console.log(err)
-                response.send(err);
+                response.send(false);
                 //return res.data;
                 //res.send("실패")
             }
         });
+    //response.send(true)
 };
 

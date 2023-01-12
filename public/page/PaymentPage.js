@@ -5,6 +5,7 @@ import StampUsePage from "./paymentPages/StampUsePage.js";
 import InputCertificatioinPage from "./paymentPages/InputCertificationPage.js";
 
 import { request } from "../api.js";
+import PayCompletePage from "./paymentPages/payCompletePage.js";
 
 
 export default function PaymentPage({ $target, initialState }) {
@@ -15,7 +16,9 @@ export default function PaymentPage({ $target, initialState }) {
         presentPage: 'chooseOrder',
         choosedOrder: 'for_here',
         mem_stamp: 0,
-        mem_mobile: ''
+        mem_mobile: '',
+        saving_stamp: 0,
+        used_stamp: 0,
     }
 
     const chooseOrderPage = new ChooseOrderPage({
@@ -45,6 +48,15 @@ export default function PaymentPage({ $target, initialState }) {
         $target,
         presentPage: this.state.presentPage,
         mem_mobile: this.state.mem_mobile
+    })
+
+    const payCompletePage = new PayCompletePage({
+        $target,
+        presentPage: this.state.presentPage,
+        mem_mobile: this.state.mem_mobile,
+        mem_stamp: this.state.mem_stamp,
+        saving_stamp: 0,
+        used_stamp: this.state.used_stamp,
     })
 
     this.setState = (nextState) => {
@@ -89,6 +101,16 @@ export default function PaymentPage({ $target, initialState }) {
                 })
                 break;
 
+            case 'payingComplete':
+                payCompletePage.setState({
+                    presentPage: this.state.presentPage,
+                    mem_mobile: this.state.mem_mobile,
+                    mem_stamp: this.state.mem_stamp,
+                    saving_stamp: this.state.saving_stamp,
+                    used_stamp: this.state.used_stamp,
+                })
+                break;
+
             default:
 
                 break;
@@ -102,14 +124,14 @@ export default function PaymentPage({ $target, initialState }) {
                     phoneNumber: this.state.mem_mobile,
                     verifyCode: req 
                 });
-                console.log(smsResponse)
+                return await smsResponse;
             } catch(e) {
                 console.log(e);
             }
         }else {
             try {
                 const smsResponse = await request('smsCertification', { phoneNumber: this.state.mem_mobile });
-                console.log(smsResponse)
+                return await smsResponse;
             } catch(e) {
                 console.log(e);
             }
@@ -155,12 +177,16 @@ export default function PaymentPage({ $target, initialState }) {
             }
             if(e.target.closest('button')) {
                 if(e.target.closest('button').className == 'pop__former__Btn') {
-                    console.log('2')
                     this.setState({
                         presentPage: 'chooseOrder'
                     })
+                }else if(e.target.closest('button').className == 'pop__skip__Btn') {
+                    this.setState({
+                        presentPage: 'payingComplete'
+                    })
                 }
             }
+
         }else if(this.state.presentPage == 'stampUseAndEarn') {
             if(e.target.closest('div')) {
                 if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_use") {
@@ -170,23 +196,67 @@ export default function PaymentPage({ $target, initialState }) {
                     })
 
                 }else if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_save") {
-
+                    let count = 0;
+                    this.state.basket.map(item => {
+                        if(item.m_quantity > 1) {
+                            for(let i=0; i< item.m_quantity; i++) {
+                                if(item.m_category != 'Bakery' && item.m_category != 'Dessert & Waffle')
+                                count++;
+                            }
+                        }else {
+                            if(item.m_category != 'Bakery' && item.m_category != 'Dessert & Waffle')
+                                count++;
+                        }
+                    });
+                    this.setState({
+                        mem_stamp: e.target.closest('div').dataset.stamp,
+                        saving_stamp: count,
+                        presentPage: 'payingComplete'
+                    })
                 }
             }
         }else if(this.state.presentPage == 'stampUse') {
             if(e.target.closest('button')) {
                 if(e.target.closest('button').className == 'pop__use__Btn') {
-                    smsCertification();
-                    this.setState({
-                        presentPage: 'inputcertification',
+                    const used_stamp = document.querySelector('p.use_count').textContent.replace('개','')
+                    smsCertification()
+                    .then((data) => {
+                        console.log(data)
+                        if(!data) {
+                            window.alert('sms 발송 실패')
+                        }else {
+                            this.setState({
+                                presentPage: 'inputcertification',
+                                used_stamp: document.querySelector('p.use_count').textContent.replace('개','')
+                            })
+                        }
                     })
+                    // if(smsCertification()) {
+                        // this.setState({
+                        //     presentPage: 'inputcertification',
+                        //     used_stamp: document.querySelector('p.use_count').textContent.replace('개')
+                        // })
+                    // }else {
+                    //     window.alert('sms 발송 오류')
+                    // }
+
                 }
             }
         }else if(this.state.presentPage == 'inputcertification') {
             if(e.target.closest('button')) {
                 if(e.target.closest('button').className == 'pop__order__Btn') {
                     const verifyCode = document.getElementById('certification__Num').value;
-                    smsCertification(verifyCode);
+                    smsCertification(verifyCode)
+                    .then((data) => {
+                        console.log(data)
+                        if(!data) {
+                            window.alert('sms 인증 실패')
+                        }else {
+                            this.setState({
+                                presentPage: 'payingComplete',
+                            })
+                        }
+                    })
                 }
             }
         }

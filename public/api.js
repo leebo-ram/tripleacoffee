@@ -37,7 +37,7 @@ const request = async (req, body) => {
         })
             .then((response) => response.json())
             .then((data) =>res = data);
-
+        console.log(res)
         return await res;
     } else {
         try {

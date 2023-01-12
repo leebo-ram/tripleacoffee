@@ -41,10 +41,10 @@ export default function MenuPage({ $target, initialState }) {
             initialState: this.state
         }).render()
 
-        new BottomArrow({
-            $target: section__container,
-            initialState: {}
-        }).render()
+        // new BottomArrow({
+        //     $target: section__container,
+        //     initialState: {}
+        // }).render()
 
         new ShoppingBk({
             $target: $target,
