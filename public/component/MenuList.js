@@ -36,6 +36,16 @@ export default function MenuList({ $target, initialState }) {
                     `).join('')}
             `
             }
+            const filter = "COFFEE"
+            const menus = document.querySelectorAll('.wrap');
+            menus.forEach((wrap) => {
+              // console.log(wrap.dataset.type);
+              if(filter === wrap.dataset.type) {
+                wrap.classList.remove('invisible');
+              } else {
+                wrap.classList.add('invisible');
+              }
+            });
         }
     }
     

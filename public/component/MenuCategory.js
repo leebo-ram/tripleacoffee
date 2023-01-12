@@ -22,8 +22,7 @@ export default function MenuCategory({ $target, initialState }) {
     // 렌더 함수
     this.render = () => {
         this.$element.innerHTML = `
-        <button class="category__btn active selected" data-filter="*">All</button>
-        <button class="category__btn" data-filter="COFFEE">COFFEE</button>
+        <button class="category__btn active selected" data-filter="COFFEE">COFFEE</button>
         <button class="category__btn" data-filter="NON_COFFEE">NONCOFFEE</button>
         <button class="category__btn" data-filter="BOTTLE">BOTTLE</button>
         <button class="category__btn" data-filter="ADE & FRAPPE">ADE/FRAPPE</button>
@@ -32,6 +31,7 @@ export default function MenuCategory({ $target, initialState }) {
         <button class="category__btn" data-filter="Signature Latte">SIGNATURELATTE</button>
         <button class="category__btn" data-filter="Dessert & Waffle">DESSERT/WAFFLE</button>
         <button class="category__btn" data-filter="Bakery">BAKERY</button>
+        <button class="category__btn" data-filter="COFFEEBEAN">COFFEEBEAN</button>
         `
     }
     
