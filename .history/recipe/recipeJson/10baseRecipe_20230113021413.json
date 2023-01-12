@@ -1,0 +1,101 @@
+[
+    {
+        "name": "샐러드 베이스",
+        "recipe": "",
+        "expirationDate": "제조일로부터 3일",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "초코베이스1",
+        "recipe": "블렌더에 우유 1000mL + 초코소스 170g + 초코파우더 80g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "초코베이스2",
+        "recipe": "블렌더에 우유 930mL + 초코소스 160g + 초코파우더 75g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "녹차베이스",
+        "recipe": "블렌더에 우유 930mL + 녹차파우더 120g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "밀크티베이스",
+        "recipe": "블렌더에 아크바베이스 28g + 설탕시럽 2.5펌프(25g) + 우유 930mL + 얼그레이밀크티파우더 140g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "복숭아 아이스티",
+        "recipe": "블렌더에 아크바베이스 85g + 찬물 1300g + 복숭아 시럽 4펌프(20g) + 세미 복숭아 베이스 2펌프 + 복숭아 파우더 245g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 1주일",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "딸기슬라이스",
+        "recipe": "블렌더에 해동된 가당 딸기 넣기; 블렌더를 짧께 끊어서 5 ~ 6번 작동",
+        "expirationDate": "제조일로부터 2주일",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "오곡베이스",
+        "recipe": "블렌더에 설탕시럽 8펌프(80g) + 우유 930mL + 오곡파우더 215g; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "군고구마베이스",
+        "recipe": "블렌더에 고구마 페이스트 400g + 우유 930mL; 블렌더 SLIDE MODE 1단 60초; 거품제거",
+        "expirationDate": "제조일로부터 우유 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "설탕시럽",
+        "recipe": "블렌더에 설탕시럽600g + 뜨거운물600g (설탕 1 : 뜨거운물 1); 블렌더 SLIDE MODE 1단 60초; 식힌 뒤 냉장보관",
+        "expirationDate": "제조일로날짜만 기입",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "자몽청 믹스",
+        "recipe": "자몽 시럽 12펌프(120g) + 자몽청 1봉지; 자몽조각이 상하지 않게 섞어주기",
+        "expirationDate": "제조일로부터 자몽청 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "레몬청 믹스",
+        "recipe": "레몬 시럽 12펌프(120g) + 레몬청 1봉지; 레몬조각이 상하지 않게 섞어주기",
+        "expirationDate": "제조일로부터 레몬청 유통기한까지",
+        "StorageMethod": "냉장보관"
+    },
+    
+    {
+        "name": "와플반죽",
+        "recipe": "블렌더에 찬물900g + 와플믹스 900g (찬물 1 : 와플믹스 1); 블렌더 SLIDE MODE 1단 60초;",
+        "expirationDate": "제조일로부터 2주일",
+        "StorageMethod": "냉장보관"
+    },
+
+    {
+        "name": "생크림",
+        "recipe": "휘핑기에 설탕 20g + 솔티드 밀크 1큰술(23g) + 에버휩 500g; 휘핑기 중간세기(3단) 2분 + 휘핑기 최대세기(5단) 5분; 단단한 느낌이 나도록 해야한다.",
+        "expirationDate": "제조일로부터 2주일",
+        "StorageMethod": "냉장보관"
+    },
+
+     
+]
