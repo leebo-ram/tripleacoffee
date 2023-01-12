@@ -82,7 +82,6 @@ export default function ShoppingBk({ $target, initialState }) {
             basket_arr.push(this.state.basket[i])
           }
         }
-        console.log(this.state.nth_content)
 
 
         this.$element.innerHTML = `

@@ -9,7 +9,6 @@ export default function StampUsePage({ $target, initialState }) {
         totalPrice: 0
     }
     const basket = [];
-
     this.setState = (nextState) => {
         this.state = {
             ...this.state,
@@ -42,13 +41,22 @@ export default function StampUsePage({ $target, initialState }) {
             }
         });
 
+        
+
+
         this.render()
     }
 
     // 렌더 함수
     this.render = () => {
         this.$element = document.querySelector('.optionPopup')
-        
+        const basket_arr = [];
+        for(let i=0; i<basket.length; i++) {
+
+          if(i > this.state.nth_content -1 && i < this.state.nth_content +4) {
+            basket_arr.push(basket[i])
+          }
+        }
         if (this.$element) {
             this.$element.innerHTML = `
             <section id="popTitles">
@@ -91,7 +99,7 @@ export default function StampUsePage({ $target, initialState }) {
       </div>
 
       <!-- 스탬프 사용할 메뉴 선택 -->
-      ${basket.map(item => `<div class="select__menu">
+      ${basket_arr.map(item => `<div class="select__menu">
       <img src="../../uploads/${item.m_img}" alt="${item.m_name}">
       <div class="select__menu__description">
         <p>${item.m_name}</p>
@@ -106,15 +114,7 @@ export default function StampUsePage({ $target, initialState }) {
     </div>
       `).join('')}
       
-
-
       <!-- 공란 -->
-      <div class="select__menu">
-
-      </div>
-
-
-
     </div>
 
     <div class="Amount__pay">

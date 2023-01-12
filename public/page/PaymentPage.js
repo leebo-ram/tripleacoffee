@@ -9,6 +9,8 @@ import PayCompletePage from "./paymentPages/payCompletePage.js";
 
 
 export default function PaymentPage({ $target, initialState }) {
+    
+    
 
     //상태관리
     this.state = {
@@ -19,6 +21,8 @@ export default function PaymentPage({ $target, initialState }) {
         mem_mobile: '',
         saving_stamp: 0,
         used_stamp: 0,
+        nth_content: 0,
+        basket_quantity: 0
     }
 
     const chooseOrderPage = new ChooseOrderPage({
@@ -41,7 +45,8 @@ export default function PaymentPage({ $target, initialState }) {
         presentPage: this.state.presentPage,
         basket: this.state.basket,
         mem_stamp: this.state.mem_stamp,
-        mem_mobile: this.state.mem_mobile
+        mem_mobile: this.state.mem_mobile,
+        nth_content: this.state.nth_content
     })
 
     const inputcertificationPage = new InputCertificatioinPage({
@@ -57,6 +62,7 @@ export default function PaymentPage({ $target, initialState }) {
         mem_stamp: this.state.mem_stamp,
         saving_stamp: 0,
         used_stamp: this.state.used_stamp,
+        
     })
 
     this.setState = (nextState) => {
@@ -64,7 +70,18 @@ export default function PaymentPage({ $target, initialState }) {
             ...this.state,
             ...nextState
         }
-        console.log(this.state)
+        let basket_quantity = 0;
+        this.state.basket.map(item => {
+            this.state.totalPrice += parseInt(item.m_price);
+            if(item.m_quantity > 1) {
+                for(let i=0; i< item.m_quantity; i++) {
+                    basket_quantity++;
+                }
+            }else {
+                basket_quantity++;
+            }
+        });
+        this.state.basket_quantity = basket_quantity;
         
         switch(this.state.presentPage) {
             case 'chooseOrder':
@@ -89,7 +106,8 @@ export default function PaymentPage({ $target, initialState }) {
                     presentPage: this.state.presentPage,
                     mem_mobile: this.state.mem_mobile,
                     mem_stamp: this.state.mem_stamp,
-                    basket: this.state.basket
+                    basket: this.state.basket,
+                    nth_content: this.state.nth_content
                 });
                 break;
 
@@ -242,6 +260,27 @@ export default function PaymentPage({ $target, initialState }) {
 
                 }
             }
+
+            if (e.target.closest('div')) {
+                if (e.target.closest('div').className == 'arrow_top') {
+                    console.log('11')
+                    if (this.state.nth_content > 0) {
+                        this.setState({
+                            nth_content: this.state.nth_content - 1,
+                        })
+                    }
+                } else if (e.target.closest('div').className == 'arrow__down') {
+                    console.log('12')
+
+                    if (this.state.nth_content < this.state.basket_quantity - 4) {
+                        this.setState({
+                            nth_content: this.state.nth_content + 1,
+                        });
+                    }
+
+                }
+            }
+
         }else if(this.state.presentPage == 'inputcertification') {
             if(e.target.closest('button')) {
                 if(e.target.closest('button').className == 'pop__order__Btn') {
