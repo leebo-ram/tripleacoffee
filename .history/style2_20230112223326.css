@@ -217,15 +217,18 @@ button {
   top: 0;
   left: 0;
   max-width: 100%;
+  /* width: 80%; */
+  /* height: 50%; */
   max-height: 100%;
-  margin: 14%;
+  margin: 10%;
 }
 
 .menu__soldOut {
   opacity: 0.5;
 }
 
-.wrap p {
+
+.wrap p{
   color: var(--color-triple-black);
   margin: 0px;
 }

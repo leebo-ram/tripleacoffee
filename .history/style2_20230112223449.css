@@ -225,7 +225,8 @@ button {
   opacity: 0.5;
 }
 
-.wrap p {
+
+.wrap p{
   color: var(--color-triple-black);
   margin: 0px;
 }
