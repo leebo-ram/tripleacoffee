@@ -22,7 +22,8 @@ export default function PaymentPage({ $target, initialState }) {
         saving_stamp: 0,
         used_stamp: 0,
         nth_content: 0,
-        basket_quantity: 0
+        basket_quantity: 0,
+        verified: false,
     }
 
     const chooseOrderPage = new ChooseOrderPage({
@@ -96,7 +97,9 @@ export default function PaymentPage({ $target, initialState }) {
             case 'stampUseAndEarn':
                 stampUseAndEarnPage.setState({
                     presentPage: this.state.presentPage,
-                    mem_mobile: this.state.mem_mobile
+                    mem_mobile: this.state.mem_mobile,
+                    basket: this.state.basket,
+                    isLoaded: false
                 });
                 
                 break;
@@ -135,26 +138,25 @@ export default function PaymentPage({ $target, initialState }) {
         }
     }
 
-    const smsCertification = async (req) => {
-        if(req) {
-            try {
-                const smsResponse = await request('verifysms', { 
-                    phoneNumber: this.state.mem_mobile,
-                    verifyCode: req 
-                });
-                return await smsResponse;
-            } catch(e) {
-                console.log(e);
-            }
-        }else {
+    const smsCertification = async () => {
             try {
                 const smsResponse = await request('smsCertification', { phoneNumber: this.state.mem_mobile });
                 return await smsResponse;
             } catch(e) {
                 console.log(e);
             }
-        }
+    }
 
+    const smsVerify = async (verifyCode) => {
+            try {
+                const smsResponse = await request('verifysms', { 
+                    phoneNumber: this.state.mem_mobile,
+                    verifyCode: verifyCode 
+                });
+                return await smsResponse;
+            } catch(e) {
+                console.log(e);
+            }
     }
 
     // 최상단 요소
@@ -210,6 +212,8 @@ export default function PaymentPage({ $target, initialState }) {
                 if(e.target.closest('div').className == 'pop__boxing' && e.target.closest('div').id=="stamp_use") {
                     this.setState({
                         mem_stamp: e.target.closest('div').dataset.stamp,
+                        count: 0,
+                        totalPrice: 0,
                         presentPage: 'stampUse'
                     })
 
@@ -236,7 +240,6 @@ export default function PaymentPage({ $target, initialState }) {
         }else if(this.state.presentPage == 'stampUse') {
             if(e.target.closest('button')) {
                 if(e.target.closest('button').className == 'pop__use__Btn') {
-                    const used_stamp = document.querySelector('p.use_count').textContent.replace('개','')
                     smsCertification()
                     .then((data) => {
                         console.log(data)
@@ -249,29 +252,17 @@ export default function PaymentPage({ $target, initialState }) {
                             })
                         }
                     })
-                    // if(smsCertification()) {
-                        // this.setState({
-                        //     presentPage: 'inputcertification',
-                        //     used_stamp: document.querySelector('p.use_count').textContent.replace('개')
-                        // })
-                    // }else {
-                    //     window.alert('sms 발송 오류')
-                    // }
-
                 }
             }
 
             if (e.target.closest('div')) {
                 if (e.target.closest('div').className == 'arrow_top') {
-                    console.log('11')
                     if (this.state.nth_content > 0) {
                         this.setState({
                             nth_content: this.state.nth_content - 1,
                         })
                     }
                 } else if (e.target.closest('div').className == 'arrow__down') {
-                    console.log('12')
-
                     if (this.state.nth_content < this.state.basket_quantity - 4) {
                         this.setState({
                             nth_content: this.state.nth_content + 1,
@@ -283,21 +274,31 @@ export default function PaymentPage({ $target, initialState }) {
 
         }else if(this.state.presentPage == 'inputcertification') {
             if(e.target.closest('button')) {
-                if(e.target.closest('button').className == 'pop__order__Btn') {
+                if(e.target.closest('button').className == 'certification__btn') {
                     const verifyCode = document.getElementById('certification__Num').value;
-                    smsCertification(verifyCode)
+                    smsVerify(verifyCode)
                     .then((data) => {
                         console.log(data)
                         if(!data) {
                             window.alert('sms 인증 실패')
                         }else {
+                            window.alert('sms 인증 성공')
                             this.setState({
-                                presentPage: 'payingComplete',
+                                verified: true,
                             })
                         }
                     })
+                }else if(e.target.closest('button').className == 'pop__order__Btn') {
+                    if(this.state.verified) {
+                        this.setState({
+                            presentPage: 'payingComplete'
+                        })
+                    }else {
+                        window.alert("sms 인증 필요")
+                    }
                 }
             }
+
         }
 
 

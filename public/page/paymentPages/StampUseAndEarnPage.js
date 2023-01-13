@@ -77,10 +77,18 @@ export default function StampUseAndEarnPage({ $target, initialState }) {
     const memberCheck = async (mem_mobile) => {
         try{
             const res = await request('checkmobile', { mem_mobile: mem_mobile });
-            this.setState({ 
+            if(res[0]) {
+              this.setState({ 
                 mem_stamp: res[0].mem_stamp,
                 isLoaded: true
             })
+            }else {
+              this.setState({
+                mem_stamp: 0,
+                isLoaded: true
+              })
+            }
+
         }catch(e) {
             console.log(e);
         }

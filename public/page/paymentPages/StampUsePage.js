@@ -1,4 +1,3 @@
-import { request } from '../../api.js';
 
 export default function StampUsePage({ $target, initialState }) {
 
@@ -8,14 +7,14 @@ export default function StampUsePage({ $target, initialState }) {
         count: 0,
         totalPrice: 0
     }
-    const basket = [];
+    let basket = [];
     this.setState = (nextState) => {
         this.state = {
             ...this.state,
             ...nextState
         }
         this.state.totalPrice = 0;
-        
+        basket = [];
         this.state.basket.map(item => {
             this.state.totalPrice += parseInt(item.m_price);
             if(item.m_quantity > 1) {
@@ -49,12 +48,19 @@ export default function StampUsePage({ $target, initialState }) {
 
     // 렌더 함수
     this.render = () => {
+      
         this.$element = document.querySelector('.optionPopup')
         const basket_arr = [];
         for(let i=0; i<basket.length; i++) {
 
           if(i > this.state.nth_content -1 && i < this.state.nth_content +4) {
             basket_arr.push(basket[i])
+          }
+        }
+        const empty_basket_arr = [];
+        if(basket_arr.length < 4) {
+          for(let i=4; i > basket_arr.length; i--) {
+            empty_basket_arr.push('')
           }
         }
         if (this.$element) {
@@ -113,6 +119,14 @@ export default function StampUsePage({ $target, initialState }) {
       </div>
     </div>
       `).join('')}
+      `
+          + `${empty_basket_arr.map(item => `
+          <div class="select__menu">
+
+      </div>
+
+          `).join('')}`+
+      `
       
       <!-- 공란 -->
     </div>

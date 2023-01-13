@@ -61,6 +61,8 @@ export default function App({ $target }) {
 
 
     this.setState = (nextState) => {
+        if(nextState.presentPage) console.log(nextState.presentPage);
+        
         if (this.state.presentPage != nextState.presentPage && !nextState.isPopup) $target.innerHTML = ``;
 
         this.state = {
@@ -80,8 +82,6 @@ export default function App({ $target }) {
                     basket: this.state.basket,
                     nth_content: this.state.nth_content
                 })
-
-                //menuPage.render();
                 break;
 
             case 'option':
@@ -105,6 +105,8 @@ export default function App({ $target }) {
                     mem_mobile: '',
                     saving_stamp: 0,
                     used_stamp: 0,
+                    verified: false,
+                    basket: this.state.basket
                 })
                 break;
 
@@ -196,6 +198,7 @@ export default function App({ $target }) {
                         isPopup: false,
                         selectedMenu: '',
                         basket: [],
+                        nth_content: 0
                     })
                 }
             }
@@ -347,6 +350,7 @@ export default function App({ $target }) {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false,
+
 
                     })
                 } else if (e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {

@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server)
 const path = require('path');
 const PORT = 3000; // 포트번호
 const db = require('./db.js');
@@ -125,7 +127,19 @@ app.post('/checkmobile', function(req, res) {
             console.log(err);
         }else{
             console.log("회원정보 확인 성공");
-            res.send(rows);
+            if(rows.length > 0) {
+                res.send(rows);
+            }else {
+                db.query("insert into tb_member(mem_mobile) values(?)",[mem_mobile], function(err2, row2, fields2) {
+                    if(err2) {
+                        console.log(err2);
+                    }else {
+                        console.log(row2);
+                        res.send(row2)
+                    }
+                })
+            }
+            
         }
     })
 })
@@ -214,6 +228,11 @@ app.post('/verifysms', function(req, res) {
         }
 
 })
+
+// 레시피 디바이스 코드는 여기부터
+// const recipe = io.of('/recipe').on('connection', function(socket) {
+
+// })
 
 
 app.listen(PORT, () => console.log(`${PORT}번 포트 대기`));

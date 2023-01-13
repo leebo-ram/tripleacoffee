@@ -1,3 +1,4 @@
+import { request } from '../../api.js';
 
 export default function PayCompletePage({ $target, initialState }) {
 
@@ -11,6 +12,7 @@ export default function PayCompletePage({ $target, initialState }) {
             ...this.state,
             ...nextState
         }
+        updateStamp()
         this.render()
     }
 
@@ -75,6 +77,14 @@ export default function PayCompletePage({ $target, initialState }) {
         }
     }
 
+    const updateStamp = async () => {
+        const updateResult = await request('savestamp', {
+            mem_stamp: parseInt(this.state.saving_stamp) + parseInt(this.state.mem_stamp) - parseInt(this.state.used_stamp),
+            mem_mobile: this.state.mem_mobile
+        });
+        console.log(updateResult);
+    }
+    
 
     // 이벤트리스너
     $target.addEventListener('click', (e) => {

@@ -49,7 +49,7 @@ export default function InputCertificatioinPage({ $target, initialState }) {
         <p>인증 번호 입력</p>
         <div class="certification__Num">
           <input type="text" name="name" required minlength="4" maxlength="8" size="10" id="certification__Num">
-          <button class="certification__btn ">인증</button>
+          <button class="certification__btn">인증</button>
         </div>
       </div>
     </div>
