@@ -230,9 +230,18 @@ app.post('/verifysms', function(req, res) {
 })
 
 // 레시피 디바이스 코드는 여기부터
-// const recipe = io.of('/recipe').on('connection', function(socket) {
+const recipe = io.of('/recipe').on('connection', function(socket) {
+    socket.on('recipe transfer', function(data) {
+        console.log('message from client: ', data);
 
-// })
+        const name = socket.name = data.name;
+        const room = socket.room = data.room;
+
+        socket.join(room);
+
+        recipe.to(room).emit('recipe transfer', data.msg);
+    });
+});
 
 
 app.listen(PORT, () => console.log(`${PORT}번 포트 대기`));

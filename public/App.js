@@ -1,12 +1,23 @@
 import { request } from "./api.js";
+import {io} from '../../node_modules/socket.io-client/build/esm/index.js';
 
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
 import OptionPage from "./page/OptionPage.js";
 import PaymentPage from "./page/PaymentPage.js";
+import RecipePractice from "./recipe/RecipePractice.js";
 
 
 export default function App({ $target }) {
+    // 레시피 전송연결
+    const recipeChat = io('/recipe');
+    recipeChat.emit('reipe transfer', {
+        name: 'kioskDevice',
+        room: 'recipe',
+        msg: 'logged in'
+    });
+
+
 
     this.state = {
         menuData: '',
@@ -56,6 +67,12 @@ export default function App({ $target }) {
             basket: this.state.basket
         }
     })
+
+    const recipePractice = new RecipePractice({
+        $target,
+        initialState: {}
+    })
+
     const optionPopup = document.createElement('div');
     optionPopup.className = 'optionPopup';
 
@@ -109,6 +126,12 @@ export default function App({ $target }) {
                     basket: this.state.basket
                 })
                 break;
+
+            case 'recipe':
+                recipePractice.setState({
+
+                })
+                break;  
 
             default:
                 homePage.render();
@@ -298,6 +321,16 @@ export default function App({ $target }) {
 
                     }
 
+                }
+            }
+
+            // 레시피 페이지 이동(임시)
+            if(e.target.closest('img')) {
+                if(e.target.closest('img').className == 'logo___img') {
+                    this.setState({
+                        presentPage: 'recipe',
+                        menuData: ''
+                    })
                 }
             }
 
