@@ -63,6 +63,7 @@ export default function PaymentPage({ $target, initialState }) {
         mem_stamp: this.state.mem_stamp,
         saving_stamp: 0,
         used_stamp: this.state.used_stamp,
+        basket: this.state.basket
         
     })
 
@@ -129,6 +130,7 @@ export default function PaymentPage({ $target, initialState }) {
                     mem_stamp: this.state.mem_stamp,
                     saving_stamp: this.state.saving_stamp,
                     used_stamp: this.state.used_stamp,
+                    basket: this.state.basket
                 })
                 break;
 

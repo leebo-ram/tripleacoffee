@@ -244,4 +244,4 @@ const recipe = io.of('/recipe').on('connection', function(socket) {
 });
 
 
-app.listen(PORT, () => console.log(`${PORT}번 포트 대기`));
+server.listen(PORT, () => console.log(`${PORT}번 포트 대기`));

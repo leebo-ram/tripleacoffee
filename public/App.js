@@ -1,5 +1,5 @@
 import { request } from "./api.js";
-import {io} from '../../node_modules/socket.io-client/build/esm/index.js';
+//import {io} from 'socket.io-client';
 
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
@@ -10,12 +10,7 @@ import RecipePractice from "./recipe/RecipePractice.js";
 
 export default function App({ $target }) {
     // 레시피 전송연결
-    const recipeChat = io('/recipe');
-    recipeChat.emit('reipe transfer', {
-        name: 'kioskDevice',
-        room: 'recipe',
-        msg: 'logged in'
-    });
+
 
 
 
@@ -194,6 +189,7 @@ export default function App({ $target }) {
                         wrap.classList.add('invisible');
                     }
                 });
+
                 return;
             }
 
@@ -262,11 +258,11 @@ export default function App({ $target }) {
                 if (e.target.closest('button').className == 'cancel___btn cancel_all') {
                     this.setState({
                         basket: []
-                    }); // 물건 개별삭제
+                    }); 
+                // 물건 개별삭제
                 } else if (e.target.closest('button').className == 'cancel___btn') {
                     const basket_idx = e.target.closest('button').dataset.idx;
                     const temp_arr = [];
-                    console.log(basket_idx)
                     for (let i = 0; i < this.state.basket.length; i++) {
                         if (basket_idx != i) {
                             temp_arr.push(this.state.basket[i])

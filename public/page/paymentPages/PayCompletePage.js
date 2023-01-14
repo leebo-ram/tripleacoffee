@@ -12,8 +12,9 @@ export default function PayCompletePage({ $target, initialState }) {
             ...this.state,
             ...nextState
         }
-        updateStamp()
-        this.render()
+        transferRecipe();
+        updateStamp();
+        this.render();
     }
 
     // 최상단 요소
@@ -83,6 +84,21 @@ export default function PayCompletePage({ $target, initialState }) {
             mem_mobile: this.state.mem_mobile
         });
         console.log(updateResult);
+    }
+    const recipeChat = io('/recipe');
+
+    const transferRecipe = () => {
+      let recipeStr = '';
+      this.state.basket.map(item => {
+        recipeStr += JSON.stringify(item);
+      })
+      const orderNum = 121
+      
+      recipeChat.emit('recipe transfer', {
+        name: 'kioskDevice',
+        room: 'recipe',
+        msg: `"orderNum": "${orderNum}","order":"${recipeStr}"`
+    });
     }
     
 
