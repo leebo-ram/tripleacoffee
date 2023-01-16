@@ -12,7 +12,20 @@ export default function PayCompletePage({ $target, initialState }) {
             ...this.state,
             ...nextState
         }
-        transferRecipe();
+        const today = new Date();
+        var year = today.getFullYear();
+        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+        var day = ('0' + today.getDate()).slice(-2);
+        
+        var dateString = year + '-' + month  + '-' + day;
+        var hours = ('0' + today.getHours()).slice(-2); 
+        var minutes = ('0' + today.getMinutes()).slice(-2);
+        var seconds = ('0' + today.getSeconds()).slice(-2); 
+  
+        var timeString = hours + ':' + minutes  + ':' + seconds;
+        updateSaleslog(dateString + " " + timeString);
+        transferRecipe(dateString + " " + timeString);
+
         updateStamp();
         this.render();
     }
@@ -85,22 +98,36 @@ export default function PayCompletePage({ $target, initialState }) {
         });
         console.log(updateResult);
     }
-    const recipeChat = io('/recipe');
 
-    const transferRecipe = () => {
+    const updateSaleslog = async (date) => {
       let recipeStr = '';
       this.state.basket.map(item => {
-        recipeStr += JSON.stringify(item);
+        recipeStr += JSON.stringify(item)+"&";
       })
-      
+      recipeStr = recipeStr.slice(0, -1)
+      const updateResult = await request('newsaleslog', {
+        sl_date: date,
+        sl_order: recipeStr,
+      });
+      if(updateResult) {console.log(true)}
+      else console.log(false)
+    }
+
+    const recipeChat = io('/recipe');
+
+    const transferRecipe = (date) => {
+      let recipeStr = '';
+      this.state.basket.map(item => {
+        recipeStr += JSON.stringify(item)+",";
+      })
+
       recipeChat.emit('recipe transfer', {
         name: 'kioskDevice',
         room: 'recipe',
-        msg: `"orderNum": "${this.state.orderNum}", "choosedOrder": "${this.state.choosedOrder}","order":"${recipeStr}"`
-    });
+        msg: `"orderDate":"${date}","orderIndex": "${this.state.orderNum}", "choosedOrder": "${this.state.choosedOrder}","order":[${recipeStr}]`
+      });
     }
     
-
     // 이벤트리스너
     $target.addEventListener('click', (e) => {
         

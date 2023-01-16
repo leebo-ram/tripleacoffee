@@ -179,27 +179,31 @@ app.get('/saleslog', function(req, res) {
 
 // 매출로그 입력
 app.post('/newsaleslog', function(req, res) {
-    const sl_orderidx = new Date().valueOf();
-    const sl_name = req.body.sl_name.split(';');
-    const sl_amount = req.body.sl_amount.split(';');
-    const sl_totalprice = req.body.sl_totalprice.split(';');
+    console.log(req.body)
+    const order_arr = req.body.sl_order.split('&');
+    for(let i=0; i<order_arr.length; i++) {
+        order_arr[i] = JSON.parse(order_arr[i]);
+    }
+    const sl_orderidx = req.body.sl_date;
 
     let sqls = "";
 
-    for(let i=0; i<sl_name.length; i++) {
-        sqls += mysql.format('insert into tb_saleslog set sl_orderidx=?, sl_name=?, sl_amount=?, sl_totalprice=?;',[sl_orderidx, sl_name[i],sl_amount[i],sl_totalprice[i]]);
+    for(let i=0; i<order_arr.length; i++) {
+        sqls += mysql.format('insert into tb_saleslog set sl_orderidx=?, sl_name=?, sl_midx=?, sl_amount=?, sl_totalprice=?;',[sl_orderidx, order_arr[i].m_name, order_arr[i].m_idx, order_arr[i].m_quantity, order_arr[i].m_price]);
     }
     console.log(sqls)
     
     db.query(sqls, function(err, rows) {
         if(err) {
             console.log("매출로그 입력 실패");
+            res.send(false)
             console.log(err);
         }else {
             console.log("매출로그 입력 성공");
-            res.send(rows)
+            res.send(true)
         }
     })
+    //res.send(true)
 })
 
 // SMS 발송

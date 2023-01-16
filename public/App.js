@@ -1,5 +1,4 @@
 import { request } from "./api.js";
-//import {io} from 'socket.io-client';
 
 import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
@@ -378,7 +377,7 @@ export default function App({ $target }) {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false,
-                        orderNum: this.state.orderNum + 1
+ 
 
                     })
                 } else if (e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {
@@ -387,6 +386,7 @@ export default function App({ $target }) {
                         isPopup: false,
                         selectedMenu: '',
                         basket: [],
+                        orderNum: this.state.orderNum + 1
                     })
                 }
             }
