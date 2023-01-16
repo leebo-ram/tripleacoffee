@@ -10,8 +10,6 @@ import PayCompletePage from "./paymentPages/payCompletePage.js";
 
 export default function PaymentPage({ $target, initialState }) {
     
-    
-
     //상태관리
     this.state = {
         ...initialState,
@@ -63,8 +61,9 @@ export default function PaymentPage({ $target, initialState }) {
         mem_stamp: this.state.mem_stamp,
         saving_stamp: 0,
         used_stamp: this.state.used_stamp,
-        basket: this.state.basket
-        
+        basket: this.state.basket,
+        orderNum: this.state.orderNum,
+        choosedOrder: this.state.choosedOrder
     })
 
     this.setState = (nextState) => {
@@ -130,7 +129,9 @@ export default function PaymentPage({ $target, initialState }) {
                     mem_stamp: this.state.mem_stamp,
                     saving_stamp: this.state.saving_stamp,
                     used_stamp: this.state.used_stamp,
-                    basket: this.state.basket
+                    basket: this.state.basket,
+                    orderNum: this.state.orderNum,
+                    choosedOrder: this.state.choosedOrder
                 })
                 break;
 

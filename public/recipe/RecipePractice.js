@@ -1,4 +1,3 @@
-//import {io} from '../../node_modules/socket.io-client/build/esm/index.js';
 
 export default function RecipePractice({ $target, initialState }) {
     this.state = {
@@ -34,7 +33,7 @@ export default function RecipePractice({ $target, initialState }) {
 
     recipeChat.on("recipe transfer", function(data) {
         console.log(data)
-       dataRecieved(data)
+        dataRecieved(data)
 
     });
 

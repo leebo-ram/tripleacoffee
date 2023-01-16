@@ -9,10 +9,6 @@ import RecipePractice from "./recipe/RecipePractice.js";
 
 
 export default function App({ $target }) {
-    // 레시피 전송연결
-
-
-
 
     this.state = {
         menuData: '',
@@ -28,7 +24,8 @@ export default function App({ $target }) {
         },
         isPopup: false,
         basket: [],
-        nth_content: 0
+        nth_content: 0,
+        orderNum: 1
     }
 
     // 전체 페이지 객체생성
@@ -59,7 +56,8 @@ export default function App({ $target }) {
     const paymentPage = new PaymentPage({
         $target,
         initialState: {
-            basket: this.state.basket
+            basket: this.state.basket,
+            orderNum: this.state.orderNum
         }
     })
 
@@ -118,7 +116,8 @@ export default function App({ $target }) {
                     saving_stamp: 0,
                     used_stamp: 0,
                     verified: false,
-                    basket: this.state.basket
+                    basket: this.state.basket,
+                    orderNum: this.state.orderNum
                 })
                 break;
 
@@ -379,7 +378,7 @@ export default function App({ $target }) {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false,
-
+                        orderNum: this.state.orderNum + 1
 
                     })
                 } else if (e.target.closest('button').className == 'pop__cancel__Btn home_Btn') {

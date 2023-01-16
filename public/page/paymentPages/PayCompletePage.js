@@ -92,12 +92,11 @@ export default function PayCompletePage({ $target, initialState }) {
       this.state.basket.map(item => {
         recipeStr += JSON.stringify(item);
       })
-      const orderNum = 121
       
       recipeChat.emit('recipe transfer', {
         name: 'kioskDevice',
         room: 'recipe',
-        msg: `"orderNum": "${orderNum}","order":"${recipeStr}"`
+        msg: `"orderNum": "${this.state.orderNum}", "choosedOrder": "${this.state.choosedOrder}","order":"${recipeStr}"`
     });
     }
     
