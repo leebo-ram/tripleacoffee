@@ -1,0 +1,19 @@
+[
+    {
+        "orderList": {
+            "menuName" : "HOT)아메리카노(오리지널)",
+            "quantity": 1,
+            "price": 2400,
+            "options" : [
+                {
+                    "optionName" : "샷추가;바닐라시럽추가",
+                    "optionQuantity" : 1
+                }
+            ]
+
+
+            
+
+        }
+    }
+]

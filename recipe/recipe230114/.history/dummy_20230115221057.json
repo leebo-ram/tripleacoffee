@@ -1,0 +1,43 @@
+[
+    {
+        "order": {
+            "date": "2023-01-12 19:16",
+            "orderIndex": 127,
+            "storeTO": "매장",
+            "quantity": 1,
+            "orderCount": 3,
+            "orderList": [
+                {
+                    "name": "HOT 아메리카노(오리지널)",
+                    "price": 2400,
+                    "options": [
+                        {
+                            "optionName" : "샷추가;바닐라시럽추가",
+                            "optionQuantity"
+                        }
+                    ]
+                },
+                {
+                    "name": "HOT 아메리카노(오리지널)",
+                    "price": 2400,
+                    "options": [
+                        {
+                            "optionName" : "샷추가;바닐라시럽추가",
+                            "optionQuantity"
+                        }
+                    ]
+                },
+                {
+                    "name": "HOT 아메리카노(오리지널)",
+                    "price": 2400,
+                    "options": [
+                        {
+                            "optionName" : "샷추가;바닐라시럽추가",
+                            "optionQuantity"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

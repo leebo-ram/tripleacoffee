@@ -1,0 +1,24 @@
+[
+    {
+            "date": "2023-01-12 19:16",
+            "orderIndex": 127,
+            "storeTO": "매장",
+            "orderCount": 3,
+            "orderList": [{"menuName":"HOT)아메리카노(오리지널)", "quantity":"1"}]
+            
+
+    },
+    {
+            "date": "2023-01-12 19:16",
+            "orderIndex": 127,
+            "storeTO": "매장",
+            "orderCount": 3,
+            "orderList": [{
+                "menuName":"HOT)아메리카노(스페셜)", "quantity":"1".
+            }],
+            "options" : [{
+                "optionName" : "샷추가;바닐라시럽추가",
+                "optionQuantity" : 1
+            }]
+    }
+]
