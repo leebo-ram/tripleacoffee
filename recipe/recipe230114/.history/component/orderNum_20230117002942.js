@@ -1,0 +1,82 @@
+export default function Orderlist({ $target }) {
+  //상태관리
+  this.state = {
+      data: '',
+  };
+  this.setState = (nextState) => {
+      this.state = {
+          ...this.state,
+          ...nextState,
+      };
+      this.render();
+  };
+
+  // 최상단 요소
+  this.$element = document.createElement('div');    // <div></div>
+  this.$element.className = 'recipe_oderNum';          // <div class="recipe_wrap"></div>
+  
+  $target.appendChild(this.$element);               // <div class="recipe_wrap"></div> 자식요소로 들어감. 
+
+  // 렌더 함수
+  this.render = () => {
+      if (this.state.data != '') {
+          this.$element.innerHTML = `
+          <section id="main__recipe">
+              <div class="main__recipe_title">
+              <p>Triple A Coffee Recipe</p>
+              <a href="../recipe/recipeBase.html">
+                  <button>베이스 만들기</button>
+              </a>
+              </div>
+          </section>
+
+          <section id="recipe">
+          <section class="orderNum_box">
+            <h3>교환번호</h3>
+            <div class="orderNum">
+
+                ${this.state.data.map(
+                (item) => `
+                <div class="orderNum__list">
+                <span class="orderNum__list__posNum"> POS: 01 </span>
+                <time datetime="2001-05-15 19:00">
+                    [주문시간] ${item.date}
+                </time>
+                <p> 교환번호: ${item.orderIndex}
+                    <span class="orderNum__list__store">(${item.choosedOrder})
+                    </span>
+                </p>
+                </div>
+            `
+          ).join('')}
+
+                </div>
+          </section>
+          
+          `;
+
+      } else {
+          this.$element.innerHTML = `
+          // 데이터 불러오기 실패. 
+      `;
+      }
+  };
+
+  const json_import = async () => {
+      let data = '';
+      await fetch('../Dummy.json')
+          .then((res) => res.json())
+          .then((res) => (data = res));
+
+      console.log(data);
+      this.setState({
+          data: data,
+      });
+  };
+
+  this.render();
+  json_import();
+  // 이벤트리스너
+  this.$element.addEventListener('click', (e) => {
+  });
+}
