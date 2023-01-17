@@ -1354,14 +1354,10 @@ input[id="select_checkbox"]:checked + label::after{
 }
 
 /* 추가사항 시작*/
-.App2 {
-  margin: 0;
-}
 .recipe_orderList {
   position: absolute;
   top: 13%;
-  left: 18.5%;
-  /* left: 350px; */
+  left: 350px;
   width: 100%;
 
 }
@@ -1369,17 +1365,16 @@ input[id="select_checkbox"]:checked + label::after{
 .recipe_orderRecipe {
   display: flex;
 
-  position: absolute;
+  position: relative;
   top: 13%;
-  left: 37%;
-  /* left: 700px; */
+  left: 700px;
   width: 100%;
 }
 /* 추가사항 종료*/
 
+
 .orderNum_box, .orderList_box,
-.recipe1_box, .recipe2_box, 
-.recipe3_box, .recipe4_box {
+.recipe1_box{
   margin: 0 0.25%;
   width: 18%;
 }
