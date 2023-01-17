@@ -4,7 +4,6 @@ import HomePage from "./page/HomePage.js";
 import MenuPage from "./page/MenuPage.js";
 import OptionPage from "./page/OptionPage.js";
 import PaymentPage from "./page/PaymentPage.js";
-import RecipePractice from "./recipe/RecipePractice.js";
 
 
 export default function App({ $target }) {
@@ -58,11 +57,6 @@ export default function App({ $target }) {
             basket: this.state.basket,
             orderNum: this.state.orderNum
         }
-    })
-
-    const recipePractice = new RecipePractice({
-        $target,
-        initialState: {}
     })
 
     const optionPopup = document.createElement('div');
@@ -347,10 +341,11 @@ export default function App({ $target }) {
                     const quantity = document.getElementById('option_show_input').value;
                     for (let i = 0; i < options.length; i++) {
                         if (options[i].firstElementChild.textContent) {
-                            optionstr += options[i].firstElementChild.textContent + ";";
+                            optionstr += options[i].firstElementChild.textContent.replaceAll(' ','') + ",";
                             price += parseInt(options[i].lastElementChild.textContent.replace('원', '').replace(',', ''));
                         }
                     }
+                    if(optionstr != '') optionstr = optionstr.slice(0, -1)
                     this.state.basket.push({
                         m_idx: this.state.selectedMenu.m_idx,
                         m_name: this.state.selectedMenu.m_name,

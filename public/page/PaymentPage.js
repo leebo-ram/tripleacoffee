@@ -14,7 +14,7 @@ export default function PaymentPage({ $target, initialState }) {
     this.state = {
         ...initialState,
         presentPage: 'chooseOrder',
-        choosedOrder: 'for_here',
+        choosedOrder: '매장',
         mem_stamp: 0,
         mem_mobile: '',
         saving_stamp: 0,
@@ -173,13 +173,13 @@ export default function PaymentPage({ $target, initialState }) {
                 if(e.target.closest('div').id == 'for_here') {
                     console.log('먹고가기')
                     this.setState({
-                        chooseOrder: 'for_here',
+                        choosedOrder: '매장',
                         presentPage: 'stampMemberCheck'
                     })
                 }else if(e.target.closest('div').id == 'to_go') {
                     console.log('포장하기')
                     this.setState({
-                        chooseOrder: 'to_go',
+                        choosedOrder: '포장',
                         presentPage: 'stampMemberCheck'
                     })
                 }

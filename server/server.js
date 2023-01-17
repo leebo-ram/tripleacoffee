@@ -11,12 +11,18 @@ const sens = require("./sensController.js");
 const Cache = require('memory-cache');
 
 app.use(express.static('../public'));
+app.use(express.static('../public/recipe'));
 app.use(bodyParser.json());
 
 
 app.get('/', function(req, res) {
     console.log(path.resolve())
     res.sendFile(path.join(path.resolve(), '../public/index.html'));
+})
+
+app.get('/recipedevice', function(req, res) {
+    console.log(path.resolve())
+    res.sendFile(path.join(path.resolve(), '../public/recipe/recipe.html'));
 })
 
 // 파일 업로드 multer라이브러리
@@ -246,6 +252,20 @@ const recipe = io.of('/recipe').on('connection', function(socket) {
         recipe.to(room).emit('recipe transfer', data.msg);
     });
 });
+
+app.get('/callRecipe', function(req,res) {
+    const m_name = req.query.m_name;
+    db.query('select * from tb_recipe where r_name=?',[m_name], function(err,rows,fields) {
+        if(err) {
+            console.log(err);
+            res.send(false);
+        }else {
+            res.send(rows)
+        }
+    })
+
+
+})
 
 
 server.listen(PORT, () => console.log(`${PORT}번 포트 대기`));

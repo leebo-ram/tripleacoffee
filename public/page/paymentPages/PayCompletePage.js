@@ -120,17 +120,17 @@ export default function PayCompletePage({ $target, initialState }) {
       this.state.basket.map(item => {
         recipeStr += JSON.stringify(item)+",";
       })
+      recipeStr = recipeStr.slice(0,-1)
 
       recipeChat.emit('recipe transfer', {
         name: 'kioskDevice',
         room: 'recipe',
-        msg: `"orderDate":"${date}","orderIndex": "${this.state.orderNum}", "choosedOrder": "${this.state.choosedOrder}","order":[${recipeStr}]`
+        msg: `{"orderDate":"${date}","orderIndex": "${this.state.orderNum}", "choosedOrder": "${this.state.choosedOrder}","order":[${recipeStr}]}`
       });
     }
     
     // 이벤트리스너
     $target.addEventListener('click', (e) => {
-        
         
     })
 }
