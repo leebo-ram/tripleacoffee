@@ -24,8 +24,8 @@ export default function OrderNum({ $target, initialState }) {
             <div class="orderNum_box">
             <h3>교환번호</h3>
             <div class="orderNum">
-                ${this.state.data.map(item => `
-                    <div class="orderNum__list">
+                ${this.state.data.map((item, index) => `
+                    <div class="orderNum__list ${index == this.state.choosedOrder ? 'selected': ''}" data-index="${index}">
                         <span class="orderNum__list__posNum"> POS: 01 </span>
                         <time datetime="${item.orderDate}">
                             [주문시간] ${item.orderDate}
@@ -41,5 +41,9 @@ export default function OrderNum({ $target, initialState }) {
     }
 
     this.render()
+
+    this.$element.addEventListener('click', (e) => {
+
+    })
 
 }

@@ -3,7 +3,8 @@ import { request } from '../../api.js'
 export default function RecipeContainer({ $target, initialState }) {
     this.state = {
         ...initialState,
-        data: ''
+        data: '',
+        r_name: ''
     }
 
     this.setState = (nextState) => {
@@ -11,9 +12,8 @@ export default function RecipeContainer({ $target, initialState }) {
             ...this.state,
             ...nextState,
         }
-        console.log('레시피 setstate')
-        callRecipe(this.state.m_name)
-        this.render()
+        callRecipe(this.state.m_idx)
+        //this.render()
     }
 
     this.$element = document.createElement('div');
@@ -22,29 +22,45 @@ export default function RecipeContainer({ $target, initialState }) {
     $target.appendChild(this.$element);
 
     this.render = () => {
-        this.$element.innerHTML = `
-        <h3>레시피1</h3>
-        <div class="recipe1">
-          <div>메뉴명: <span>${this.state.m_name}</span></div>
-          ${this.state.data.map(item => `
-            <p>${item}</p>
-          `).join('')}
-        </div>
-        `;
+        if(this.state.data != '') {
+            this.$element.innerHTML = `
+            <h3>레시피</h3>
+            <div class="recipe1">
+                <div>메뉴명: <span>${this.state.r_name}</span></div>
+                ${this.state.data.map(item => `
+                    <p>${item}</p>
+                `).join('')}
+            </div>
+            `;
+        }else {
+            this.$element.innerHTML = `
+            <h3>레시피1</h3>
+            <div class="recipe1">
+                <div>메뉴명: <span></span></div>
+
+            </div>
+            `;
+        }
+
     }
 
-    const callRecipe = async (m_name) => {
-        const data = await request(`callRecipe?m_name=${m_name}`)
-        console.log(data)
-        let data_arr = [];
-        if(data[0]) {
-            data_arr = data[0].r_recipe.split('; ');
-            for(let i=0; i<data_arr.length; i++) {
-                data_arr[i] = i+1 + '. ' +data_arr[i]
+    const callRecipe = async (m_idx) => {
+        if(m_idx != '') {
+            const data = await request(`callRecipe?m_idx=${m_idx}`)
+            let data_arr = [];
+            if(data[0]) {
+                this.state.r_name = data[0].r_name
+                data_arr = data[0].r_recipe.split('; ');
+                for(let i=0; i<data_arr.length; i++) {
+                    data_arr[i] = i+1 + '. ' +data_arr[i]
+                }
             }
+            this.state.data = data_arr
+        }else {
+            this.state.data = '';
         }
-        this.state.data = data_arr
-        console.log(data_arr)
+
+        this.render();
     }
-    callRecipe("HOT)아메리카노(오리지널)")
+    this.render();
 }

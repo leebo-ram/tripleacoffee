@@ -254,8 +254,8 @@ const recipe = io.of('/recipe').on('connection', function(socket) {
 });
 
 app.get('/callRecipe', function(req,res) {
-    const m_name = req.query.m_name;
-    db.query('select * from tb_recipe where r_name=?',[m_name], function(err,rows,fields) {
+    const m_idx = req.query.m_idx;
+    db.query('select * from tb_recipe where r_midx=?',[m_idx], function(err,rows,fields) {
         if(err) {
             console.log(err);
             res.send(false);
