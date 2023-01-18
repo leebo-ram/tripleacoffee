@@ -18,7 +18,7 @@ export default function AllCooked({ $target, initialState }) {
     
     this.render = () => {
         this.$element.innerHTML = `
-            <button>
+            <button id="allcooked">
                 <p>전체완료</p>
             </button>
         `;

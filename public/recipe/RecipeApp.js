@@ -8,7 +8,8 @@ export default function RecipeApp({ $target }) {
     this.state = {
         data: [],
         choosedOrder: 0,
-        choosedMenu: []
+        choosedMenu: [],
+        completedData: []
     }
 
     const recipeTitle = new RecipeTitle({
@@ -20,6 +21,7 @@ export default function RecipeApp({ $target }) {
         initialState: {
             data: this.state.data,
             choosedOrder: this.state.choosedOrder,
+            completedData: this.state.completedData
         },
     });
 
@@ -59,7 +61,7 @@ export default function RecipeApp({ $target }) {
     const allCooked = new AllCooked({
         $target,
         initialState: {
-            
+
         }
     })
 
@@ -69,7 +71,7 @@ export default function RecipeApp({ $target }) {
             ...this.state,
             ...nextState,
         };
-        console.log(this.state.choosedMenu)
+        console.log(this.state.choosedOrder)
         orderNum.setState({
             data: this.state.data,
             choosedOrder: this.state.choosedOrder
@@ -79,48 +81,51 @@ export default function RecipeApp({ $target }) {
             orderData: this.state.data[this.state.choosedOrder],
             choosedMenu: this.state.choosedMenu
         })
+        recipeContainer1.setState({
+            m_idx: ''
+        })
+        recipeContainer2.setState({
+            m_idx: ''
+        })
+        recipeContainer3.setState({
+            m_idx: ''
+        })
+        recipeContainer4.setState({
+            m_idx: ''
+        })
+        if(this.state.data[this.state.choosedOrder]) {
+            for(let i=0; i< this.state.data[this.state.choosedOrder].order.length; i++) {
 
-        for(let i=0; i< this.state.data[this.state.choosedOrder].order.length; i++) {
-            recipeContainer1.setState({
-                m_idx: ''
-            })
-            recipeContainer2.setState({
-                m_idx: ''
-            })
-            recipeContainer3.setState({
-                m_idx: ''
-            })
-            recipeContainer4.setState({
-                m_idx: ''
-            })
-            if(i > 3) break;
-            if(this.state.choosedMenu.length < i+1) break;
-
-            switch(i) {
-                case 0:
-                    recipeContainer1.setState({
-                        m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
-                    })
-                    break;
-                case 1:
-                    recipeContainer2.setState({
-                        m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
-                    })
-                    break;
-                case 2:
-                    recipeContainer3.setState({
-                        m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
-                    })
-                    break;
-                case 3:
-                    recipeContainer4.setState({
-                        m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
-                    })
-                    break;
-                default:
-                    break;
+                if(i > 3) break;
+                if(this.state.choosedMenu.length < i+1) break;
+    
+                switch(i) {
+                    case 0:
+                        recipeContainer1.setState({
+                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                        })
+                        break;
+                    case 1:
+                        recipeContainer2.setState({
+                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                        })
+                        break;
+                    case 2:
+                        recipeContainer3.setState({
+                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                        })
+                        break;
+                    case 3:
+                        recipeContainer4.setState({
+                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                        })
+                        break;
+                    default:
+                        break;
+                }
             }
         }
+
     }
 
     const recipeChat = io('/recipe');
@@ -167,7 +172,8 @@ export default function RecipeApp({ $target }) {
 
         this.setState({
             data: this.state.data,
-            choosedMenu: count_arr
+            choosedMenu: count_arr,
+            choosedOrder: 0
         })
     }
 
@@ -175,18 +181,18 @@ export default function RecipeApp({ $target }) {
         if (e.target.closest('div')) {
             // 주문목록 선택
             if (e.target.closest('div').classList.contains('orderNum__list')) {
-                const exchangeList = document.querySelector(
-                    '.orderNum__list.selected'
-                );
-                if (exchangeList != null) {
-                    exchangeList.classList.remove('selected');
-                }
+                // const exchangeList = document.querySelector('.orderNum__list.selected');
+                // if (exchangeList != null) {
+                //     exchangeList.classList.remove('selected');
+
+                // }
+                
                 if (!e.target.closest('div').classList.contains('selected')) {
                     e.target.closest('div').classList.add('selected');
                     this.setState({
                         choosedOrder: e.target.closest('div').dataset.index
                     })
-                }
+                }else this.setState({ choosedOrder: -1 })
                 return;
             }
             // 선택된 주문의 음료목록 선택
@@ -210,6 +216,19 @@ export default function RecipeApp({ $target }) {
                 return;
             }
             
+        }
+        if(e.target.closest('button')) {
+            if(e.target.closest('button').id == 'allcooked') {
+                this.state.completedData.push(this.state.data[this.state.choosedOrder]);
+                this.state.data = this.state.data.filter((value, index, arr) => {
+                    return index != this.state.choosedOrder;
+                });
+
+                this.setState({
+                    choosedOrder: this.state.data.length == 0 ? -1 : 0,
+                    choosedMenu: []
+                })
+            }
         }
     })
 }

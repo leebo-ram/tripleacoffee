@@ -20,6 +20,7 @@ export default function OrderNum({ $target, initialState }) {
     $target.appendChild(this.$element);
 
     this.render = () => {
+        console.log(this.state.choosedOrder)
         this.$element.innerHTML = `
             <div class="orderNum_box">
             <h3>교환번호</h3>
@@ -35,6 +36,18 @@ export default function OrderNum({ $target, initialState }) {
                             </span>
                         </p>
                     </div>
+                `).join('')}
+                ${this.state.completedData.map((item, index) => `
+                <div class="orderNum__list ${this.state.data.length + index == this.state.choosedOrder ? 'selected': ''}" data-index="${this.state.data.length + index}">
+                <span class="orderNum__list__posNum"> POS: 01 </span>
+                <time datetime="${item.orderDate}">
+                    [주문시간] ${item.orderDate} 완료
+                </time>
+                <p> 교환번호: ${item.orderIndex}
+                    <span class="orderNum__list__store">(${item.choosedOrder})
+                    </span>
+                </p>
+            </div>
                 `).join('')}
             </div>
         `;
