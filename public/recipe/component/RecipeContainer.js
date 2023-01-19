@@ -12,14 +12,17 @@ export default function RecipeContainer({ $target, initialState }) {
             ...this.state,
             ...nextState,
         }
+        console.log(this.state.m_idx)
         callRecipe(this.state.m_idx)
         //this.render()
     }
 
     this.$element = document.createElement('div');
     this.$element.className = 'recipe_box';
+    this.$element2 = document.querySelector('#recipe');
 
-    $target.appendChild(this.$element);
+    this.$element2.appendChild(this.$element)
+    //$target.appendChild(this.$element);
 
     this.render = () => {
         if(this.state.data != '') {
@@ -34,7 +37,7 @@ export default function RecipeContainer({ $target, initialState }) {
             `;
         }else {
             this.$element.innerHTML = `
-            <h3>레시피1</h3>
+            <h3>레시피</h3>
             <div class="recipe1">
                 <div>메뉴명: <span></span></div>
 

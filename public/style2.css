@@ -1391,6 +1391,11 @@ input[type="checkbox"]:checked + label::after{
   height: 200%;
   padding-top: 250px;
   top: 0;
-  /*background-color: rgba(44, 44, 44, 0.486);*/
+  background-color: rgba(44, 44, 44, 0.486);
+  /* background-color: #ffffff; */
+}
+
+#popTitles, #popBox {
   background-color: #ffffff;
 }
+

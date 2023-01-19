@@ -11,6 +11,7 @@ export default function OrderList({ $target, initialState }) {
                 ...nextState,
             }
         }else {
+
             this.state = {
                 ...this.state,
                 ...nextState,
@@ -23,11 +24,13 @@ export default function OrderList({ $target, initialState }) {
     this.$element = document.createElement('div');
     this.$element.className = 'orderList_box';
 
-    $target.appendChild(this.$element);
+    // $target.appendChild(this.$element);
+    this.$element2 = document.querySelector('#recipe');
+    this.$element2.appendChild(this.$element)
 
     this.render = () => {
-        console.log(this.state.orderData)
         if(this.state.orderData) {
+
             this.$element.innerHTML = `
                 <h3>주문목록 <span class="orderList__count">총 ${this.state.orderData.order.length}건</span></h3>
                 <div class="orderList">

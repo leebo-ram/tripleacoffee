@@ -11,10 +11,15 @@ export default function RecipeApp({ $target }) {
         choosedMenu: [],
         completedData: []
     }
-
+    
     const recipeTitle = new RecipeTitle({
         $target
     });
+
+    this.$element = document.createElement('section');
+    this.$element.id = 'recipe';
+
+    $target.appendChild(this.$element);
 
     const orderNum = new OrderNum({
         $target,
@@ -71,59 +76,62 @@ export default function RecipeApp({ $target }) {
             ...this.state,
             ...nextState,
         };
-        console.log(this.state.choosedOrder)
         orderNum.setState({
             data: this.state.data,
             choosedOrder: this.state.choosedOrder
         });
 
         orderList.setState({
-            orderData: this.state.data[this.state.choosedOrder],
+            orderData: this.state.data[this.state.choosedOrder] ? this.state.data[this.state.choosedOrder]:this.state.completedData[this.state.choosedOrder-this.state.data.length],
             choosedMenu: this.state.choosedMenu
         })
-        recipeContainer1.setState({
-            m_idx: ''
-        })
-        recipeContainer2.setState({
-            m_idx: ''
-        })
-        recipeContainer3.setState({
-            m_idx: ''
-        })
-        recipeContainer4.setState({
-            m_idx: ''
-        })
-        if(this.state.data[this.state.choosedOrder]) {
-            for(let i=0; i< this.state.data[this.state.choosedOrder].order.length; i++) {
 
+        if(this.state.data[this.state.choosedOrder] || this.state.completedData[this.state.choosedOrder - this.state.data.length]) {
+
+            const temp_arr = this.state.data.concat(this.state.completedData)
+            console.log(temp_arr)
+            console.log(this.state.choosedMenu)
+            for(let i=0; i< 4; i++) {
                 if(i > 3) break;
-                if(this.state.choosedMenu.length < i+1) break;
-    
                 switch(i) {
                     case 0:
                         recipeContainer1.setState({
-                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                            m_idx: temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]] ? temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx: ''
                         })
                         break;
                     case 1:
                         recipeContainer2.setState({
-                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                            m_idx: temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]] ? temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx: ''
                         })
                         break;
                     case 2:
                         recipeContainer3.setState({
-                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                            m_idx: temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]] ? temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx: ''
                         })
                         break;
                     case 3:
                         recipeContainer4.setState({
-                            m_idx: this.state.data[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx
+                            m_idx: temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]] ? temp_arr[this.state.choosedOrder].order[this.state.choosedMenu[i]].m_idx: ''
                         })
                         break;
                     default:
                         break;
                 }
             }
+        }else {
+
+            recipeContainer1.setState({
+                m_idx: ''
+            })
+            recipeContainer2.setState({
+                m_idx: ''
+            })
+            recipeContainer3.setState({
+                m_idx: ''
+            })
+            recipeContainer4.setState({
+                m_idx: ''
+            })
         }
 
     }
@@ -189,9 +197,27 @@ export default function RecipeApp({ $target }) {
                 
                 if (!e.target.closest('div').classList.contains('selected')) {
                     e.target.closest('div').classList.add('selected');
-                    this.setState({
-                        choosedOrder: e.target.closest('div').dataset.index
-                    })
+                    let count_arr = [];
+                    if(this.state.data[e.target.closest('div').dataset.index]) {
+                        for(let i=0; i<this.state.data[e.target.closest('div').dataset.index].order.length; i++) {
+                            if(i == 4) break;
+                            count_arr.push(i);
+                        }
+                        this.setState({
+                            choosedOrder: e.target.closest('div').dataset.index,
+                            choosedMenu: count_arr
+                        })
+                    }else {
+                        for(let i=0; i<this.state.completedData[e.target.closest('div').dataset.index - this.state.data.length].order.length; i++) {
+                            if(i == 4) break;
+                            count_arr.push(i);
+                        }
+                        this.setState({
+                            choosedOrder: e.target.closest('div').dataset.index,
+                            choosedMenu: count_arr
+                        })
+                    }
+
                 }else this.setState({ choosedOrder: -1 })
                 return;
             }
@@ -219,15 +245,32 @@ export default function RecipeApp({ $target }) {
         }
         if(e.target.closest('button')) {
             if(e.target.closest('button').id == 'allcooked') {
-                this.state.completedData.push(this.state.data[this.state.choosedOrder]);
-                this.state.data = this.state.data.filter((value, index, arr) => {
-                    return index != this.state.choosedOrder;
-                });
+                if(this.state.data[this.state.choosedOrder]) {
+                    this.state.completedData.push(this.state.data[this.state.choosedOrder]);
+                    this.state.data = this.state.data.filter((value, index, arr) => {
+                        return index != this.state.choosedOrder;
+                    });
+                    if(this.state.data.length == 0) {
+                        this.setState({
+                            choosedOrder: -1,
+                            choosedMenu: []
+                        })
+                    }else {
+                        let count_arr = [];
+                        for(let i=0; i<this.state.data[0].order.length; i++) {
+                            if(i == 4) break;
+                            count_arr.push(i);
+                        }
+                        this.setState({
+                            choosedOrder: 0,
+                            choosedMenu: count_arr
+                        })
+                    }
 
-                this.setState({
-                    choosedOrder: this.state.data.length == 0 ? -1 : 0,
-                    choosedMenu: []
-                })
+                }
+
+
+
             }
         }
     })

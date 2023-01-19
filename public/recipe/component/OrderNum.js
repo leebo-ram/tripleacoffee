@@ -14,15 +14,18 @@ export default function OrderNum({ $target, initialState }) {
         this.render()
     }
 
-    this.$element = document.createElement('section');
-    this.$element.id = 'recipe';
+    // this.$element = document.createElement('section');
+    // this.$element.id = 'recipe';
 
-    $target.appendChild(this.$element);
-
+    // $target.appendChild(this.$element);
+    this.$element = document.querySelector('#recipe');
+    this.$element2 = document.createElement('div');
+    this.$element2.className = 'orderNum_box';
+    this.$element.appendChild(this.$element2)
     this.render = () => {
         console.log(this.state.choosedOrder)
-        this.$element.innerHTML = `
-            <div class="orderNum_box">
+        this.$element2.innerHTML = `
+
             <h3>교환번호</h3>
             <div class="orderNum">
                 ${this.state.data.map((item, index) => `
@@ -32,7 +35,7 @@ export default function OrderNum({ $target, initialState }) {
                             [주문시간] ${item.orderDate}
                         </time>
                         <p> 교환번호: ${item.orderIndex}
-                            <span class="orderNum__list__store">(${item.choosedOrder})
+                            <span class="${item.choosedOrder == '매장' ? 'orderNum__list__store':'orderNum__list__packaging'}">(${item.choosedOrder})
                             </span>
                         </p>
                     </div>
@@ -49,7 +52,6 @@ export default function OrderNum({ $target, initialState }) {
                 </p>
             </div>
                 `).join('')}
-            </div>
         `;
     }
 
