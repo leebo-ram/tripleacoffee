@@ -29,7 +29,7 @@ export default function RecipeContainer({ $target, initialState }) {
             this.$element.innerHTML = `
             <h3>레시피</h3>
             <div class="recipe1">
-                <div>메뉴명: <span>${this.state.r_name}</span></div>
+                <div><span>${this.state.r_name}</span></div>
                 ${this.state.data.map(item => `
                     <p>${item}</p>
                 `).join('')}
@@ -39,7 +39,7 @@ export default function RecipeContainer({ $target, initialState }) {
             this.$element.innerHTML = `
             <h3>레시피</h3>
             <div class="recipe1">
-                <div>메뉴명: <span></span></div>
+                <div><span></span></div>
 
             </div>
             `;

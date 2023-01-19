@@ -241,6 +241,12 @@ export default function RecipeApp({ $target }) {
                 })
                 return;
             }
+
+            // 메뉴 마침버튼 클릭
+            if(e.target.closest('div').classList.contains('order__menu__complete__btn')) {
+                e.target.closest('div').parentElement.parentElement.classList.add('completed')
+            }
+
             
         }
         if(e.target.closest('button')) {

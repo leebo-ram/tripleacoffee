@@ -23,7 +23,7 @@ export default function App({ $target }) {
         isPopup: false,
         basket: [],
         nth_content: 0,
-        orderNum: 1
+        orderNum: 100
     }
 
     // 전체 페이지 객체생성
@@ -253,6 +253,8 @@ export default function App({ $target }) {
                     }); 
                 // 물건 개별삭제
                 } else if (e.target.closest('button').className == 'cancel___btn') {
+                    console.log(e.target.closest('button').dataset.idx)
+                    console.log(this.state.nth_content)
                     const basket_idx = e.target.closest('button').dataset.idx;
                     const temp_arr = [];
                     for (let i = 0; i < this.state.basket.length; i++) {
@@ -260,7 +262,8 @@ export default function App({ $target }) {
                             temp_arr.push(this.state.basket[i])
                         }
                     }
-                    if(this.state.nth_content > temp_arr.length -3) {
+                    console.log(temp_arr)
+                    if(this.state.nth_content > temp_arr.length -3 && this.state.nth_content > 0) {
                         this.setState({
                             basket: temp_arr,
                             nth_content: this.state.nth_content-1

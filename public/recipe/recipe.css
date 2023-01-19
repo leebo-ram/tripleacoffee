@@ -553,6 +553,11 @@
     background-color: var(--color-triple-green);
   }
 
+  .completed {
+    color:var(--color-triple-light-gray);
+    text-decoration: line-through;
+  }
+
   /* .recipeApp {
     float: left;
   

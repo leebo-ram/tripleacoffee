@@ -106,7 +106,8 @@ export default function StampUsePage({ $target, initialState }) {
 
       <!-- 스탬프 사용할 메뉴 선택 -->
       ${basket_arr.map(item => `<div class="select__menu">
-      <img src="../../uploads/${item.m_img}" alt="${item.m_name}">
+      <div class="select_menu_img_container"><img src="../../uploads/${item.m_img}" alt="${item.m_name}"></div>
+      
       <div class="select__menu__description">
         <p>${item.m_name}</p>
         <p class="select__price">${parseInt(item.m_price).toLocaleString()}원</p>

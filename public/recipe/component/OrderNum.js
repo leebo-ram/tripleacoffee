@@ -14,10 +14,6 @@ export default function OrderNum({ $target, initialState }) {
         this.render()
     }
 
-    // this.$element = document.createElement('section');
-    // this.$element.id = 'recipe';
-
-    // $target.appendChild(this.$element);
     this.$element = document.querySelector('#recipe');
     this.$element2 = document.createElement('div');
     this.$element2.className = 'orderNum_box';
@@ -41,13 +37,13 @@ export default function OrderNum({ $target, initialState }) {
                     </div>
                 `).join('')}
                 ${this.state.completedData.map((item, index) => `
-                <div class="orderNum__list ${this.state.data.length + index == this.state.choosedOrder ? 'selected': ''}" data-index="${this.state.data.length + index}">
+                <div class="orderNum__list completed ${this.state.data.length + index == this.state.choosedOrder ? 'selected': ''}" data-index="${this.state.data.length + index}">
                 <span class="orderNum__list__posNum"> POS: 01 </span>
                 <time datetime="${item.orderDate}">
-                    [주문시간] ${item.orderDate} 완료
+                    [주문시간] ${item.orderDate}
                 </time>
                 <p> 교환번호: ${item.orderIndex}
-                    <span class="orderNum__list__store">(${item.choosedOrder})
+                    <span class="${item.choosedOrder == '매장' ? 'orderNum__list__store':'orderNum__list__packaging'}">(${item.choosedOrder})
                     </span>
                 </p>
             </div>
