@@ -35,7 +35,7 @@ export default function OrderList({ $target, initialState }) {
                 <h3>주문목록 <span class="orderList__count">총 ${this.state.orderData.order.length}건</span></h3>
                 <div class="orderList">
                     ${this.state.orderData.order.map((item, index) => `
-                        <div class="order__menu ${this.state.choosedMenu.indexOf(index) == -1 ? '':'selected'}" data-index="${index}">
+                        <div class="order__menu ${this.state.choosedMenu.indexOf(index) == -1 ? '':'selected'} ${item.done ? 'completed':""}" data-index="${index}">
                             <p class="order__menu__name">${item.m_name}<span>${item.m_quantity}개</span></p>
                             <ul class="order__menu__option">` + `
                                 ${item.m_options.map(item2 => `
@@ -49,11 +49,8 @@ export default function OrderList({ $target, initialState }) {
 
                             <!-- 주문 목록 완료 Btn -->
                             <div class="order__menu__btn">
-                                <div class="order__menu__cancel__btn order__menuBtns" data-index="${index}">
-                                    <p>해제</p>
-                                </div>
-                                <div class="order__menu__complete__btn order__menuBtns" data-index="${index}">
-                                    <p>마침</p>
+                                <div class="order__menu__complete__btn order__menuBtns ${item.done ? 'completed':""}" data-index="${index}">
+                                    <p>${item.done ? "제조":"마침"}</p>
                                 </div>
                             </div>
                         </div>

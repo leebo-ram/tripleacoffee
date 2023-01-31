@@ -315,11 +315,14 @@
     display: flex;
     max-width: 100%;
     margin-bottom: 4px;
+    flex-direction: row-reverse;
   }
   
   .order__menuBtns p {
     text-align: center;
     margin: 5px 0;
+    text-decoration: none !important;
+    color: white !important;
   }
   
   .order__menu__cancel__btn {
@@ -353,7 +356,11 @@
     color: white;
     border: 5px solid transparent;
     border-radius: var(--size-border-radius);
-    background-color: var(--color-triple-red)
+    background-color: var(--color-triple-red);
+  }
+  .order__menu__complete__btn.completed {
+    background-color: var(--color-triple-light-gray);
+    color: white !important;
   }
   
   
@@ -553,7 +560,7 @@
     background-color: var(--color-triple-green);
   }
 
-  .completed {
+  .completed :not(div){
     color:var(--color-triple-light-gray);
     text-decoration: line-through;
   }

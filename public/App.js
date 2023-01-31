@@ -371,7 +371,7 @@ export default function App({ $target }) {
 
         if (this.state.presentPage == 'payment') {
             if (e.target.closest('button')) {
-                if (e.target.closest('button').className == 'pop__cancel__Btn') {
+                if (e.target.closest('button').className == 'pop__cancel__Btn' || e.target.closest('button').className == 'stamp_use_cancel') {
                     this.setState({
                         presentPage: 'menuPage',
                         isPopup: false,

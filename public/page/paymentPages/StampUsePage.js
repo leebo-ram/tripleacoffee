@@ -145,7 +145,7 @@ export default function StampUsePage({ $target, initialState }) {
 
   <!-- 취소 / 주문Btn -->
   <section id="pop__bottom">
-    <button>취소</button>
+    <button class="stamp_use_cancel">취소</button>
     <button class="pop__use__Btn">사용</button>
   </section>
         `

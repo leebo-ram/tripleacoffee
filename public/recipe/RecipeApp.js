@@ -170,6 +170,7 @@ export default function RecipeApp({ $target }) {
             }
 
             item.m_options = option_arr;
+            item.done = false;
         })
         let count_arr = [];
         for(let i=0; i<count; i++) {
@@ -244,7 +245,29 @@ export default function RecipeApp({ $target }) {
 
             // 메뉴 마침버튼 클릭
             if(e.target.closest('div').classList.contains('order__menu__complete__btn')) {
-                e.target.closest('div').parentElement.parentElement.classList.add('completed')
+                if(e.target.closest('div').parentElement.parentElement.classList.contains('completed')) {
+                    e.target.closest('div').parentElement.parentElement.classList.remove('completed');
+                    e.target.closest('div').classList.remove('completed');
+                    const index = e.target.closest('div').dataset.index;
+                    if(this.state.data[this.state.choosedOrder]) {
+                        this.state.data[this.state.choosedOrder].order[index].done = false;
+                    }else {
+                        this.state.completedData[this.state.choosedOrder - this.state.data.length].order[index].done = false;
+                    }
+                    e.target.closest('div').firstElementChild.innerText = '마침'
+                    
+                }else {
+                    e.target.closest('div').parentElement.parentElement.classList.add('completed');
+                    e.target.closest('div').classList.add('completed');
+                    const index = e.target.closest('div').dataset.index;
+                    if(this.state.data[this.state.choosedOrder]) {
+                        this.state.data[this.state.choosedOrder].order[index].done = true;
+                    }else {
+                        this.state.completedData[this.state.choosedOrder - this.state.data.length].order[index].done = true;
+                    }
+                    e.target.closest('div').firstElementChild.innerText = '제조'
+                }
+
             }
 
             
