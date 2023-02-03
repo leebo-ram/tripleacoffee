@@ -1,5 +1,5 @@
 import RecipeTitle from './component/RecipeTitle.js';
-import OrderNum from './component/orderNum.js';
+import OrderNum from './component/OrderNum.js';
 import OrderList from './component/OrderList.js';
 import RecipeContainer from './component/RecipeContainer.js';
 import AllCooked from './component/AllCooked.js';
@@ -11,7 +11,7 @@ export default function RecipeApp({ $target }) {
         choosedMenu: [],
         completedData: []
     }
-    
+
     const recipeTitle = new RecipeTitle({
         $target
     });
@@ -78,6 +78,7 @@ export default function RecipeApp({ $target }) {
         };
         orderNum.setState({
             data: this.state.data,
+            completedData: this.state.completedData,
             choosedOrder: this.state.choosedOrder
         });
 
@@ -89,8 +90,6 @@ export default function RecipeApp({ $target }) {
         if(this.state.data[this.state.choosedOrder] || this.state.completedData[this.state.choosedOrder - this.state.data.length]) {
 
             const temp_arr = this.state.data.concat(this.state.completedData)
-            console.log(temp_arr)
-            console.log(this.state.choosedMenu)
             for(let i=0; i< 4; i++) {
                 if(i > 3) break;
                 switch(i) {
@@ -144,46 +143,63 @@ export default function RecipeApp({ $target }) {
         msg: 'logged in'
     });
 
-    recipeChat.on("recipe transfer", function(recievedData) {
-        dataRecieved(recievedData)
-
+    recipeChat.emit("completedrecipe", {
+        name: 'recipeDevice',
+        room: 'completedrecipe',
+        msg: 'logged in'
     });
 
-    const dataRecieved = (recievedData) => {
-        if(recievedData == 'logged in') return;
-        recievedData = JSON.parse(recievedData)
-        let count = 0;
-        recievedData.order.map(item => {
-            count++;
-            let option_arr = [];
-            if(item.m_options != '') {
-                option_arr = item.m_options.split(',');
-                for(let i=0; i< option_arr.length; i++) {
-                    if(option_arr[i].slice(-1) == ')') {
-                        option_arr[i] = option_arr[i].replaceAll(')','')
-                        let temp = option_arr[i].split('(');
-                        option_arr[i] = { name: temp[0], quantity: temp[1]}
-                    }else {
-                        option_arr[i] = { name: option_arr[i], quantity: "1"}
-                    }
-                }
-            }
+    recipeChat.on("recipe transfer", function(recievedData) {
+        dataRecieved(recievedData)
+    });
 
-            item.m_options = option_arr;
-            item.done = false;
-        })
+    recipeChat.on("completedrecipe", function(recievedData) {
+        completedDataRecieved(recievedData)
+    })
+
+    const dataRecieved = (recievedData) => {
+        if(recievedData == 'logged in' || recievedData[0] == undefined) return;
         let count_arr = [];
-        for(let i=0; i<count; i++) {
+        for(let i=0; i<recievedData[0].order.length; i++) {
             if(i == 4) break;
             count_arr.push(i);
         }
-        this.state.data.push(recievedData)
-
+        this.state.data = recievedData
+        console.log(recievedData)
         this.setState({
             data: this.state.data,
             choosedMenu: count_arr,
             choosedOrder: 0
         })
+        
+    }
+
+    const completedDataRecieved = (recievedData) => {
+        console.log(recievedData)
+        if(recievedData == 'logged in' || recievedData[0] == undefined) return;
+        this.state.completedData = recievedData;
+        this.state.data = this.state.data.filter((value, index, arr) => {
+            return value.orderIndex != recievedData[recievedData.length-1].orderIndex;
+        });
+        if(this.state.data.length == 0) {
+            this.setState({
+                completedData: this.state.completedData,
+                choosedOrder: -1,
+                choosedMenu: []
+            })
+        }else {
+            let count_arr = [];
+            for(let i=0; i<this.state.data[0].order.length; i++) {
+                if(i == 4) break;
+                count_arr.push(i);
+            }
+            this.setState({
+                completedData: this.state.completedData,
+                choosedOrder: 0,
+                choosedMenu: count_arr
+            })
+        }
+        
     }
 
     $target.addEventListener('click', (e) => {
@@ -255,6 +271,16 @@ export default function RecipeApp({ $target }) {
                         this.state.completedData[this.state.choosedOrder - this.state.data.length].order[index].done = false;
                     }
                     e.target.closest('div').firstElementChild.innerText = '마침'
+
+                    if (!e.target.closest('div').parentElement.parentElement.classList.contains('selected')) {
+                        if(this.state.choosedMenu.length < 4) {
+                            e.target.closest('div').parentElement.parentElement.classList.add('selected');
+                            this.state.choosedMenu.push(parseInt(e.target.closest('div').dataset.index))
+                        }
+                    }
+                    this.setState({
+                        choosedMenu: this.state.choosedMenu
+                    })
                     
                 }else {
                     e.target.closest('div').parentElement.parentElement.classList.add('completed');
@@ -266,6 +292,17 @@ export default function RecipeApp({ $target }) {
                         this.state.completedData[this.state.choosedOrder - this.state.data.length].order[index].done = true;
                     }
                     e.target.closest('div').firstElementChild.innerText = '제조'
+
+                    if (e.target.closest('div').parentElement.parentElement.classList.contains('selected')) {
+                        e.target.closest('div').parentElement.parentElement.classList.remove('selected');
+                        this.state.choosedMenu = this.state.choosedMenu.filter((value, index, arr) => {
+                            return value != e.target.closest('div').dataset.index;
+                        });
+    
+                    }
+                    this.setState({
+                        choosedMenu: this.state.choosedMenu
+                    })
                 }
 
             }
@@ -275,26 +312,13 @@ export default function RecipeApp({ $target }) {
         if(e.target.closest('button')) {
             if(e.target.closest('button').id == 'allcooked') {
                 if(this.state.data[this.state.choosedOrder]) {
-                    this.state.completedData.push(this.state.data[this.state.choosedOrder]);
-                    this.state.data = this.state.data.filter((value, index, arr) => {
-                        return index != this.state.choosedOrder;
+                    // this.state.completedData.push(this.state.data[this.state.choosedOrder]);
+                    recipeChat.emit("completedrecipe", {
+                        name: 'recipeDevice',
+                        room: 'completedrecipe',
+                        msg: this.state.data[this.state.choosedOrder]
                     });
-                    if(this.state.data.length == 0) {
-                        this.setState({
-                            choosedOrder: -1,
-                            choosedMenu: []
-                        })
-                    }else {
-                        let count_arr = [];
-                        for(let i=0; i<this.state.data[0].order.length; i++) {
-                            if(i == 4) break;
-                            count_arr.push(i);
-                        }
-                        this.setState({
-                            choosedOrder: 0,
-                            choosedMenu: count_arr
-                        })
-                    }
+                    
 
                 }
 

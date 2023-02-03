@@ -28,6 +28,7 @@ app.get('/recipedevice', function(req, res) {
 // 파일 업로드 multer라이브러리
 
 const multer = require('multer');
+const { receiveMessageOnPort } = require('worker_threads');
 let realfilename = '';
 
 const upload =  multer({
@@ -240,6 +241,9 @@ app.post('/verifysms', function(req, res) {
 })
 
 // 레시피 디바이스 코드는 여기부터
+let orderList = [];
+const completedList = [];
+
 const recipe = io.of('/recipe').on('connection', function(socket) {
     socket.on('recipe transfer', function(data) {
         console.log('message from client: ', data);
@@ -248,8 +252,46 @@ const recipe = io.of('/recipe').on('connection', function(socket) {
         const room = socket.room = data.room;
 
         socket.join(room);
+        if(data.msg != 'logged in') {
+            const recievedData = JSON.parse(data.msg);
+            recievedData.order.map(item => {
+                let option_arr = [];
+                if(item.m_options != '') {
+                    option_arr = item.m_options.split(',');
+                    for(let i=0; i< option_arr.length; i++) {
+                        if(option_arr[i].slice(-1) == ')') {
+                            option_arr[i] = option_arr[i].replaceAll(')','')
+                            let temp = option_arr[i].split('(');
+                            option_arr[i] = { name: temp[0], quantity: temp[1]}
+                        }else {
+                            option_arr[i] = { name: option_arr[i], quantity: "1"}
+                        }
+                    }
+                }
+                item.m_options = option_arr;
+                item.done = false;
+            })
+            orderList.push(recievedData)
+        }
+        console.log(orderList)
+        recipe.to(room).emit('recipe transfer', orderList);
+    });
 
-        recipe.to(room).emit('recipe transfer', data.msg);
+    socket.on('completedrecipe', function(data) {
+        console.log('message from client: ', data);
+
+        const name = data.name;
+        const room = data.room;
+
+        socket.join(room);
+        if(data.msg != 'logged in') {
+            completedList.push(data.msg);
+        }
+        console.log(completedList)
+        orderList = orderList.filter((value, index, arr) => {
+            return value.orderIndex != completedList[completedList.length-1].orderIndex;
+        })
+        recipe.to(room).emit('completedrecipe', completedList);
     });
 });
 

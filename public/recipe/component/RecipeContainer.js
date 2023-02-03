@@ -12,7 +12,6 @@ export default function RecipeContainer({ $target, initialState }) {
             ...this.state,
             ...nextState,
         }
-        console.log(this.state.m_idx)
         callRecipe(this.state.m_idx)
         //this.render()
     }
