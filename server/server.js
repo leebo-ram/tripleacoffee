@@ -28,7 +28,6 @@ app.get('/recipedevice', function(req, res) {
 // 파일 업로드 multer라이브러리
 
 const multer = require('multer');
-const { receiveMessageOnPort } = require('worker_threads');
 let realfilename = '';
 
 const upload =  multer({
@@ -83,7 +82,7 @@ app.post('/delmenu', function(req, res) {
 // 메뉴 호출
 app.get('/callmenu', function(req, res) {
 
-    db.query("select * from tb_menu",
+    db.query("select * from tb_menu where m_type != 9",
     function(err, rows, fields) {
         if(err){
             console.log("메뉴호출 실패");
@@ -286,18 +285,19 @@ const recipe = io.of('/recipe').on('connection', function(socket) {
         socket.join(room);
         if(data.msg != 'logged in') {
             completedList.push(data.msg);
+            console.log(completedList)
+            orderList = orderList.filter((value, index, arr) => {
+                return value.orderIndex != completedList[completedList.length-1].orderIndex;
+            })
+            recipe.to(room).emit('completedrecipe', completedList);
         }
-        console.log(completedList)
-        orderList = orderList.filter((value, index, arr) => {
-            return value.orderIndex != completedList[completedList.length-1].orderIndex;
-        })
-        recipe.to(room).emit('completedrecipe', completedList);
+
     });
 });
 
 app.get('/callRecipe', function(req,res) {
     const m_idx = req.query.m_idx;
-    db.query('select * from tb_recipe where r_midx=?',[m_idx], function(err,rows,fields) {
+    db.query('select * from tb_recipe where r_midx=? and r_base=0',[m_idx], function(err,rows,fields) {
         if(err) {
             console.log(err);
             res.send(false);
@@ -305,8 +305,17 @@ app.get('/callRecipe', function(req,res) {
             res.send(rows)
         }
     })
+})
 
-
+app.get('/callBaseRecipe', function(req, res) {
+    db.query('select * from tb_recipe where r_base=1', function(err,rows,fields) {
+        if(err) {
+            console.log(err);
+            res.send(false);
+        }else {
+            res.send(rows);
+        }
+    })
 })
 
 

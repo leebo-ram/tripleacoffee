@@ -1,8 +1,9 @@
 
-export default function RecipeTitle({ $target }) {
+export default function RecipeTitle({ $target, initialState }) {
     //상태관리
     this.state = {
-
+        presentPage: 'recipe',
+        ...initialState
     };
     this.setState = (nextState) => {
         this.state = {
@@ -21,9 +22,9 @@ export default function RecipeTitle({ $target }) {
     this.render = () => {
         this.$element.innerHTML = `
                 <div class="main__recipe_title">
-                <p>Triple A Coffee Recipe</p>
-                <a href="../recipe/recipeBase.html">
-                    <button>베이스 만들기</button>
+                <p>${this.state.presentPage == 'recipe' ? 'Triple A Coffee Recipe' : 'Base Recipe'}</p>
+                <a>
+                    <button id="recipe_page_btn">${this.state.presentPage == 'recipe' ? '베이스 만들기' : '주문목록'}</button>
                 </a>
                 </div>
             `;

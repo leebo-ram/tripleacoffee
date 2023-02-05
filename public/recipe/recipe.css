@@ -471,7 +471,7 @@
   }
   
   #recipeBase {
-    display: flex;
+    display: none;
     justify-content: center;
     width: 100%;
   }
@@ -561,6 +561,8 @@
     color:var(--color-triple-light-gray);
     text-decoration: line-through;
   }
+
+
 
   /* .recipeApp {
     float: left;
