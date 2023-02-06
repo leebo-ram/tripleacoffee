@@ -1,0 +1,570 @@
+/* Global */
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-dark-white: #bdbdbd;
+    --color-pink: #fe918d;
+    --color-dark-pink: #ff6863;
+  
+    --color-purple: #ead4fb;
+    --color-dark-purple:#DCC9FF;
+    --color-very-dark-purple:
+    #DEBFF8;
+  
+    --color-dark-grey: #4d4d4d;
+    --color-grey: #616161;
+    --color-light-grey: #7c7979;
+    --color-blue: #73aace;
+    --color-yellow:  #fff7d1;
+    --color-orange: #feb546;
+    --color-black: #000000;
+  
+    /* tripleacoffee_color */
+    --color-triple-yellow: #FFCC35;
+    --color-triple-black: #1f1f1f;
+    --color-triple-light-gray: #AFBBB9;
+    --color-triple-line-gray: #AFBBB9;
+    --color-triple-deep-gray: #333;
+    --color-triple-brown:#5A3E33;
+    --color-triple-redPink: #B48B8F;
+    /* --color-triple-red: #90251D; */
+    --color-triple-red: #D43D2D;
+    --color-triple-light-red: #C52B21;
+    
+    
+    
+    
+    /* tripleacoffee Brand color */
+    --color-triple-deep-yellow: #ffcd34;
+    --color-triple-grey: #65666b;
+    --color-triple-green: #0da27a;
+  
+  
+    /* Font size */
+    --font-big-large: 57px;
+    --font-large: 48px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+  
+  
+     /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+  
+    /* line-height */
+    --line-height-regular: 1.5;
+  
+    /* Size */
+    --size-border-radius: 4px;
+  
+    /* Annimation */
+    --animation-duration: 300ms;
+  
+    /*   border line */
+    --border-bottom-5px : 5px solid var(--color-triple-line-gray);
+    --border-bottom-3px : 3px solid var(--color-light-white);
+    --border-line-1px : 1px solid var(--color-triple-line-gray);
+    --border-line-1px-grey : 1px solid var(--color-grey);
+  }
+  
+  
+   /* Universal tags */
+   * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    font-size: var(--font-regular);
+    /* width: 1200px; */
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--color-white);
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  
+  
+  /* Typography - Home*/
+  
+  #home {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .bigconts img {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+  }
+  
+  
+  /* Typography - MENU*/
+  
+  /* Navbar */
+  .navbar___logo {
+    margin: 10px;
+  }
+  
+  .navbar___logo i{
+    font-size: 100px;
+    color: var(--color-triple-brown);
+    margin: 10px 10px;
+    margin-left: 2.5vh
+  }
+  
+  .navbar___logo img {
+    width: 200px;
+    height: 100px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 30px;
+  }
+  
+  /* menu__category_Btn */
+  .menu__categories1, .menu__categories2 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .category__btn {
+    border: 1px solid var(--color-dark-white);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    padding: 8px 48px;
+    
+    width: 17.6%;
+    height: 6vh;
+    margin: 1px;
+    background-color: var(--color-triple-brown);
+    color: var(--color-white);
+    display: inline-block;
+  }
+  
+  .menu__categories1.active {
+    border: 1px solid var(--color-white);
+  }
+  
+  .category__btn.selected,
+  .category__btn:hover{
+    background-color: var(--color-white);
+    color: var(--color-triple-black);
+  }
+  
+
+  
+  /* Typography - recipe Main(레시피 메인화면)*/
+  
+  
+  .main__recipe_title {
+    width: 100%;
+    margin: 0.25% 0;
+  }
+  
+  .main__recipe_title p {
+    text-align: center;
+    font-size: var(--font-large);
+    margin: 0;
+  }
+  
+  .main__recipe_title button {
+    position: relative;
+    bottom: 58px;
+    float: right;
+    width: 12%;
+    height: 50px;
+    margin: 0 0.25%;
+    font-size: var(--font-medium);
+    letter-spacing: 2px;
+    color: var(--color-white);
+    border: 1px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-light-gray);
+  }
+  
+  
+  .main__recipe_title button:hover {
+    border: 1px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-dark-pink);
+    color: var(--color-white);
+  }
+  
+  #recipe {
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+  }
+  
+  /* 추가사항 시작*/
+  .recipe_orderList {
+    position: absolute;
+    top: 13%;
+    left: 350px;
+    width: 100%;
+  
+  }
+  
+  .recipe_orderRecipe {
+    display: flex;
+  
+    position: absolute;
+    top: 13%;
+    left: 700px;
+    width: 100%;
+  }
+  /* 추가사항 종료*/
+  
+  .recipeApp {
+    min-width: 1024px;
+  }
+  .orderNum_box, .orderList_box,
+  .recipe_box{
+    margin: 0 0.25%;
+    width: 18%;
+  }
+  
+  .orderList__count {
+    float: right;
+    margin-right: 2%;
+  }
+  
+  .orderNum {
+    min-height: 600px;
+    overflow: auto; 
+    height: 200px;
+    border: var(--border-line-1px);
+    border-radius: var(--size-border-radius);
+  }
+  
+  .orderList, .recipe1, .recipe2, .recipe3, .recipe4 {
+    min-height: 600px;
+    border: var(--border-line-1px);
+    border-radius: var(--size-border-radius);
+    overflow: auto; 
+    height: 200px;
+  }
+  
+  .order__menu {
+    margin: 0;
+    padding: 0 4px;
+    min-height: 200px;
+    border: 3px solid var(--color-triple-line-gray);
+    border-radius: var(--size-border-radius);
+  }
+  
+  .orderNum__list{
+    min-height: 100px;
+    border: 3px solid var(--color-triple-line-gray);
+    border-radius: var(--size-border-radius);
+  }
+  
+  .orderNum__list__store {
+    color: var(--color-triple-green);
+    font-weight: var(--weight-bold);
+  }
+  
+  .orderNum__list__packaging {
+    color: var(--color-triple-red);
+    font-weight: var(--weight-bold);
+  }
+  
+  .order__menu__name {
+    font-size: var(--font-min-medium);
+  }
+  
+  .order__menu span{
+    float: right;
+  }
+  
+  .order__menu__option {
+    border-top: var(--border-line-1px);
+    margin: 10px 0;
+    min-height: 80px;
+  }
+  
+  .order__menu__option li {
+    font-size: var(--font-regular);
+  }
+  
+  .order__menu__btn {
+    display: flex;
+    max-width: 100%;
+    margin-bottom: 4px;
+    flex-direction: row-reverse;
+  }
+  
+  .order__menuBtns p {
+    text-align: center;
+    margin: 5px 0;
+    text-decoration: none !important;
+    color: white !important;
+  }
+  
+  .order__menu__cancel__btn {
+    width: 50%;
+    height: 50px;
+    margin-right: 4px;
+    font-size: var(--font-regular);
+    font-weight: var(--weight-bold);
+    color: white;
+    border: 5px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-line-gray);
+  }
+  
+  
+  .order__menuBtns.selected {
+    background-color: var(--color-triple-grey);
+  }
+  
+  .order__menu__name.deco {
+    text-decoration: line-through;
+    color: var(--color-triple-line-gray);
+  }
+  
+  
+  .order__menu__complete__btn {
+    width: 100%;
+    height: 50px;
+    font-size: var(--font-regular);
+    font-weight: var(--weight-bold);
+    color: white;
+    border: 5px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-red);
+  }
+  .order__menu__complete__btn.completed {
+    background-color: var(--color-triple-light-gray);
+    color: white !important;
+  }
+  
+  .orderNum__list__posNum {
+    font-size: var(--font-small);
+  }
+  
+  .orderNum__list time{
+    margin-left: 4px;
+    font-size: var(--font-small);
+  }
+  
+  .orderNum__list p{
+    margin: 5% 0;
+    height: 20px;
+    text-align: center;
+    font-size: var(--font-medium);
+  }
+  
+  .recipe1 div, .recipe2 div,
+  .recipe3 div, .recipe4 div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4px;
+    height: 50px;
+    font-weight: var(--weight-semi-bold);
+    background-color: var(--color-triple-deep-yellow);
+  }
+  
+  .recipe1 p, .recipe2 p,
+  .recipe3 p, .recipe4 p {
+    margin-left: 20px;
+    line-height: 30px;
+  }
+  
+  
+  .orderNum__list.selected,
+  .order__menu.selected {
+    border: 3px solid var(--color-triple-light-red);
+  }
+  
+  
+  .all__cooked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% 0.25%;
+  }
+  
+  .all__cooked button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-bold);
+    letter-spacing: 4px;
+    color: var(--color-white);
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-red);
+  }
+  
+  .all__cooked button:hover {
+    background-color: var(--color-triple-green);
+  }
+  
+  
+  
+  
+  /* ---------------------------------- */
+  
+  
+  
+  
+  /* Typography - recipe Main(레시피 메인화면)*/
+  
+  .base__recipe {
+    margin: 0.25% 0;
+  }
+  
+  .base__recipe_title p {
+    text-align: center;
+    font-size: var(--font-large);
+    margin: 0;
+  }
+  
+  .base__recipe_title button {
+    position: relative;
+    bottom: 58px;
+    float: right;
+    width: 12%;
+    height: 50px;
+    margin: 0 0.25%;
+    font-size: var(--font-medium);
+    letter-spacing: 2px;
+    color: var(--color-white);
+    border: 1px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-light-gray);
+  }
+  
+  .base__recipe_title button:hover {
+    border: 1px solid transparent;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-dark-pink);
+    color: var(--color-white);
+  }
+  
+  #recipeBase {
+    display: none;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .baseList_box {
+    margin: 0 0.25%;
+    width: 17%;
+  }
+  
+  .base__recipe1_box, .base__recipe2_box {
+    margin: 0 0.25%;
+    width: 41%;
+  }
+  
+  .baseList, .base__recipes {
+    min-height: 600px;
+    border: 3px solid var(--color-triple-line-gray);
+    border-radius: var(--size-border-radius);
+    overflow: auto; 
+    height: 200px;
+  }
+  
+  .base__menu {
+    text-align: center;
+    border: 3px solid var(--color-triple-line-gray);
+    border-radius: var(--size-border-radius);
+  }
+  
+  
+  .oder__menu__complete {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 50px;
+    margin-left: 4px;
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-red);
+  }
+  
+  
+  .base__recipes div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4px;
+    height: 50px;
+    font-weight: var(--weight-semi-bold);
+    background-color: var(--color-triple-deep-yellow);
+  }
+  
+  .base__recipes p {
+    margin-left: 20px;
+    line-height: 30px;
+  }
+  
+  .base__menu.selected,
+  .base__recipes.selected{
+    border: 3px solid var(--color-triple-light-red);
+  }
+  
+  .back__orderList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% 0.25%;
+  }
+  
+  .back__orderList button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-bold);
+    letter-spacing: 4px;
+    color: var(--color-white);
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-triple-red);
+  }
+  
+  .back__orderList button:hover {
+    background-color: var(--color-triple-green);
+  }
+
+  .completed :not(div){
+    color:var(--color-triple-light-gray);
+    text-decoration: line-through;
+  }
+
+
+
+  /* .recipeApp {
+    float: left;
+  
+  } */
